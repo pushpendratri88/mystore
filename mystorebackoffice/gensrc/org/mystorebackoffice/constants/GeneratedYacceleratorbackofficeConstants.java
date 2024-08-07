@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Jul 20, 2024, 2:42:53 PM                    ---
+ * --- Generated at 07-Aug-2024, 12:01:42 pm                    ---
  * ----------------------------------------------------------------
  */
 package org.mystorebackoffice.constants;
