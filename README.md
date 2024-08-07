@@ -5,4 +5,4 @@
 3. Install reciep with command
      Installation Ref :- https://sapcxexpert.in/installation/
      CX Installation Reciep:- install.bat -r cx -A initAdminPassword=nimda
-4. Copy local.properties and localextension form localconfig to config 
+5. Copy local.properties and localextension form localconfig to config 
