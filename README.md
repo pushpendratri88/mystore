@@ -1,3 +1,4 @@
 # mystore
+Installation Ref :- https://sapcxexpert.in/installation/
 
-install.bat -r cx -A initAdminPassword=nimda
+CX Installation Reciep:- install.bat -r cx -A initAdminPassword=nimda
