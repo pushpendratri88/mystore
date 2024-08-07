@@ -42,7 +42,7 @@
     <extension name='b2bpunchoutbackoffice' />
     <extension name='b2bpunchoutocc' />
     <extension name='b2bpunchoutocctests' />
-    <extension name='apparelstore' />
+    <!--<extension name='apparelstore' /> -->
     <extension name='electronicsstore' />
     <extension name='captchaaddon' />
     <extension name='multicountrysampledataaddon' />
@@ -72,13 +72,13 @@
     <extension name='merchandisingsmartedit' />
     <extension name='merchandisingstorefrontsampledataaddon' />
     <extension name='chinesecommercewebservicescommons' />
-    <extension name='chineseaddressaddon' />
+    <!--<extension name='chineseaddressaddon' />
     <extension name='chineseaddressbackoffice' />
     <extension name='chineseaddressfacades' />
     <extension name='chineseaddressocc' />
     <extension name='chineseaddressservices' />
     <extension name='chinesecommerceorgaddressaddon' />
-    <extension name='chinesecommerceorgaddressfacades' />
+    <extension name='chinesecommerceorgaddressfacades' /> -->
     <extension name='admincockpit' />
     <extension name='productcockpit' />
     <extension name='cockpit' />
@@ -285,8 +285,8 @@
     <extension name='permissionsfacades' />
     <extension name='permissionswebservices' />
     <extension name='webservicescommons' />
-    <extension name='ywebservices' />
-    <extension name='orbeonweb' />
+    <extension name='ywebservices' /> 
+    <!-- <extension name='orbeonweb' />-->
     <extension name='xyformsbackoffice' />
     <extension name='xyformsfacades' />
     <extension name='xyformssamples' />
@@ -294,7 +294,7 @@
     <extension name='xyformsstorefrontcommons' />
     <extension name='xyformsweb' />
 	
-	 <extension name='mystorecore'/>
+     <extension name='mystorecore'/>
      <extension name='mystorebackoffice'/>
      <extension name='mystorefacades'/>
      <extension name='mystorefulfilmentprocess'/>
