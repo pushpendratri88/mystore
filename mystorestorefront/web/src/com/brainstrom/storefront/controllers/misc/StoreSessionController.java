@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.misc;
+package com.brainstorm.storefront.controllers.misc;
 
 import de.hybris.platform.acceleratorfacades.urlencoder.UrlEncoderFacade;
 import de.hybris.platform.acceleratorfacades.urlencoder.data.UrlEncoderData;
@@ -16,7 +16,7 @@ import de.hybris.platform.commerceservices.enums.UiExperienceLevel;
 import de.hybris.platform.enumeration.EnumerationService;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.servicelayer.session.SessionService;
-import com.brainstrom.storefront.filters.StorefrontFilter;
+import com.brainstorm.storefront.filters.StorefrontFilter;
 
 import java.util.Arrays;
 import java.util.List;

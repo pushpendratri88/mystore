@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import static org.mockito.BDDMockito.given;
 
@@ -13,7 +13,7 @@ import de.hybris.platform.cms2.servicelayer.services.impl.DefaultCMSComponentSer
 import de.hybris.platform.commercefacades.order.CartFacade;
 import de.hybris.platform.commercefacades.order.data.CartData;
 import de.hybris.platform.commercefacades.product.data.PriceData;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.math.BigDecimal;
 

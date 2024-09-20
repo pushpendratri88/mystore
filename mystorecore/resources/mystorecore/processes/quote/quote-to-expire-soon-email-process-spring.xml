@@ -20,7 +20,7 @@
     </bean>
 
     <bean id="markQuoteToExpireSoonEmailAsSent"
-          class="com.brainstrom.core.actions.quote.MarkQuoteNotificationAsSentAction"
+          class="com.brainstorm.core.actions.quote.MarkQuoteNotificationAsSentAction"
           parent="markQuoteNotificationAsSent">
         <property name="quoteNotificationType">
             <util:constant

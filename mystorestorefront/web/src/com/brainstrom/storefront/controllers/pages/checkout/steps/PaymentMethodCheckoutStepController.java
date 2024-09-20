@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.pages.checkout.steps;
+package com.brainstorm.storefront.controllers.pages.checkout.steps;
 
 
 import de.hybris.platform.acceleratorservices.enums.CheckoutPciOptionEnum;
@@ -26,7 +26,7 @@ import de.hybris.platform.commercefacades.order.data.CartData;
 import de.hybris.platform.commercefacades.user.data.AddressData;
 import de.hybris.platform.commercefacades.user.data.CountryData;
 import de.hybris.platform.commerceservices.enums.CountryType;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.util.ArrayList;
 import java.util.Calendar;

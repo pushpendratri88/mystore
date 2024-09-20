@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.pages;
+package com.brainstorm.storefront.controllers.pages;
 
 import de.hybris.platform.acceleratorservices.controllers.page.PageType;
 import de.hybris.platform.acceleratorstorefrontcommons.breadcrumb.impl.ProductBreadcrumbBuilder;
@@ -33,7 +33,7 @@ import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.product.ProductService;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.util.Config;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;

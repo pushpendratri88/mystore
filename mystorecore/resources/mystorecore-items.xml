@@ -37,7 +37,7 @@
         <typegroup name="Apparel">
             <itemtype code="ApparelProduct" extends="Product"
                       autocreate="true" generate="true"
-                      jaloclass="com.brainstrom.core.jalo.ApparelProduct">
+                      jaloclass="com.brainstorm.core.jalo.ApparelProduct">
                 <description>Base apparel product extension that contains additional attributes.</description>
                 <attributes>
                     <attribute qualifier="genders" type="GenderList">
@@ -50,7 +50,7 @@
 
             <itemtype code="ApparelStyleVariantProduct" extends="VariantProduct"
                       autocreate="true" generate="true"
-                      jaloclass="com.brainstrom.core.jalo.ApparelStyleVariantProduct">
+                      jaloclass="com.brainstorm.core.jalo.ApparelStyleVariantProduct">
                 <description>Apparel style variant type that contains additional attribute describing variant style.
                 </description>
                 <attributes>
@@ -73,7 +73,7 @@
 
             <itemtype code="ApparelSizeVariantProduct" extends="ApparelStyleVariantProduct"
                       autocreate="true" generate="true"
-                      jaloclass="com.brainstrom.core.jalo.ApparelSizeVariantProduct">
+                      jaloclass="com.brainstorm.core.jalo.ApparelSizeVariantProduct">
                 <description>Apparel size variant type that contains additional attribute describing variant size.
                 </description>
                 <attributes>
@@ -90,7 +90,7 @@
         <typegroup name="Electronics">
             <itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
                       autocreate="true" generate="true"
-                      jaloclass="com.brainstrom.core.jalo.ElectronicsColorVariantProduct">
+                      jaloclass="com.brainstorm.core.jalo.ElectronicsColorVariantProduct">
                 <description>Electronics color variant type that contains additional attribute describing variant color.
                 </description>
                 <attributes>
@@ -104,5 +104,29 @@
             </itemtype>
         </typegroup>
 
+        <typegroup name="MyStore">
+            <itemtype code="MyStoreProduct" extends="Product"
+                      jaloclass="com.brainstorm.core.jalo.MyStoreProduct">
+                <description>New Product item created for MyStore Application</description>
+            </itemtype>
+
+            <itemtype code="MyStoreColorVariantProduct" extends="VariantProduct"
+                      jaloclass="com.brainstorm.core.jalo.MyStoreColorVariantProduct">
+                <description>MyStore color variant type that contains additional attribute describing variant color.
+                </description>
+                <attributes>
+                    <attribute qualifier="color" type="localized:java.lang.String"
+                               metatype="VariantAttributeDescriptor">
+                        <description>Color of the product.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="MyStoreCronjob" extends="Cronjob"
+                      jaloclass="com.brainstorm.core.jalo.MyStoreCronjob">
+                <description>New CronJob for MyStore.</description>
+            </itemtype>
+        </typegroup>
     </itemtypes>
 </items>

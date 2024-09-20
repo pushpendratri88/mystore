@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.AbstractController;
 import de.hybris.platform.cms2.constants.Cms2Constants;

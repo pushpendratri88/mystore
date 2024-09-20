@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.pages;
+package com.brainstorm.storefront.controllers.pages;
 
 import de.hybris.bootstrap.annotations.UnitTest;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractSearchPageController;

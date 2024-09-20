@@ -1,11 +1,11 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforecontroller;
+package com.brainstorm.storefront.interceptors.beforecontroller;
 
 import de.hybris.platform.acceleratorcms.services.CMSPageContextService;
 import de.hybris.platform.acceleratorstorefrontcommons.interceptors.BeforeControllerHandler;
-import com.brainstrom.storefront.controllers.cms.EmailPageController;
+import com.brainstorm.storefront.controllers.cms.EmailPageController;
 
 import java.io.IOException;
 

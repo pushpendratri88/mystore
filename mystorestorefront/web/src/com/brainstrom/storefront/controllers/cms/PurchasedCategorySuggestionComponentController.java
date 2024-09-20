@@ -1,14 +1,14 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import de.hybris.platform.acceleratorcms.model.components.PurchasedCategorySuggestionComponentModel;
 import de.hybris.platform.acceleratorcms.model.components.SimpleSuggestionComponentModel;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.cms.AbstractCMSComponentController;
 import de.hybris.platform.commercefacades.product.data.ProductData;
-import com.brainstrom.facades.suggestion.SimpleSuggestionFacade;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.facades.suggestion.SimpleSuggestionFacade;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.util.List;
 

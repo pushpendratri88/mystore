@@ -14,7 +14,7 @@
 
     <alias name="defaultQuoteBuyerSubmitAction" alias="quoteBuyerSubmitAction"/>
     <bean id="defaultQuoteBuyerSubmitAction"
-          class="com.brainstrom.core.actions.quote.QuoteBuyerSubmitAction"
+          class="com.brainstorm.core.actions.quote.QuoteBuyerSubmitAction"
           parent="abstractAction">
         <property name="commerceQuoteService" ref="commerceQuoteService"/>
         <property name="quoteService" ref="quoteService"/>

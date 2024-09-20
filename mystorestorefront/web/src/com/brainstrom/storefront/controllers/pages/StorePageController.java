@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.pages;
+package com.brainstorm.storefront.controllers.pages;
 
 import de.hybris.platform.acceleratorstorefrontcommons.breadcrumb.impl.StoreBreadcrumbBuilder;
 import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
@@ -18,7 +18,7 @@ import de.hybris.platform.commercefacades.user.data.AddressData;
 import de.hybris.platform.commerceservices.store.data.GeoPoint;
 import de.hybris.platform.servicelayer.config.ConfigurationService;
 import de.hybris.platform.servicelayer.exceptions.ModelNotFoundException;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.io.UnsupportedEncodingException;
 

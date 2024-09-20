@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers;
+package com.brainstorm.storefront.controllers;
 
 import de.hybris.platform.acceleratorcms.model.components.CMSTabParagraphContainerModel;
 import de.hybris.platform.acceleratorcms.model.components.CartSuggestionComponentModel;

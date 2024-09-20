@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -16,8 +16,8 @@ import de.hybris.platform.commercefacades.order.data.CartData;
 import de.hybris.platform.commercefacades.order.data.OrderEntryData;
 import de.hybris.platform.commercefacades.order.impl.DefaultCartFacade;
 import de.hybris.platform.commercefacades.product.data.ProductData;
-import com.brainstrom.facades.suggestion.SimpleSuggestionFacade;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.facades.suggestion.SimpleSuggestionFacade;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;

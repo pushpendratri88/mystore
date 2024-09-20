@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.misc;
+package com.brainstorm.storefront.controllers.misc;
 
 import de.hybris.platform.acceleratorcms.model.components.MiniCartComponentModel;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.AbstractController;
@@ -10,7 +10,7 @@ import de.hybris.platform.cms2.servicelayer.services.CMSComponentService;
 import de.hybris.platform.commercefacades.order.CartFacade;
 import de.hybris.platform.commercefacades.order.data.CartData;
 import de.hybris.platform.commercefacades.product.data.PriceData;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.util.Collections;
 import java.util.List;

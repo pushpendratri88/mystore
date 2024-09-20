@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.filters;
+package com.brainstorm.storefront.filters;
 
-import com.brainstrom.storefront.security.GuestCheckoutCartCleanStrategy;
+import com.brainstorm.storefront.security.GuestCheckoutCartCleanStrategy;
 
 import java.io.IOException;
 

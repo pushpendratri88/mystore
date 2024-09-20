@@ -11,7 +11,7 @@
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<alias name="taskServiceStub" alias="taskService"/>
-	<bean id="taskServiceStub" class="com.brainstrom.fulfilmentprocess.test.TaskServiceStub" />
+	<bean id="taskServiceStub" class="com.brainstorm.fulfilmentprocess.test.TaskServiceStub" />
 
 	<!-- Payment mockup implementation -->
 	<bean name="mockupCommandFactory" class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl" >

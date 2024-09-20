@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.filters;
+package com.brainstorm.storefront.filters;
 
 import de.hybris.platform.acceleratorfacades.customerlocation.CustomerLocationFacade;
 import de.hybris.platform.acceleratorservices.store.data.UserLocationData;
 import de.hybris.platform.commerceservices.store.data.GeoPoint;
-import com.brainstrom.storefront.security.cookie.CustomerLocationCookieGenerator;
+import com.brainstorm.storefront.security.cookie.CustomerLocationCookieGenerator;
 
 import java.io.IOException;
 

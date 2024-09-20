@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 07-Aug-2024, 12:01:42 pm                    ---
+ * --- Generated at 20-Sep-2024, 10:55:48 am                    ---
  * ----------------------------------------------------------------
  */
 package org.mystorebackoffice.jalo;

@@ -2,7 +2,7 @@
 <!--
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
-<action-definition id="com.brainstrom.backoffice.actions.confirmpickupaction"
+<action-definition id="com.brainstorm.backoffice.actions.confirmpickupaction"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="http://www.hybris.com/schema/cockpitng/action-definition.xsd">
 	
@@ -11,7 +11,7 @@
 	<author>hybris</author>
 	<version>1.0</version>
 	
-	<actionClassName>com.brainstrom.backoffice.actions.ConfirmPickupAction</actionClassName>
+	<actionClassName>com.brainstorm.backoffice.actions.ConfirmPickupAction</actionClassName>
 
 	
     <inputType>de.hybris.platform.ordersplitting.model.ConsignmentModel</inputType>

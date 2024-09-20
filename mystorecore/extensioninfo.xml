@@ -14,7 +14,7 @@
         <requires-extension name="acceleratorcms"/>
                 		
         
-        <coremodule generated="true" manager="com.brainstrom.core.jalo.MystoreCoreManager" packageroot="com.brainstrom.core"/>
+        <coremodule generated="true" manager="com.brainstorm.core.jalo.MystoreCoreManager" packageroot="com.brainstorm.core"/>
                 		
         
         		

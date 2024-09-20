@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.util;
+package com.brainstorm.storefront.util;
 
 import de.hybris.platform.acceleratorservices.addonsupport.RequiredAddOnsNameProvider;
 import de.hybris.platform.acceleratorservices.config.SiteConfigService;
@@ -10,7 +10,7 @@ import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
 import de.hybris.platform.cms2.model.site.CMSSiteModel;
 import de.hybris.platform.cms2.servicelayer.services.CMSSiteService;
 import de.hybris.platform.commerceservices.enums.SiteTheme;
-import com.brainstrom.storefront.web.view.UiExperienceViewResolver;
+import com.brainstorm.storefront.web.view.UiExperienceViewResolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;

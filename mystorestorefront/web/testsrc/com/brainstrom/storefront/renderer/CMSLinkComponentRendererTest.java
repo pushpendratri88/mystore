@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.renderer;
+package com.brainstorm.storefront.renderer;
 
 import com.sap.security.core.server.csi.XSSEncoder;
 import de.hybris.bootstrap.annotations.UnitTest;

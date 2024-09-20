@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.security.impl;
+package com.brainstorm.storefront.security.impl;
 
 import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
 import de.hybris.platform.commerceservices.strategies.CheckoutCustomerStrategy;
@@ -9,7 +9,7 @@ import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.order.CartService;
 import de.hybris.platform.servicelayer.session.SessionService;
 import de.hybris.platform.servicelayer.user.UserService;
-import com.brainstrom.storefront.security.GuestCheckoutCartCleanStrategy;
+import com.brainstorm.storefront.security.GuestCheckoutCartCleanStrategy;
 
 import java.util.List;
 import java.util.regex.Pattern;

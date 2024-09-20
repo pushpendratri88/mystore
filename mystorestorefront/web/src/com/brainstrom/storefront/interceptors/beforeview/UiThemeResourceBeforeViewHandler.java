@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforeview;
+package com.brainstorm.storefront.interceptors.beforeview;
 
 import de.hybris.platform.acceleratorfacades.device.DeviceDetectionFacade;
 import de.hybris.platform.acceleratorfacades.device.data.DeviceData;
@@ -12,7 +12,7 @@ import de.hybris.platform.cms2.servicelayer.services.CMSSiteService;
 import de.hybris.platform.commerceservices.enums.UiExperienceLevel;
 import de.hybris.platform.commerceservices.i18n.CommerceCommonI18NService;
 import de.hybris.platform.core.model.c2l.LanguageModel;
-import com.brainstrom.storefront.util.UiThemeUtils;
+import com.brainstorm.storefront.util.UiThemeUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

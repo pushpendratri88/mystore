@@ -1,12 +1,12 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.web.theme;
+package com.brainstorm.storefront.web.theme;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.brainstrom.storefront.util.SiteThemeResolverUtils;
+import com.brainstorm.storefront.util.SiteThemeResolverUtils;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.servlet.theme.AbstractThemeResolver;
 

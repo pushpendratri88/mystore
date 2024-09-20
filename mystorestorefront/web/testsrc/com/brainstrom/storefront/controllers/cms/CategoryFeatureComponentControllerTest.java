@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -13,7 +13,7 @@ import de.hybris.platform.category.model.CategoryModel;
 import de.hybris.platform.cms2.servicelayer.services.impl.DefaultCMSComponentService;
 import de.hybris.platform.commercefacades.product.data.CategoryData;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

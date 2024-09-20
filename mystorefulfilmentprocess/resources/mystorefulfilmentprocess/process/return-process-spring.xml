@@ -14,26 +14,26 @@
 
     <!-- Return Process Actions -->
 
-    <bean id="initialReturnAction" class="com.brainstrom.fulfilmentprocess.actions.returns.InitialReturnAction" parent="abstractAction"/>
+    <bean id="initialReturnAction" class="com.brainstorm.fulfilmentprocess.actions.returns.InitialReturnAction" parent="abstractAction"/>
 
-    <bean id="captureRefundAction" class="com.brainstrom.fulfilmentprocess.actions.returns.CaptureRefundAction" parent="abstractAction"/>
+    <bean id="captureRefundAction" class="com.brainstorm.fulfilmentprocess.actions.returns.CaptureRefundAction" parent="abstractAction"/>
 
-    <bean id="successCaptureAction" class="com.brainstrom.fulfilmentprocess.actions.returns.SuccessCaptureAction" parent="abstractAction"/>
+    <bean id="successCaptureAction" class="com.brainstorm.fulfilmentprocess.actions.returns.SuccessCaptureAction" parent="abstractAction"/>
 
-    <bean id="approveReturnAction" class="com.brainstrom.fulfilmentprocess.actions.returns.ApproveReturnAction" parent="abstractAction"/>
+    <bean id="approveReturnAction" class="com.brainstorm.fulfilmentprocess.actions.returns.ApproveReturnAction" parent="abstractAction"/>
 
-    <bean id="cancelReturnAction" class="com.brainstrom.fulfilmentprocess.actions.returns.CancelReturnAction" parent="abstractAction"/>
+    <bean id="cancelReturnAction" class="com.brainstorm.fulfilmentprocess.actions.returns.CancelReturnAction" parent="abstractAction"/>
 
-    <bean id="printReturnLabelAction" class="com.brainstrom.fulfilmentprocess.actions.returns.PrintReturnLabelAction" parent="abstractAction"/>
+    <bean id="printReturnLabelAction" class="com.brainstorm.fulfilmentprocess.actions.returns.PrintReturnLabelAction" parent="abstractAction"/>
 
-    <bean id="printPackingLabelAction" class="com.brainstrom.fulfilmentprocess.actions.returns.PrintPackingLabelAction" parent="abstractAction"/>
+    <bean id="printPackingLabelAction" class="com.brainstorm.fulfilmentprocess.actions.returns.PrintPackingLabelAction" parent="abstractAction"/>
 
-    <bean id="acceptGoodsAction" class="com.brainstrom.fulfilmentprocess.actions.returns.AcceptGoodsAction" parent="abstractAction"/>
+    <bean id="acceptGoodsAction" class="com.brainstorm.fulfilmentprocess.actions.returns.AcceptGoodsAction" parent="abstractAction"/>
 
-    <bean id="taxReverseAction" class="com.brainstrom.fulfilmentprocess.actions.returns.TaxReverseAction" parent="abstractAction"/>
+    <bean id="taxReverseAction" class="com.brainstorm.fulfilmentprocess.actions.returns.TaxReverseAction" parent="abstractAction"/>
 
-    <bean id="successTaxReverseAction" class="com.brainstrom.fulfilmentprocess.actions.returns.SuccessTaxReverseAction" parent="abstractAction"/>
+    <bean id="successTaxReverseAction" class="com.brainstorm.fulfilmentprocess.actions.returns.SuccessTaxReverseAction" parent="abstractAction"/>
 
-    <bean id="inventoryUpdateAction" class="com.brainstrom.fulfilmentprocess.actions.returns.InventoryUpdateAction" parent="abstractAction"/>
+    <bean id="inventoryUpdateAction" class="com.brainstorm.fulfilmentprocess.actions.returns.InventoryUpdateAction" parent="abstractAction"/>
 
 </beans>

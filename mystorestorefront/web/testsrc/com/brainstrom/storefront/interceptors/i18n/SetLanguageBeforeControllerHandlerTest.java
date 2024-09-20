@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.i18n;
+package com.brainstorm.storefront.interceptors.i18n;
 
 import de.hybris.bootstrap.annotations.UnitTest;
 import de.hybris.platform.commerceservices.i18n.LanguageResolver;
 import de.hybris.platform.core.model.c2l.LanguageModel;
 import de.hybris.platform.servicelayer.i18n.CommonI18NService;
-import com.brainstrom.storefront.interceptors.beforecontroller.SetLanguageBeforeControllerHandler;
+import com.brainstorm.storefront.interceptors.beforecontroller.SetLanguageBeforeControllerHandler;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.security.impl;
+package com.brainstorm.storefront.security.impl;
 
 import de.hybris.platform.acceleratorstorefrontcommons.security.GUIDCookieStrategy;
-import com.brainstrom.storefront.interceptors.beforecontroller.RequireHardLoginBeforeControllerHandler;
+import com.brainstorm.storefront.interceptors.beforecontroller.RequireHardLoginBeforeControllerHandler;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

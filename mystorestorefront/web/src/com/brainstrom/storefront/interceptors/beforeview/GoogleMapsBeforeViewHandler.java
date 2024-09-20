@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforeview;
+package com.brainstorm.storefront.interceptors.beforeview;
 
 import de.hybris.platform.acceleratorservices.config.HostConfigService;
 import de.hybris.platform.acceleratorstorefrontcommons.interceptors.BeforeViewHandler;

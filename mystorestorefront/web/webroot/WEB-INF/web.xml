@@ -120,7 +120,7 @@
         <filter-name>resourceFilter</filter-name>
                 		
         
-        <filter-class>com.brainstrom.storefront.filters.StaticResourceFilter</filter-class>
+        <filter-class>com.brainstorm.storefront.filters.StaticResourceFilter</filter-class>
                 	
     
     </filter>
@@ -260,7 +260,7 @@
 		</description>
                 		
         
-        <listener-class>com.brainstrom.storefront.filters.HybrisStorefrontContextLoaderListener</listener-class>
+        <listener-class>com.brainstorm.storefront.filters.HybrisStorefrontContextLoaderListener</listener-class>
                 	
     
     </listener>
@@ -349,7 +349,7 @@
         <servlet-name>DefaultServletAdapter</servlet-name>
                 		
         
-        <servlet-class>com.brainstrom.storefront.web.servlet.DefaultServletAdapter</servlet-class>
+        <servlet-class>com.brainstorm.storefront.web.servlet.DefaultServletAdapter</servlet-class>
                 		
         
         <load-on-startup>1</load-on-startup>

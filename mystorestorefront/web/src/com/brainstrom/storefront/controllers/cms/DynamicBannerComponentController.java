@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import de.hybris.platform.acceleratorcms.model.components.DynamicBannerComponentModel;
 import de.hybris.platform.catalog.CatalogVersionService;
@@ -10,7 +10,7 @@ import de.hybris.platform.category.model.CategoryModel;
 import de.hybris.platform.core.model.media.MediaModel;
 import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 import de.hybris.platform.servicelayer.media.MediaService;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

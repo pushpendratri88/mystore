@@ -19,12 +19,12 @@
 	<import resource="classpath:/mystorecore/integration/hot-folder-common-spring.xml"/>
 
 	<!-- SystemSetup for the MystoreCore -->
-	<bean id="acceleratorCoreSystemSetup" class="com.brainstrom.core.setup.CoreSystemSetup"
+	<bean id="acceleratorCoreSystemSetup" class="com.brainstorm.core.setup.CoreSystemSetup"
 	       parent="abstractCoreSystemSetup"/>
 
 	<!-- Solr field value providers -->
 
-	<bean id="volumeAwareProductPriceValueProvider" class="com.brainstrom.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
+	<bean id="volumeAwareProductPriceValueProvider" class="com.brainstorm.core.search.solrfacetsearch.provider.impl.VolumeAwareProductPriceValueProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>
         <property name="priceService" ref="priceService"/>
         <property name="commonI18NService" ref="commonI18NService"/>
@@ -34,9 +34,9 @@
         <property name="catalogVersionService" ref="catalogVersionService"/>
     </bean>
 
-    <bean id="volumePriceComparator" class="com.brainstrom.core.comparators.VolumeAwarePriceInformationComparator" scope="singleton"/>
+    <bean id="volumePriceComparator" class="com.brainstorm.core.comparators.VolumeAwarePriceInformationComparator" scope="singleton"/>
 
-    <bean id="productVolumePricesProvider" class="com.brainstrom.core.search.solrfacetsearch.provider.impl.ProductVolumePricesProvider"  parent="abstractPropertyFieldValueProvider">
+    <bean id="productVolumePricesProvider" class="com.brainstorm.core.search.solrfacetsearch.provider.impl.ProductVolumePricesProvider"  parent="abstractPropertyFieldValueProvider">
         <property name="fieldNameProvider" ref="solrFieldNameProvider"/>
         <property name="priceService" ref="priceService"/>
     </bean>
@@ -148,13 +148,13 @@
 	</bean>
 
 	<bean id="colorFacetValueProvider"
-	      class="com.brainstrom.core.search.solrfacetsearch.provider.impl.ColorFacetValueProvider"
+	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.ColorFacetValueProvider"
 	       parent="abstractPropertyFieldValueProvider">
 		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
 	</bean>
 
 	<bean id="colorFacetDisplayNameProvider"
-	      class="com.brainstrom.core.search.solrfacetsearch.provider.impl.ColorFacetDisplayNameProvider"
+	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.ColorFacetDisplayNameProvider"
 	      >
 		<property name="enumerationService" ref="enumerationService"/>
 		<property name="i18nService" ref="i18nService"/>
@@ -162,25 +162,25 @@
 	</bean>
 
 	<bean id="apparelPointOfServiceFacetDisplayNameProvider"
-	      class="com.brainstrom.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
+	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
 	      >
 		<property name="pointOfServiceService" ref="pointOfServiceService"/>
 	</bean>
 
 	<bean id="electronicsPointOfServiceFacetDisplayNameProvider"
-	      class="com.brainstrom.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
+	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
 	      >
 		<property name="pointOfServiceService" ref="pointOfServiceService"/>
 	</bean>
 
 	<bean id="genderValueProvider"
-	      class="com.brainstrom.core.search.solrfacetsearch.provider.impl.GenderValueProvider"
+	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.GenderValueProvider"
 	       parent="abstractPropertyFieldValueProvider">
 		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
 	</bean>
 
 	<bean id="genderFacetDisplayNameProvider"
-	      class="com.brainstrom.core.search.solrfacetsearch.provider.impl.GenderFacetDisplayNameProvider"
+	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.GenderFacetDisplayNameProvider"
 	      >
 		<property name="enumerationService" ref="enumerationService"/>
 		<property name="i18nService" ref="i18nService"/>
@@ -192,61 +192,61 @@
 		must be configured with a lookup method.
 	-->
 	<bean id="orderCancelledEventListener"
-	      class="com.brainstrom.core.event.OrderCancelledEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.OrderCancelledEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="orderRefundEventListener"
-	      class="com.brainstrom.core.event.OrderRefundEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.OrderRefundEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="customerRegistrationEventListener"
-	      class="com.brainstrom.core.event.RegistrationEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.RegistrationEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="forgottenPasswordEventListener"
-	      class="com.brainstrom.core.event.ForgottenPasswordEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.ForgottenPasswordEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
-	<bean id="submitOrderEventListener" class="com.brainstrom.core.event.SubmitOrderEventListener" parent="abstractAcceleratorSiteEventListener">
+	<bean id="submitOrderEventListener" class="com.brainstorm.core.event.SubmitOrderEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="businessProcessService" ref="businessProcessService"/>
 		<property name="modelService" ref="modelService"/>
 		<property name="baseStoreService" ref="baseStoreService"/>
 	</bean>
 	<bean id="orderConfirmationEventListener"
-	      class="com.brainstrom.core.event.OrderConfirmationEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.OrderConfirmationEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="sendDeliveryMessageEventListener"
-	      class="com.brainstrom.core.event.SendDeliveryMessageEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.SendDeliveryMessageEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="sendReadyForPickupMessageEventListener"
-	      class="com.brainstrom.core.event.SendReadyForPickupMessageEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.SendReadyForPickupMessageEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="sendOrderPartiallyCanceledMessageEventListener"
-	      class="com.brainstrom.core.event.SendOrderPartiallyCanceledMessageEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.SendOrderPartiallyCanceledMessageEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="sendOrderPartiallyRefundedMessageEventListener"
-	      class="com.brainstrom.core.event.SendOrderPartiallyRefundedMessageEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.SendOrderPartiallyRefundedMessageEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	<bean id="sendNotPickedUpConsignmentCanceledMessageEventListener"
-	      class="com.brainstrom.core.event.SendNotPickedUpConsignmentCanceledMessageEventListener" parent="abstractAcceleratorSiteEventListener">
+	      class="com.brainstorm.core.event.SendNotPickedUpConsignmentCanceledMessageEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
-	<bean id="orderCompletedEventListener" class="com.brainstrom.core.event.OrderCompletedEventListener" parent="abstractAcceleratorSiteEventListener">
+	<bean id="orderCompletedEventListener" class="com.brainstorm.core.event.OrderCompletedEventListener" parent="abstractAcceleratorSiteEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
@@ -359,7 +359,7 @@
 	</bean>
 
     <bean id="markQuoteNotificationAsSent"
-          class="com.brainstrom.core.actions.quote.MarkQuoteNotificationAsSentAction"
+          class="com.brainstorm.core.actions.quote.MarkQuoteNotificationAsSentAction"
           parent="abstractAction" abstract="true">
         <property name="quoteService" ref="quoteService"/>
     </bean>
@@ -367,12 +367,12 @@
 	<!-- Simple Suggestion Service -->
 	<alias alias="simpleSuggestionService" name="defaultSimpleSuggestionService"/>
 	<bean id="defaultSimpleSuggestionService"
-	      class="com.brainstrom.core.suggestion.impl.DefaultSimpleSuggestionService" >
+	      class="com.brainstorm.core.suggestion.impl.DefaultSimpleSuggestionService" >
 		<property name="simpleSuggestionDao" ref="simpleSuggestionDao"/>
 	</bean>
 	<alias alias="simpleSuggestionDao" name="defaultSimpleSuggestionDao"/>
 	<bean id="defaultSimpleSuggestionDao"
-	      class="com.brainstrom.core.suggestion.dao.impl.DefaultSimpleSuggestionDao"
+	      class="com.brainstorm.core.suggestion.dao.impl.DefaultSimpleSuggestionDao"
 	      parent="abstractItemDao" >
 		<property name="flexibleSearchService" ref="flexibleSearchService"/>
 	</bean>
@@ -389,7 +389,7 @@
 	</bean>
 
 	<bean id="apparelSizeProductReferenceTargetStrategy"
-	      class="com.brainstrom.core.strategies.impl.ApparelSizeProductReferenceTargetStrategy">
+	      class="com.brainstorm.core.strategies.impl.ApparelSizeProductReferenceTargetStrategy">
 		<property name="commerceCategoryService" ref="commerceCategoryService"/>
 		<property name="rootCategoryCode" value="categories"/>
 	</bean>
@@ -397,43 +397,43 @@
 	<!-- Sales quote process actions -->
 
 	<!-- quote-->
-	<bean id="quoteBuyerSubmitEventListener" class="com.brainstrom.core.event.QuoteBuyerSubmitEventListener"
+	<bean id="quoteBuyerSubmitEventListener" class="com.brainstorm.core.event.QuoteBuyerSubmitEventListener"
 		  parent="abstractEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 
-	<bean id="quoteSalesRepSubmitEventListener" class="com.brainstrom.core.event.QuoteSalesRepSubmitEventListener"
+	<bean id="quoteSalesRepSubmitEventListener" class="com.brainstorm.core.event.QuoteSalesRepSubmitEventListener"
 		  parent="abstractEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 
-	<bean id="quoteSellerApprovalSubmitEventListener" class="com.brainstrom.core.event.QuoteSellerApprovalSubmitEventListener"
+	<bean id="quoteSellerApprovalSubmitEventListener" class="com.brainstorm.core.event.QuoteSellerApprovalSubmitEventListener"
 		  parent="abstractEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 
-	<bean id="quoteBuyerOrderPlacedEventListener" class="com.brainstrom.core.event.QuoteBuyerOrderPlacedEventListener"
+	<bean id="quoteBuyerOrderPlacedEventListener" class="com.brainstorm.core.event.QuoteBuyerOrderPlacedEventListener"
 		  parent="abstractEventListener">
 		<property name="commerceQuoteService" ref="commerceQuoteService"/>
 		<property name="modelService" ref="modelService"/>
 	</bean>
 
-	<bean id="quoteToExpireSoonEventListener" class="com.brainstrom.core.event.QuoteToExpireSoonEventListener"
+	<bean id="quoteToExpireSoonEventListener" class="com.brainstorm.core.event.QuoteToExpireSoonEventListener"
 		  parent="abstractEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 	
-	<bean id="quoteExpiredEventListener" class="com.brainstrom.core.event.QuoteExpiredEventListener"
+	<bean id="quoteExpiredEventListener" class="com.brainstorm.core.event.QuoteExpiredEventListener"
 		  parent="abstractEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
 	</bean>
 
-	<bean id="quoteCancelEventListener" class="com.brainstrom.core.event.QuoteCancelEventListener"
+	<bean id="quoteCancelEventListener" class="com.brainstorm.core.event.QuoteCancelEventListener"
 		  parent="abstractEventListener">
 		<property name="modelService" ref="modelService"/>
 		<property name="businessProcessService" ref="businessProcessService"/>
@@ -472,7 +472,7 @@
 
 	<!-- Quotes email notification jobs -->
 	<bean id="quoteToExpireSoonJobPerformable"
-		  class="com.brainstrom.core.job.QuoteToExpireSoonJobPerformable"
+		  class="com.brainstorm.core.job.QuoteToExpireSoonJobPerformable"
 		  parent="abstractJobPerformable">
 		<property name="supportedQuoteStatuses">
 			<set value-type="de.hybris.platform.core.enums.QuoteState">
@@ -486,7 +486,7 @@
 	</bean>
 	
 	<bean id="quoteExpiredJobPerformable"
-		  class="com.brainstrom.core.job.QuoteExpiredJobPerformable"
+		  class="com.brainstorm.core.job.QuoteExpiredJobPerformable"
 		  parent="abstractJobPerformable">
 		<property name="supportedQuoteStatuses">
 			<set value-type="de.hybris.platform.core.enums.QuoteState">
@@ -509,7 +509,7 @@
 	
 	<!-- Customer cleanup -->
 	<alias name="defaultCustomerCleanupRelatedObjectsAction" alias="customerCleanupRelatedObjectsAction"/>
-	<bean id="defaultCustomerCleanupRelatedObjectsAction" class="com.brainstrom.core.retention.impl.DefaultCustomerCleanupRelatedObjectsAction" parent="abstractExtensibleRemoveCleanupAction">
+	<bean id="defaultCustomerCleanupRelatedObjectsAction" class="com.brainstorm.core.retention.impl.DefaultCustomerCleanupRelatedObjectsAction" parent="abstractExtensibleRemoveCleanupAction">
 		<property name="itemCleanupHooks" ref="customerCleanupHooks"/>
 	</bean>
 	
@@ -534,7 +534,7 @@
 
 	<!-- CsTicket Stagnation action -->
 	<alias name="defaultCSTicketStagnationAction" alias="csTicketStagnationAction"/>
-	<bean id="defaultCSTicketStagnationAction" class="com.brainstrom.core.retention.impl.DefaultCSTicketStagnationAction" parent="abstractExtensibleRemoveCleanupAction">
+	<bean id="defaultCSTicketStagnationAction" class="com.brainstorm.core.retention.impl.DefaultCSTicketStagnationAction" parent="abstractExtensibleRemoveCleanupAction">
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>

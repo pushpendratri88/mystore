@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.cms;
+package com.brainstorm.storefront.controllers.cms;
 
 import de.hybris.platform.acceleratorfacades.email.EmailTemplateFacade;
 import de.hybris.platform.acceleratorservices.email.data.EmailPageData;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.pages.AbstractPageController;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
-import com.brainstrom.storefront.util.UiThemeUtils;
+import com.brainstorm.storefront.util.UiThemeUtils;
 
 import java.util.List;
 

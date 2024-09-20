@@ -10,8 +10,8 @@ $contentCatalog=__CONTENT_CATALOG_NAME__
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $picture=media(code, $contentCV);
 $wideContent=CMSImageComponent,BannerComponent,SimpleBannerComponent,CMSLinkComponent,CMSParagraphComponent
-$jarResource=jar:com.brainstrom.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import
-$siteResource=jar:com.brainstrom.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/contentCatalogs/$contentCatalog
+$jarResource=jar:com.brainstorm.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import
+$siteResource=jar:com.brainstorm.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/contentCatalogs/$contentCatalog
 
 # Language
 $lang=ja

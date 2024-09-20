@@ -1,10 +1,10 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.filters;
+package com.brainstorm.storefront.filters;
 
 import de.hybris.platform.servicelayer.config.ConfigurationService;
-import com.brainstrom.storefront.filters.AcceleratorAddOnFilter.ExtensionAccessor;
+import com.brainstorm.storefront.filters.AcceleratorAddOnFilter.ExtensionAccessor;
 
 import java.io.File;
 import java.io.IOException;

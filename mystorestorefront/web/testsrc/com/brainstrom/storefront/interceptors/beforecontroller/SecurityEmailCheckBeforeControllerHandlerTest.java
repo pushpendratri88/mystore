@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforecontroller;
+package com.brainstorm.storefront.interceptors.beforecontroller;
 
 import static org.mockito.Mockito.when;
 
@@ -9,7 +9,7 @@ import de.hybris.bootstrap.annotations.UnitTest;
 import de.hybris.platform.acceleratorcms.data.CmsPageRequestContextData;
 import de.hybris.platform.acceleratorcms.services.CMSPageContextService;
 import de.hybris.platform.cms2.model.preview.PreviewDataModel;
-import com.brainstrom.storefront.controllers.cms.EmailPageController;
+import com.brainstorm.storefront.controllers.cms.EmailPageController;
 
 import java.io.IOException;
 

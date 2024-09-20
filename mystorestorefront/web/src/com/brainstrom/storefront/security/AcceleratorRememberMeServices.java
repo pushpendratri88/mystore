@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.security;
+package com.brainstorm.storefront.security;
 
 import de.hybris.platform.acceleratorservices.urlencoder.UrlEncoderService;
 import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
@@ -11,7 +11,7 @@ import de.hybris.platform.commerceservices.security.SecureTokenService;
 import de.hybris.platform.commerceservices.strategies.CheckoutCustomerStrategy;
 import de.hybris.platform.servicelayer.i18n.CommonI18NService;
 import de.hybris.platform.servicelayer.user.UserService;
-import com.brainstrom.storefront.web.wrappers.RemoveEncodingHttpServletRequestWrapper;
+import com.brainstorm.storefront.web.wrappers.RemoveEncodingHttpServletRequestWrapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

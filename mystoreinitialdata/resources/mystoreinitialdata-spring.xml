@@ -15,7 +15,7 @@
 	<!-- System Setup -->
 
 	<bean id="yAcceleratorInitialDataSystemSetup"
-	      class="com.brainstrom.initialdata.setup.InitialDataSystemSetup"
+	      class="com.brainstorm.initialdata.setup.InitialDataSystemSetup"
 	      parent="abstractCoreSystemSetup">
 		<property name="coreDataImportService" ref="coreDataImportService"/>
 		<property name="sampleDataImportService" ref="sampleDataImportService"/>

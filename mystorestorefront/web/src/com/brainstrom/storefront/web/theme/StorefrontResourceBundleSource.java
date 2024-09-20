@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.web.theme;
+package com.brainstorm.storefront.web.theme;
 
 import de.hybris.platform.acceleratorservices.addonsupport.RequiredAddOnsNameProvider;
 import de.hybris.platform.util.Utilities;
@@ -12,7 +12,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.brainstrom.storefront.util.SiteThemeResolverUtils;
+import com.brainstorm.storefront.util.SiteThemeResolverUtils;
 
 import javax.servlet.ServletContext;
 

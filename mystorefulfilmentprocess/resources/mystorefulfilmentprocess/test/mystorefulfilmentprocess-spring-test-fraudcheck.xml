@@ -10,11 +10,11 @@
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<bean id="listenerOrderFraudCustomerNotificationEvent" parent="abstractEventListener" class="com.brainstrom.fulfilmentprocess.test.FraudCheckIntegrationTest.OrderFraudCustomerEventListener"/>
+	<bean id="listenerOrderFraudCustomerNotificationEvent" parent="abstractEventListener" class="com.brainstorm.fulfilmentprocess.test.FraudCheckIntegrationTest.OrderFraudCustomerEventListener"/>
 	
-	<bean id="listenerOrderPlacedEvent" parent="abstractEventListener" class="com.brainstrom.fulfilmentprocess.test.FraudCheckIntegrationTest.OrderPlacedEventListener"/>
+	<bean id="listenerOrderPlacedEvent" parent="abstractEventListener" class="com.brainstorm.fulfilmentprocess.test.FraudCheckIntegrationTest.OrderPlacedEventListener"/>
 	
-	<bean id="listenerOrderFraudEmployeeNotificationEvent" parent="abstractEventListener" class="com.brainstrom.fulfilmentprocess.test.FraudCheckIntegrationTest.OrderFraudEmployeeEventListener"/>
+	<bean id="listenerOrderFraudEmployeeNotificationEvent" parent="abstractEventListener" class="com.brainstorm.fulfilmentprocess.test.FraudCheckIntegrationTest.OrderFraudEmployeeEventListener"/>
 	
 	<!-- Payment mockup implementation -->
 	<bean name="mockupCommandFactory" class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl" >

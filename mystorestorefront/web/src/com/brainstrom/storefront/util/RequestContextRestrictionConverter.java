@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.util;
+package com.brainstorm.storefront.util;
 
 import de.hybris.platform.acceleratorservices.data.RequestContextData;
 import de.hybris.platform.category.model.CategoryModel;

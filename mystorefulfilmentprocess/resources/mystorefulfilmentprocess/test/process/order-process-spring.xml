@@ -12,24 +12,24 @@
            
     <context:annotation-config/> 
 
-	<bean id="test.checkOrderAction" class="com.brainstrom.fulfilmentprocess.test.actions.CheckOrder"  parent="abstractAction"/>
-	<bean id="test.cancelWholeOrderAuthorizationAction" class="com.brainstrom.fulfilmentprocess.test.actions.CancelWholeOrderAuthorization"  parent="abstractAction"/>
-	<bean id="test.sendOrderPlacedNotificationAction" class="com.brainstrom.fulfilmentprocess.test.actions.SendOrderPlacedNotification"  parent="abstractAction"/>
-	<bean id="test.takePaymentAction" class="com.brainstrom.fulfilmentprocess.test.actions.TakePayment"  parent="abstractAction"/>
-	<bean id="test.sendPaymentFailedNotificationAction" class="com.brainstrom.fulfilmentprocess.test.actions.SendPaymentFailedNotification"  parent="abstractAction"/>
-	<bean id="test.checkTransactionReviewStatusAction" class="com.brainstrom.fulfilmentprocess.test.actions.CheckTransactionReviewStatus"  parent="abstractAction"/>
-	<bean id="test.fraudCheckOrderAction" class="com.brainstrom.fulfilmentprocess.test.actions.FraudCheckOrder"  parent="abstractAction"/>
-	<bean id="test.prepareOrderForManualCheckAction" class="com.brainstrom.fulfilmentprocess.test.actions.PrepareOrderForManualCheck"  parent="abstractAction"/>
-	<bean id="test.sendFraudErrorNotificationAction" class="com.brainstrom.fulfilmentprocess.test.actions.SendFraudErrorNotification"  parent="abstractAction"/>
-	<bean id="test.checkAuthorizeOrderPaymentAction" class="com.brainstrom.fulfilmentprocess.test.actions.CheckAuthorizeOrderPayment"  parent="abstractAction"/>
-	<bean id="test.sendAuthorizationFailedNotificationAction" class="com.brainstrom.fulfilmentprocess.test.actions.SendAuthorizationFailedNotification"  parent="abstractAction"/>
-	<bean id="test.reserveOrderAmountAction" class="com.brainstrom.fulfilmentprocess.test.actions.ReserveOrderAmount"  parent="abstractAction"/>
-	<bean id="test.fraudCheckOrderInternalAction" class="com.brainstrom.fulfilmentprocess.test.actions.FraudCheckOrderInternal"  parent="abstractAction"/>
-	<bean id="test.orderManualCheckedAction" class="com.brainstrom.fulfilmentprocess.test.actions.OrderManualChecked"  parent="abstractAction"/>
-	<bean id="test.splitOrderAction" class="com.brainstrom.fulfilmentprocess.test.actions.SplitOrder"  parent="abstractAction"/>
-	<bean id="test.subprocessesCompletedAction" class="com.brainstrom.fulfilmentprocess.test.actions.SubprocessesCompleted"  parent="abstractAction"/>
-	<bean id="test.sendOrderCompletedNotificationAction" class="com.brainstrom.fulfilmentprocess.test.actions.SendOrderCompletedNotification"  parent="abstractAction"/>
-	<bean id="test.scheduleForCleanUpAction" class="com.brainstrom.fulfilmentprocess.test.actions.ScheduleForCleanUp"  parent="abstractAction"/>
-	<bean id="test.notifyCustomerAboutFraudAction" class="com.brainstrom.fulfilmentprocess.test.actions.NotifyCustomerAboutFraud"  parent="abstractAction"/>
+	<bean id="test.checkOrderAction" class="com.brainstorm.fulfilmentprocess.test.actions.CheckOrder"  parent="abstractAction"/>
+	<bean id="test.cancelWholeOrderAuthorizationAction" class="com.brainstorm.fulfilmentprocess.test.actions.CancelWholeOrderAuthorization"  parent="abstractAction"/>
+	<bean id="test.sendOrderPlacedNotificationAction" class="com.brainstorm.fulfilmentprocess.test.actions.SendOrderPlacedNotification"  parent="abstractAction"/>
+	<bean id="test.takePaymentAction" class="com.brainstorm.fulfilmentprocess.test.actions.TakePayment"  parent="abstractAction"/>
+	<bean id="test.sendPaymentFailedNotificationAction" class="com.brainstorm.fulfilmentprocess.test.actions.SendPaymentFailedNotification"  parent="abstractAction"/>
+	<bean id="test.checkTransactionReviewStatusAction" class="com.brainstorm.fulfilmentprocess.test.actions.CheckTransactionReviewStatus"  parent="abstractAction"/>
+	<bean id="test.fraudCheckOrderAction" class="com.brainstorm.fulfilmentprocess.test.actions.FraudCheckOrder"  parent="abstractAction"/>
+	<bean id="test.prepareOrderForManualCheckAction" class="com.brainstorm.fulfilmentprocess.test.actions.PrepareOrderForManualCheck"  parent="abstractAction"/>
+	<bean id="test.sendFraudErrorNotificationAction" class="com.brainstorm.fulfilmentprocess.test.actions.SendFraudErrorNotification"  parent="abstractAction"/>
+	<bean id="test.checkAuthorizeOrderPaymentAction" class="com.brainstorm.fulfilmentprocess.test.actions.CheckAuthorizeOrderPayment"  parent="abstractAction"/>
+	<bean id="test.sendAuthorizationFailedNotificationAction" class="com.brainstorm.fulfilmentprocess.test.actions.SendAuthorizationFailedNotification"  parent="abstractAction"/>
+	<bean id="test.reserveOrderAmountAction" class="com.brainstorm.fulfilmentprocess.test.actions.ReserveOrderAmount"  parent="abstractAction"/>
+	<bean id="test.fraudCheckOrderInternalAction" class="com.brainstorm.fulfilmentprocess.test.actions.FraudCheckOrderInternal"  parent="abstractAction"/>
+	<bean id="test.orderManualCheckedAction" class="com.brainstorm.fulfilmentprocess.test.actions.OrderManualChecked"  parent="abstractAction"/>
+	<bean id="test.splitOrderAction" class="com.brainstorm.fulfilmentprocess.test.actions.SplitOrder"  parent="abstractAction"/>
+	<bean id="test.subprocessesCompletedAction" class="com.brainstorm.fulfilmentprocess.test.actions.SubprocessesCompleted"  parent="abstractAction"/>
+	<bean id="test.sendOrderCompletedNotificationAction" class="com.brainstorm.fulfilmentprocess.test.actions.SendOrderCompletedNotification"  parent="abstractAction"/>
+	<bean id="test.scheduleForCleanUpAction" class="com.brainstorm.fulfilmentprocess.test.actions.ScheduleForCleanUp"  parent="abstractAction"/>
+	<bean id="test.notifyCustomerAboutFraudAction" class="com.brainstorm.fulfilmentprocess.test.actions.NotifyCustomerAboutFraud"  parent="abstractAction"/>
 
 </beans>

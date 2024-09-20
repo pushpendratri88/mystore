@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.security.impl;
+package com.brainstorm.storefront.security.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;

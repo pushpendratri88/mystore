@@ -16,9 +16,9 @@ $image=image(code, $contentCV);
 $media=media(code, $contentCV);
 $page=page(uid, $contentCV);
 $contentPage=contentPage(uid, $contentCV);
-$siteResource=jar:com.brainstrom.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/contentCatalogs/$contentCatalog
-$productResource=jar:com.brainstrom.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/productCatalogs/$productCatalog
-$jarResourceCms=jar:com.brainstrom.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/cockpits/cmscockpit
+$siteResource=jar:com.brainstorm.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/contentCatalogs/$contentCatalog
+$productResource=jar:com.brainstorm.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/productCatalogs/$productCatalog
+$jarResourceCms=jar:com.brainstorm.initialdata.setup.InitialDataSystemSetup&/mystoreinitialdata/import/cockpits/cmscockpit
 
 
 # CMS Site Settings

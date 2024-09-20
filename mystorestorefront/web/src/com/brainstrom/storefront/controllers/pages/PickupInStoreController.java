@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.pages;
+package com.brainstorm.storefront.controllers.pages;
 
 import de.hybris.platform.acceleratorfacades.customerlocation.CustomerLocationFacade;
 import de.hybris.platform.acceleratorservices.store.data.UserLocationData;
@@ -20,8 +20,8 @@ import de.hybris.platform.commerceservices.order.CommerceCartModificationExcepti
 import de.hybris.platform.commerceservices.order.CommerceCartModificationStatus;
 import de.hybris.platform.commerceservices.store.data.GeoPoint;
 import de.hybris.platform.servicelayer.config.ConfigurationService;
-import com.brainstrom.storefront.controllers.ControllerConstants;
-import com.brainstrom.storefront.security.cookie.CustomerLocationCookieGenerator;
+import com.brainstorm.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.security.cookie.CustomerLocationCookieGenerator;
 
 import java.util.Arrays;
 import java.util.Collections;

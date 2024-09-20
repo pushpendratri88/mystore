@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforeview;
+package com.brainstorm.storefront.interceptors.beforeview;
 
 import de.hybris.platform.acceleratorcms.data.CmsPageRequestContextData;
 import de.hybris.platform.acceleratorcms.model.actions.AbstractCMSActionModel;
@@ -28,7 +28,7 @@ import de.hybris.platform.jalo.c2l.LocalizableItem;
 import de.hybris.platform.servicelayer.model.AbstractItemModel;
 import de.hybris.platform.servicelayer.session.SessionService;
 import de.hybris.platform.servicelayer.type.TypeService;
-import com.brainstrom.storefront.filters.cms.CMSSiteFilter;
+import com.brainstorm.storefront.filters.cms.CMSSiteFilter;
 
 import java.util.Collection;
 import java.util.HashSet;

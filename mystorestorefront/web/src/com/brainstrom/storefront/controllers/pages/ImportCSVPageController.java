@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.controllers.pages;
+package com.brainstorm.storefront.controllers.pages;
 
 import de.hybris.platform.acceleratorfacades.cartfileupload.SavedCartFileUploadFacade;
 import de.hybris.platform.acceleratorstorefrontcommons.annotations.RequireHardLogIn;
@@ -13,7 +13,7 @@ import de.hybris.platform.acceleratorstorefrontcommons.forms.ImportCSVSavedCartF
 import de.hybris.platform.acceleratorstorefrontcommons.forms.validation.ImportCSVSavedCartFormValidator;
 import de.hybris.platform.cms2.exceptions.CMSItemNotFoundException;
 import de.hybris.platform.cms2.model.pages.ContentPageModel;
-import com.brainstrom.storefront.controllers.ControllerConstants;
+import com.brainstorm.storefront.controllers.ControllerConstants;
 
 import java.io.IOException;
 import java.io.InputStream;

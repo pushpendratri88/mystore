@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforecontroller;
+package com.brainstorm.storefront.interceptors.beforecontroller;
 
 import java.lang.annotation.Annotation;
 
@@ -16,7 +16,7 @@ import org.springframework.web.method.HandlerMethod;
 
 import de.hybris.platform.acceleratorstorefrontcommons.annotations.RequireHardLogIn;
 import de.hybris.platform.acceleratorstorefrontcommons.interceptors.BeforeControllerHandler;
-import com.brainstrom.storefront.security.evaluator.impl.RequireHardLoginEvaluator;
+import com.brainstorm.storefront.security.evaluator.impl.RequireHardLoginEvaluator;
 
 
 /**

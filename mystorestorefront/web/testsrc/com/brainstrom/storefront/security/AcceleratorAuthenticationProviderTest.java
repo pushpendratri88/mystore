@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.security;
+package com.brainstorm.storefront.security;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.ArgumentMatchers.anyString;

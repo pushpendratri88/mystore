@@ -10,7 +10,7 @@
         <requires-extension name="mystorecore"/>
                 		
         
-        <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="com.brainstrom.initialdata"/>
+        <coremodule generated="true" manager="de.hybris.platform.jalo.extension.GenericManager" packageroot="com.brainstorm.initialdata"/>
                 		
         
         	

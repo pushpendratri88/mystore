@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforeview;
+package com.brainstorm.storefront.interceptors.beforeview;
 
 import de.hybris.platform.acceleratorstorefrontcommons.interceptors.BeforeViewHandler;
 import de.hybris.platform.commercefacades.consent.ConsentFacade;
@@ -29,7 +29,7 @@ import static de.hybris.platform.commercefacades.constants.CommerceFacadesConsta
  * <br/>
  * It populates the model with the {consentTemplatesToDisplay}:List<ConsentTemplateData>, which are used to render in
  * JSP.<br/>
- * It relies on session values set by {@link com.brainstrom.storefront.filters.ConsentFilter}
+ * It relies on session values set by {@link com.brainstorm.storefront.filters.ConsentFilter}
  */
 public class ConsentManagementBeforeViewHandler implements BeforeViewHandler
 {

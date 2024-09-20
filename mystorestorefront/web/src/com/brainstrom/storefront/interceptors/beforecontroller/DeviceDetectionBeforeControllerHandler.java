@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.interceptors.beforecontroller;
+package com.brainstorm.storefront.interceptors.beforecontroller;
 
 import de.hybris.platform.acceleratorfacades.device.DeviceDetectionFacade;
 import de.hybris.platform.acceleratorstorefrontcommons.interceptors.BeforeControllerHandler;

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2021 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.security.impl;
+package com.brainstorm.storefront.security.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.BDDMockito.given;

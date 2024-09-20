@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
-package com.brainstrom.storefront.filters;
+package com.brainstorm.storefront.filters;
 
 import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
 import de.hybris.platform.commercefacades.order.CartFacade;
@@ -10,7 +10,7 @@ import de.hybris.platform.order.CartService;
 import de.hybris.platform.servicelayer.session.SessionService;
 import de.hybris.platform.servicelayer.user.UserService;
 import de.hybris.platform.site.BaseSiteService;
-import com.brainstrom.storefront.security.cookie.CartRestoreCookieGenerator;
+import com.brainstorm.storefront.security.cookie.CartRestoreCookieGenerator;
 
 import java.io.IOException;
 
