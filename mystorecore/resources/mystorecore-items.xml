@@ -127,6 +127,16 @@
                       jaloclass="com.brainstorm.core.jalo.MyStoreCronjob">
                 <description>New CronJob for MyStore.</description>
             </itemtype>
+
+            <itemtype code="MyStoreCustomer" extends="Customer"
+                      jaloclass="com.brainstorm.core.jalo.MyStoreCustomer">
+                <description>New Product item created for MyStore Application</description>
+                <attributes>
+                    <attribute qualifier="customerAge" type="java.lang.String">
+                        <persistence type="dynamic" attributeHandler="customerAgeCalculationHandler"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
         </typegroup>
     </itemtypes>
 </items>

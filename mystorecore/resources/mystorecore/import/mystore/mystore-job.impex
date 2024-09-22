@@ -1,0 +1,10 @@
+UPDATE GenericItem[processor = de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor]; pk[unique = true]
+
+
+
+
+INSERT_UPDATE MyStoreCronjob;code[unique=true];job(code)[unique=true];sessionLanguage(isoCode)[default=en]
+                     ;myStoreTestJob          ;myStoreTestJob        ;
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+                     ;myStoreTestJob; 0 0 0 * * ?

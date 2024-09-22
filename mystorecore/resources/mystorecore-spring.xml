@@ -538,4 +538,7 @@
 		<property name="itemCleanupHooks" ref="csTicketRetentionHooks"/>
 		<property name="ticketBusinessService" ref="ticketBusinessService"/>
 	</bean>
+
+	<bean id="myStoreTestJob" class="com.brainstorm.core.job.MyStoreTestJob" parent="abstractJobPerformable"></bean>
+	<bean id="customerAgeCalculationHandler" class="com.brainstorm.core.handler.CustomerAgeCalculationHandler"></bean>
 </beans>
