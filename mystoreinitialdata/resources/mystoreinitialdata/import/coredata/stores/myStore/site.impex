@@ -1,0 +1,102 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the CMS Site configuration for the store
+#
+$productCatalog_master=myStoreMasterProductCatalog
+$productCatalog_us=myStoreUSProductCatalog
+$productCatalog_uk=myStoreUKProductCatalog
+$contentCatalog_us=myStoreUSContentCatalog
+$contentCatalog_uk=myStoreUKContentCatalog
+$contentCV_us=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog_us]),CatalogVersion.version[default=Staged])[default=$contentCatalog_us:Staged]
+$contentCV_uk=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog_uk]),CatalogVersion.version[default=Staged])[default=$contentCatalog_uk:Staged]
+$defaultLanguage=en
+$storeUid_us=BaseStore_US
+$storeUid_uk=BaseStore_UK
+$siteUid_us=myStore_US
+$siteUid_uk=myStore_UK
+$promoGrp_us=myStoreUSPromoGroup
+$promoGrp_uk=myStoreUKPromoGroup
+$siteMapUrlLimitPerFile=50000
+
+$siteMapLangCur=enEur
+$siteMapPage=Homepage,Product,CategoryLanding,Category,Store,Content,Custom
+$customSiteMapUrls=
+
+# Import config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+# Module gen config
+$jarResource=$config-jarResource
+# Load the storefront context root config param
+$storefrontContextRoot=$config-storefrontContextRoot
+
+# SiteMap Configuration
+INSERT_UPDATE SiteMapLanguageCurrency;&siteMapLanguageCurrency;language(isoCode)[unique=true];currency(isocode)[unique=true];
+;enEur;en;EUR
+
+INSERT_UPDATE CatalogUnawareMedia;&siteMapMediaId;code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='text/plain']
+;$siteUid_us-siteMapMedia;$siteUid_us-siteMapMedia;siteMapTemplate.vm;$jarResource/site-siteMapTemplate.vm;
+;$siteUid_uk-siteMapMedia;$siteUid_uk-siteMapMedia;siteMapTemplate.vm;$jarResource/site-siteMapTemplate.vm;
+
+INSERT_UPDATE RendererTemplate;&siteMapRenderer;code[unique=true];content(&siteMapMediaId);contextClass;rendererType(code)[default='velocity'];
+;$siteUid_us-siteMapTemplate;$siteUid_us-siteMapTemplate;$siteUid_us-siteMapMedia;de.hybris.platform.acceleratorservices.sitemap.renderer.SiteMapContext;
+;$siteUid_uk-siteMapTemplate;$siteUid_uk-siteMapTemplate;$siteUid_uk-siteMapMedia;de.hybris.platform.acceleratorservices.sitemap.renderer.SiteMapContext;
+
+INSERT_UPDATE SiteMapPage;&siteMapPage;code(code)[unique=true];frequency(code)[unique=true];priority[unique=true];active[default=true]
+;Homepage;Homepage;daily;1.0;;
+;Product;Product;weekly;0.6;;
+;CategoryLanding;CategoryLanding;daily;0.9;;
+;Category;Category;daily;0.8;;
+;Store;Store;weekly;0.6;;
+;Content;Content;monthly;0.4;;
+;Custom;Custom;daily;1.0;;
+
+ 
+INSERT_UPDATE SiteMapConfig;&siteMapConfigId;configId[unique=true];siteMapLanguageCurrencies(&siteMapLanguageCurrency);siteMapPages(&siteMapPage);siteMapTemplate(&siteMapRenderer)[unique=true];customUrls;
+;$storeUid_usSiteMapConfig;$storeUid_usSiteMapConfig;$siteMapLangCur;$siteMapPage;$siteUid_us-siteMapTemplate;$customSiteMapUrls;
+;$storeUid_ukSiteMapConfig;$storeUid_ukSiteMapConfig;$siteMapLangCur;$siteMapPage;$siteUid_uk-siteMapTemplate;$customSiteMapUrls;
+
+# Do not remove this until we completely get rid of black and blue for all user experience
+INSERT_UPDATE SiteTheme;code[unique=true]
+;blue
+
+# CMS Site
+INSERT_UPDATE CMSSite;uid[unique=true];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);siteMapConfig(&siteMapConfigId);urlPatterns;active;previewURL;startingPage(uid,$contentCV_us);urlEncodingAttributes;defaultPromotionGroup(Identifier)[default=$promoGrp_us]
+;$siteUid_us;blue;B2C;$storeUid_us;$contentCatalog_us;$productCatalog_us;$defaultLanguage;$storeUid_usSiteMapConfig;(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$siteUid_us)(|\&.*)$,(?i)^https?://$siteUid_us\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$;true;$storefrontContextRoot/?site=$siteUid_us;;storefront,language
+
+
+INSERT_UPDATE CMSSite;uid[unique=true];theme(code);channel(code);stores(uid);contentCatalogs(id);defaultCatalog(id);defaultLanguage(isoCode);siteMapConfig(&siteMapConfigId);urlPatterns;active;previewURL;startingPage(uid,$contentCV_uk);urlEncodingAttributes;defaultPromotionGroup(Identifier)[default=$promoGrp_uk]
+;$siteUid_uk;blue;B2C;$storeUid_uk;$contentCatalog_uk;$productCatalog_uk;$defaultLanguage;$storeUid_ukSiteMapConfig;(?i)^https?://[^/]+(/[^?]*)?\?(.*\&)?(site=$siteUid_uk)(|\&.*)$,(?i)^https?://$siteUid_uk\.[^/]+(|/.*|\?.*)$,(?i)^https?://api\.hybrisdev\.com(:[\d]+)?/rest/.*$,(?i)^https?://localhost(:[\d]+)?/rest/.*$;true;$storefrontContextRoot/?site=$siteUid_uk;;storefront,language
+
+# Cart Cleanup CronJobs
+INSERT_UPDATE CartRemovalCronJob;code[unique=true];job(code)[default=cartRemovalJob];sites(uid)[default=$siteUid_us];sessionLanguage(isoCode)[default=en]
+;$siteUid_us-CartRemovalJob
+
+
+INSERT_UPDATE CartRemovalCronJob;code[unique=true];job(code)[default=cartRemovalJob];sites(uid)[default=$siteUid_us];sessionLanguage(isoCode)[default=en]
+;$siteUid_uk-CartRemovalJob
+
+# Uncollected orders cronjob
+INSERT_UPDATE UncollectedOrdersCronJob;code[unique=true];job(code)[default=uncollectedOrdersJob];sites(uid)[default=$siteUid_us];sessionLanguage(isoCode)[default=en]
+;$siteUid_us-UncollectedOrdersJob
+
+INSERT_UPDATE UncollectedOrdersCronJob;code[unique=true];job(code)[default=uncollectedOrdersJob];sites(uid)[default=$siteUid_uk];sessionLanguage(isoCode)[default=en]
+;$siteUid_uk-UncollectedOrdersJob
+
+# Sitemap Generation CronJobs
+INSERT_UPDATE SiteMapMediaCronJob;code[unique=true];job(code)[default=siteMapMediaJob];contentSite(uid)[default=$siteUid_us];sessionLanguage(isoCode)[default=en]
+;$siteUid_us-SiteMapMediaJob;;;;$siteMapUrlLimitPerFile
+
+INSERT_UPDATE SiteMapMediaCronJob;code[unique=true];job(code)[default=siteMapMediaJob];contentSite(uid)[default=$siteUid_uk];sessionLanguage(isoCode)[default=en]
+;$siteUid_uk-SiteMapMediaJob;;;;$siteMapUrlLimitPerFile
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+;$siteUid_us-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1
+;$siteUid_us-UncollectedOrdersJob;0;0;6;-1;-1;-1;true;false;-1
+;$siteUid_us-SiteMapMediaJob;0;0;6;-1;-1;-1;true;false;-1
+
+
+;$siteUid_uk-CartRemovalJob;0;5;4;-1;-1;-1;false;true;-1
+;$siteUid_uk-UncollectedOrdersJob;0;0;6;-1;-1;-1;true;false;-1
+;$siteUid_uk-SiteMapMediaJob;0;0;6;-1;-1;-1;true;false;-1

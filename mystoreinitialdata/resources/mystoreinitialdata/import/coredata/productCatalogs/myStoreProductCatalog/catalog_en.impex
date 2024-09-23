@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Product Catalog and Classification Catalog
+#
+
+# Language
+$productCatalog=myStoreMasterProductCatalog
+$productCatalog_uk=myStoreUKProductCatalog
+$productCatalog_us=myStoreUSProductCatalog
+$classificationCatalog=myStoreMasterProductClassificationCatalog
+$classificationCatalog_uk=myStoreUKProductClassificationCatalog
+$classificationCatalog-us=myStoreUSProductClassificationCatalog
+$lang=en
+
+# Create Catalog
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+;$productCatalog;My Store Master Product Catalog
+;$productCatalog_uk;My Store UK Product Catalog
+;$productCatalog_us;My Store US Product Catalog
+
+
+INSERT_UPDATE ClassificationSystem;id[unique=true];name[lang=$lang]
+;$classificationCatalog;My Store Master Product Classification Catalog
+;$classificationCatalog_uk;My Store UK Product Classification Catalog
+;$classificationCatalog-us;My Store US Product Classification Catalog

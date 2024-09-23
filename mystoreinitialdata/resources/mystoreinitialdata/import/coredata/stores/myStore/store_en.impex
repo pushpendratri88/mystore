@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the BaseStore
+#
+
+# Language
+$lang=en
+$storeUid_us=BaseStore_US
+$storeUid_uk=BaseStore_UK
+
+# Create Base Store
+UPDATE BaseStore;uid[unique=true];name[lang=$lang]
+;$storeUid_us;US BaseStore
+;$storeUid_uk;UK BaseStore

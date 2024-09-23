@@ -4,14 +4,14 @@
 -->
 <project name="bindImpexTemplates">
 
-	<property name="contentCatalogToken" value="__CONTENT_CATALOG_NAME__"/>
-	<property name="productCatalogToken" value="__PRODUCT_CATALOG_NAME__"/>
+	<property name="contentCatalogToken" value="myStoreUSContentCatalog"/>
+	<property name="productCatalogToken" value="myStoreMasterProductCatalog"/>
 	<property name="storeNameToken" value="__STORE_NAME__"/>
-	<property name="classificationCatalogToken" value="__CLASSIFICATION_CATALOG_NAME__"/>
-	<property name="storeUidToken" value="__STORE_UID__"/>
-	<property name="defaultPromoGrpToken" value="__DEFAULT_PROMO_GRP__"/>
-	<property name="contentCatalogNameToken" value="__CONTENT_CATALOG_FULL_NAME__"/>
-	<property name="productCatalogNameToken" value="__PRODUCT_CATALOG_FULL_NAME__"/>
+	<property name="classificationCatalogToken" value="myStoreMasterProductClassificationCatalog"/>
+	<property name="storeUidToken" value="myStoreUS"/>
+	<property name="defaultPromoGrpToken" value="myStoreUSPromoGroup"/>
+	<property name="contentCatalogNameToken" value="MyStore Content Catalog"/>
+	<property name="productCatalogNameToken" value="MyStore Product  Catalog"/>
 	<property name="vendorToken" value="__VENDOR_NAME__"/>
 	<property name="indexedTypeToken" value="__INDEXED_TYPE__"/>
 	<property name="facetSearchConfigNameToken" value="__FACET_SEARCH_CONFIG_NAME__"/>

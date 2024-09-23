@@ -1,0 +1,136 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+#
+# Import the Solr configuration for the store
+#
+$productCatalog_us=myStoreUSProductCatalog
+$productCatalog_uk=myStoreUKProductCatalog
+$catalogVersions=catalogVersions(catalog(id),version);
+$serverConfigName=myStoreSolrServerConfig
+$indexConfigName_us=myStoreUSIndexConfig
+$indexConfigName_uk=myStoreUKIndexConfig
+$searchConfigName_us=mystoreUSSearchConfig
+$searchConfigName_uk=mystoreUKSearchConfig
+$facetSearchConfigName_us=mystore-usIndex
+$facetSearchConfigName_uk=mystore-ukIndex
+$facetSearchConfigDescription_us=MyStore US Solr Index
+$facetSearchConfigDescription_uk=MyStore UK Solr Index
+$searchIndexNamePrefix_us=us
+$searchIndexNamePrefix_uk=uk
+$solrIndexedType_us=myStoreUSSolrIndexedType
+$solrIndexedType_uk=myStoreUKSolrIndexedType
+$indexBaseSite=
+$indexLanguages=ja,en,de,zh
+$indexCurrencies=JPY,USD
+
+
+#
+# Setup the Solr server, indexer, and search configs
+#
+
+# Create the solr server configuration
+INSERT_UPDATE SolrServerConfig;name[unique=true]    ;mode(code);embeddedMaster
+                              ;$serverConfigName;embedded       ;true
+
+INSERT_UPDATE SolrEndpointUrl;solrServerConfig(name)[unique=true];url[unique=true]; master[unique=true,default=false]
+                             ;$serverConfigName;http://localhost:8982/solr;true
+
+# Create the solr indexer configuration
+INSERT_UPDATE SolrIndexConfig;name[unique=true];batchSize;numberOfThreads;indexMode(code);
+                             ;$indexConfigName_us ;100      ;5              ;TWO_PHASE
+                             ;$indexConfigName_uk ;100      ;5              ;TWO_PHASE
+# Create the faceted search configuration
+INSERT_UPDATE SolrSearchConfig;description[unique=true];pageSize
+                              ;$searchConfigName_us  ;20
+                              ;$searchConfigName_uk  ;10
+#
+# Setup the indexed types, their properties, and the update queries
+#
+
+# Declare the indexed type Product
+INSERT_UPDATE SolrIndexedType;identifier[unique=true];type(code);variant;sorts(&sortRefID)
+                             ;$solrIndexedType_us  ;Product   ;false  ;ussortRef3,ussortRef4,ussortRef5,ussortRef6
+                             ;$solrIndexedType_uk  ;Product   ;false  ;uksortRef3,uksortRef4,uksortRef5,uksortRef6
+
+INSERT_UPDATE SolrFacetSearchConfig;name[unique=true]          ;description                  ;indexNamePrefix       ;languages(isocode);currencies(isocode);solrServerConfig(name);solrSearchConfig(description);solrIndexConfig(name);solrIndexedTypes(identifier);enabledLanguageFallbackMechanism;$catalogVersions
+                                   ;$facetSearchConfigName_us;$facetSearchConfigDescription_us;$searchIndexNamePrefix_us;$indexLanguages   ;$indexCurrencies   ;$serverConfigName     ;$searchConfigName_us            ;$indexConfigName_us     ;$solrIndexedType_us            ;true                            ;$productCatalog_us:Online,$productCatalog_us:Staged
+                                   ;$facetSearchConfigName_uk;$facetSearchConfigDescription_uk;$searchIndexNamePrefix_uk;$indexLanguages   ;$indexCurrencies   ;$serverConfigName     ;$searchConfigName_uk            ;$indexConfigName_uk     ;$solrIndexedType_uk            ;true                            ;$productCatalog_uk:Online,$productCatalog_uk:Staged
+
+UPDATE BaseSite;uid[unique=true];solrFacetSearchConfiguration(name)
+               ;myStore_US ;$facetSearchConfigName_us
+               ;myStore_UK ;$facetSearchConfigName_uk
+
+# Define price range set
+INSERT_UPDATE SolrValueRangeSet;name[unique=true];qualifier;type;solrValueRanges(&rangeValueRefID)
+;priceRangeGBP;GBP;double;rangeRefGBP1,rangeRefGBP2,rangeRefGBP3,rangeRefGBP4,rangeRefGBP5
+;priceRangeUSD;USD;double;rangeRefUSD1,rangeRefUSD2,rangeRefUSD3,rangeRefUSD4,rangeRefUSD5
+
+# Define price ranges
+INSERT_UPDATE SolrValueRange;&rangeValueRefID;solrValueRangeSet(name)[unique=true];name[unique=true];from;to
+;rangeRefGBP1 ;priceRangeGBP;£0-£19.99;   0; 19.99
+;rangeRefGBP2 ;priceRangeGBP;£20-£49.99;  20; 49.99
+;rangeRefGBP3 ;priceRangeGBP;£50-£99.99;  50; 99.99
+;rangeRefGBP4 ;priceRangeGBP;£100-£199.99; 100;199.99
+;rangeRefGBP5 ;priceRangeGBP;£200-£299.99; 200;299.99
+
+;rangeRefUSD1 ;priceRangeUSD;$0-$19.99;   0; 19.99
+;rangeRefUSD2 ;priceRangeUSD;$20-$49.99;  20; 49.99
+;rangeRefUSD3 ;priceRangeUSD;$50-$99.99;  50; 99.99
+;rangeRefUSD4 ;priceRangeUSD;$100-$199.99; 100;199.99
+;rangeRefUSD5 ;priceRangeUSD;$200-$299.99; 200;299.99
+
+# Non-facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter
+
+# Category fields
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider
+
+# Category facets
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);multiValue[default=true];facet[default=true];facetType(code);facetSort(code);priority;visible;categoryField[default=true];fieldValueProvider;facetDisplayNameProvider;topValuesProvider
+
+# Other facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=true];facetType(code);facetSort(code);priority;visible;useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;facetDisplayNameProvider;customFacetSortProvider;topValuesProvider;rangeSets(name)
+
+# Create the queries that will be used to extract data for Solr
+INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)
+;$solrIndexedType_us;$solrIndexedType_us-fullQuery;full;;;false;"SELECT {PK} FROM {Product}";anonymous
+;$solrIndexedType_us;$solrIndexedType_us-updateQuery;update;;;;"SELECT {p:PK} FROM {Product AS p} WHERE ({p:modifiedtime} >= ?lastIndexTime)";anonymous
+
+;$solrIndexedType_us;$solrIndexedType_uk-fullQuery;full;;;false;"SELECT {PK} FROM {Product}";anonymous
+;$solrIndexedType_us;$solrIndexedType_uk-updateQuery;update;;;;"SELECT {p:PK} FROM {Product AS p} WHERE ({p:modifiedtime} >= ?lastIndexTime)";anonymous
+# Define the available sorts
+INSERT_UPDATE SolrSort;&sortRefID;indexedType(identifier)[unique=true];code[unique=true];useBoost
+;ussortRef1;$solrIndexedType_us;relevance;true
+;ussortRef2;$solrIndexedType_us;topRated;false
+;ussortRef3;$solrIndexedType_us;name-asc;false
+;ussortRef4;$solrIndexedType_us;name-desc;false
+;ussortRef5;$solrIndexedType_us;price-asc;false
+;ussortRef6;$solrIndexedType_us;price-desc;false
+
+;uksortRef1;$solrIndexedType_uk;relevance;true
+;uksortRef2;$solrIndexedType_uk;topRated;false
+;uksortRef3;$solrIndexedType_uk;name-asc;false
+;uksortRef4;$solrIndexedType_uk;name-desc;false
+;uksortRef5;$solrIndexedType_uk;price-asc;false
+;uksortRef6;$solrIndexedType_uk;price-desc;false
+
+# Define the sort fields
+INSERT_UPDATE SolrSortField;sort(indexedType(identifier),code)[unique=true];fieldName[unique=true];ascending[unique=true]
+;$solrIndexedType_us:relevance;inStockFlag;false
+;$solrIndexedType_us:relevance;score;false
+;$solrIndexedType_us:topRated;inStockFlag;false
+;$solrIndexedType_us:topRated;reviewAvgRating;false
+;$solrIndexedType_us:name-asc;name;true
+;$solrIndexedType_us:name-desc;name;false
+;$solrIndexedType_us:price-asc;priceValue;true
+;$solrIndexedType_us:price-desc;priceValue;false
+
+;$solrIndexedType_uk:relevance;inStockFlag;false
+;$solrIndexedType_uk:relevance;score;false
+;$solrIndexedType_uk:topRated;inStockFlag;false
+;$solrIndexedType_uk:topRated;reviewAvgRating;false
+;$solrIndexedType_uk:name-asc;name;true
+;$solrIndexedType_uk:name-desc;name;false
+;$solrIndexedType_uk:price-asc;priceValue;true
+;$solrIndexedType_uk:price-desc;priceValue;false

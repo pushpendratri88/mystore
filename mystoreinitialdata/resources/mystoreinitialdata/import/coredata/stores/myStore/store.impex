@@ -1,0 +1,50 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# 
+# Create the BaseStore
+#
+
+$productCatalog_us=myStoreUSProductCatalog
+$productCatalog_uk=myStoreUKProductCatalog
+$classificationCatalog_us=myStoreUSProductClassificationCatalog
+$classificationCatalog_uk=myStoreUKProductClassificationCatalog
+$currencies=JPY,USD
+$net=false
+$storeUid_us=BaseStore_US
+$storeUid_uk=BaseStore_UK
+$defaultCurrency=USD
+$languages=ja,en,de,zh
+$defaultLanguage=en
+$unitedKingdom=GB,GG,IM,JE
+$europeNotUK=AD,AL,AT,BA,BE,BG,BY,CH,CY,CZ,DE,DK,EE,ES,FI,FO,FR,GI,GL,GR,HR,HU,IE,IS,IT,LI,LT,LU,LV,MC,MD,ME,MK,MT,NL,NO,PL,PT,RO,RS,RU,SE,SI,SK,SM,TR,UA,VA
+$asianCountries=CN,JP,VN,HK,KP,KR,TW,MO
+$deliveryCountries=$unitedKingdom,$europeNotUK,$asianCountries,US
+$billingCountries=$unitedKingdom,$europeNotUK,CN,JP,VN,HK,KR,US,TW,MO
+$orderProcessCode=order-process
+$pickupInStoreMode=BUY_AND_COLLECT
+$customerAllowedToIgnoreSuggestions=true
+$paymentProvider=Mockup
+$promoGrp_us=myStoreUSPromoGroup
+$promoGrp_uk=myStoreUKPromoGroup
+$checkoutFlowGroup_us=usCheckoutGroup
+$checkoutFlowGroup_uk=ukCheckoutGroup
+
+INSERT_UPDATE PromotionGroup;Identifier[unique=true];
+;$promoGrp_us;
+;$promoGrp_uk;
+
+# Base Store
+INSERT_UPDATE BaseStore;uid[unique=true];catalogs(id);currencies(isocode);net;taxGroup(code);storelocatorDistanceUnit(code);defaultCurrency(isocode);languages(isocode);defaultLanguage(isocode);deliveryCountries(isocode);billingCountries(isocode);submitOrderProcessCode;pickupInStoreMode(code);customerAllowedToIgnoreSuggestions;paymentProvider;checkoutFlowGroup;
+;$storeUid_us;$productCatalog_us,$classificationCatalog_us;$currencies;$net;jp-taxes;km;$defaultCurrency;$languages;$defaultLanguage;$deliveryCountries;$billingCountries;$orderProcessCode;$pickupInStoreMode;$customerAllowedToIgnoreSuggestions;$paymentProvider;$checkoutFlowGroup_us;
+;$storeUid_uk;$productCatalog_uk,$classificationCatalog_uk;$currencies;$net;jp-taxes;km;$defaultCurrency;$languages;$defaultLanguage;$deliveryCountries;$billingCountries;$orderProcessCode;$pickupInStoreMode;$customerAllowedToIgnoreSuggestions;$paymentProvider;$checkoutFlowGroup_uk;
+
+
+#Run later
+INSERT_UPDATE BaseStore2DeliveryModeRel;source(uid)[unique=true];target(code)[unique=true]
+;myStore;premium-net
+;myStore;standard-net
+;myStore;premium-gross
+;myStore;standard-gross
+;myStore;pickup
+;myStore;free-standard-shipping
