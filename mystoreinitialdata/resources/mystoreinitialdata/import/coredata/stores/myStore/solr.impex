@@ -31,10 +31,10 @@ $indexCurrencies=JPY,USD
 
 # Create the solr server configuration
 INSERT_UPDATE SolrServerConfig;name[unique=true]    ;mode(code);embeddedMaster
-                              ;$serverConfigName;embedded       ;true
+                              ;$serverConfigName;standalone       ;true
 
 INSERT_UPDATE SolrEndpointUrl;solrServerConfig(name)[unique=true];url[unique=true]; master[unique=true,default=false]
-                             ;$serverConfigName;http://localhost:8982/solr;true
+                             ;$serverConfigName;https://localhost:8983/solr;true
 
 # Create the solr indexer configuration
 INSERT_UPDATE SolrIndexConfig;name[unique=true];batchSize;numberOfThreads;indexMode(code);
@@ -62,35 +62,111 @@ UPDATE BaseSite;uid[unique=true];solrFacetSearchConfiguration(name)
                ;myStore_UK ;$facetSearchConfigName_uk
 
 # Define price range set
-INSERT_UPDATE SolrValueRangeSet;name[unique=true];qualifier;type;solrValueRanges(&rangeValueRefID)
-;priceRangeGBP;GBP;double;rangeRefGBP1,rangeRefGBP2,rangeRefGBP3,rangeRefGBP4,rangeRefGBP5
-;priceRangeUSD;USD;double;rangeRefUSD1,rangeRefUSD2,rangeRefUSD3,rangeRefUSD4,rangeRefUSD5
+#INSERT_UPDATE SolrValueRangeSet;name[unique=true];qualifier;type;solrValueRanges(&rangeValueRefID)
+#;priceRangeGBP;GBP;double;rangeRefGBP1,rangeRefGBP2,rangeRefGBP3,rangeRefGBP4,rangeRefGBP5
+#;priceRangeUSD;USD;double;rangeRefUSD1,rangeRefUSD2,rangeRefUSD3,rangeRefUSD4,rangeRefUSD5
 
 # Define price ranges
-INSERT_UPDATE SolrValueRange;&rangeValueRefID;solrValueRangeSet(name)[unique=true];name[unique=true];from;to
-;rangeRefGBP1 ;priceRangeGBP;£0-£19.99;   0; 19.99
-;rangeRefGBP2 ;priceRangeGBP;£20-£49.99;  20; 49.99
-;rangeRefGBP3 ;priceRangeGBP;£50-£99.99;  50; 99.99
-;rangeRefGBP4 ;priceRangeGBP;£100-£199.99; 100;199.99
-;rangeRefGBP5 ;priceRangeGBP;£200-£299.99; 200;299.99
-
-;rangeRefUSD1 ;priceRangeUSD;$0-$19.99;   0; 19.99
-;rangeRefUSD2 ;priceRangeUSD;$20-$49.99;  20; 49.99
-;rangeRefUSD3 ;priceRangeUSD;$50-$99.99;  50; 99.99
-;rangeRefUSD4 ;priceRangeUSD;$100-$199.99; 100;199.99
-;rangeRefUSD5 ;priceRangeUSD;$200-$299.99; 200;299.99
+#INSERT_UPDATE SolrValueRange;&rangeValueRefID;solrValueRangeSet(name)[unique=true];name[unique=true];from;to
+#;rangeRefGBP1 ;myStoreUKPriceRangeGBP;£0-£19.99;   0; 19.99
+#;rangeRefGBP2 ;myStoreUKPriceRangeGBP;£20-£49.99;  20; 49.99
+#;rangeRefGBP3 ;myStoreUKPriceRangeGBP;£50-£99.99;  50; 99.99
+#;rangeRefGBP4 ;myStoreUKPriceRangeGBP;£100-£199.99; 100;199.99
+#;rangeRefGBP5 ;myStoreUKPriceRangeGBP;£200-£299.99; 200;299.99
+#
+#;rangeRefUSD1 ;myStoreUSPriceRangeUSD;$ 0-$ 19.99;   0; 19.99
+#;rangeRefUSD2 ;myStoreUSPriceRangeUSD;$ 20-$ 49.99;  20; 49.99
+#;rangeRefUSD3 ;myStoreUSPriceRangeUSD;$ 50-$ 99.99;  50; 99.99
+#;rangeRefUSD4 ;myStoreUSPriceRangeUSD;$ 100-$ 199.99; 100;199.99
+#;rangeRefUSD5 ;myStoreUSPriceRangeUSD;$ 200-$ 299.99; 200;299.99
 
 # Non-facet properties
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;valueProviderParameter
+                                 ;$solrIndexedType_us; itemtype               ;string ;            ;    ;    ;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;
+                                 ;$solrIndexedType_us; code                   ;string ;            ;    ;    ;    ;true;true;springELValueProvider                  ;code          ;    ;   ;true;90 ;    ;  ;true;POSTFIX;45;3
+                                 ;$solrIndexedType_us; name                   ;text   ;sortabletext;    ;true;    ;true;true;springELValueProvider                  ;getName(#lang);true;100;true;50 ;true;25;    ;   ;  ;
+                                 ;$solrIndexedType_us; description            ;text   ;            ;    ;true;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; summary                ;text   ;            ;    ;true;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; manufacturerName       ;text   ;            ;    ;    ;    ;true;true;                                       ;              ;true;80 ;true;40 ;true;20;    ;   ;  ;
+                                 ;$solrIndexedType_us; manufacturerAID        ;string ;            ;    ;    ;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; ean                    ;string ;            ;    ;    ;    ;true;true;                                       ;              ;    ;   ;true;100;    ;  ;true;POSTFIX;50;3
+                                 ;$solrIndexedType_us; priceValue             ;double ;            ;true;    ;    ;    ;    ;productPriceValueProvider              ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; keywords               ;text   ;            ;    ;true;    ;true;true;productKeywordsValueProvider           ;              ;true;40 ;true;20 ;true;10;    ;   ;  ;
+                                 ;$solrIndexedType_us; reviewAvgRating        ;double ;            ;    ;true;    ;    ;    ;productReviewAverageRatingValueProvider;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; img-515Wx515H          ;string ;            ;    ;    ;    ;    ;    ;image515ValueProvider                  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; img-300Wx300H          ;string ;            ;    ;    ;    ;    ;    ;image300ValueProvider                  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; img-96Wx96H            ;string ;            ;    ;    ;    ;    ;    ;image96ValueProvider                   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; img-65Wx65H            ;string ;            ;    ;    ;    ;    ;    ;image65ValueProvider                   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; img-30Wx30H            ;string ;            ;    ;    ;    ;    ;    ;image30ValueProvider                   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; url                    ;string ;            ;    ;true;    ;    ;    ;productUrlValueProvider                ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; primaryPromotionCode   ;string ;            ;    ;    ;    ;    ;    ;promotionCodeValueProvider             ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; primaryPromotionBanner ;string ;            ;    ;    ;    ;    ;    ;promotionImageValueProvider            ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; stockLevelStatus       ;string ;            ;    ;    ;    ;    ;    ;productStockLevelStatusValueProvider   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; inStockFlag            ;boolean;            ;    ;    ;    ;    ;    ;productInStockFlagValueProvider        ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; pickupAvailableFlag    ;boolean;            ;    ;    ;    ;    ;    ;productPickupAvailabilityValueProvider ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; configurable           ;boolean;            ;    ;    ;    ;    ;    ;productConfigurableProvider            ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; configuratorType       ;string ;            ;    ;    ;    ;    ;    ;productConfiguratorTypeProvider        ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_us; multidimensional       ;boolean;            ;    ;    ;    ;    ;    ;multidimentionalProductFlagValueProvider  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+
+                                # UK
+                                 ;$solrIndexedType_uk; itemtype               ;string ;            ;    ;    ;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;
+                                 ;$solrIndexedType_uk; code                   ;string ;            ;    ;    ;    ;true;true;springELValueProvider                  ;code          ;    ;   ;true;90 ;    ;  ;true;POSTFIX;45;3
+                                 ;$solrIndexedType_uk; name                   ;text   ;sortabletext;    ;true;    ;true;true;springELValueProvider                  ;getName(#lang);true;100;true;50 ;true;25;    ;   ;  ;
+                                 ;$solrIndexedType_uk; description            ;text   ;            ;    ;true;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; summary                ;text   ;            ;    ;true;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; manufacturerName       ;text   ;            ;    ;    ;    ;true;true;                                       ;              ;true;80 ;true;40 ;true;20;    ;   ;  ;
+                                 ;$solrIndexedType_uk; manufacturerAID        ;string ;            ;    ;    ;    ;    ;    ;                                       ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; ean                    ;string ;            ;    ;    ;    ;true;true;                                       ;              ;    ;   ;true;100;    ;  ;true;POSTFIX;50;3
+                                 ;$solrIndexedType_uk; priceValue             ;double ;            ;true;    ;    ;    ;    ;productPriceValueProvider              ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; keywords               ;text   ;            ;    ;true;    ;true;true;productKeywordsValueProvider           ;              ;true;40 ;true;20 ;true;10;    ;   ;  ;
+                                 ;$solrIndexedType_uk; reviewAvgRating        ;double ;            ;    ;true;    ;    ;    ;productReviewAverageRatingValueProvider;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; img-515Wx515H          ;string ;            ;    ;    ;    ;    ;    ;image515ValueProvider                  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; img-300Wx300H          ;string ;            ;    ;    ;    ;    ;    ;image300ValueProvider                  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; img-96Wx96H            ;string ;            ;    ;    ;    ;    ;    ;image96ValueProvider                   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; img-65Wx65H            ;string ;            ;    ;    ;    ;    ;    ;image65ValueProvider                   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; img-30Wx30H            ;string ;            ;    ;    ;    ;    ;    ;image30ValueProvider                   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; url                    ;string ;            ;    ;true;    ;    ;    ;productUrlValueProvider                ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; primaryPromotionCode   ;string ;            ;    ;    ;    ;    ;    ;promotionCodeValueProvider             ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; primaryPromotionBanner ;string ;            ;    ;    ;    ;    ;    ;promotionImageValueProvider            ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; stockLevelStatus       ;string ;            ;    ;    ;    ;    ;    ;productStockLevelStatusValueProvider   ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; inStockFlag            ;boolean;            ;    ;    ;    ;    ;    ;productInStockFlagValueProvider        ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; pickupAvailableFlag    ;boolean;            ;    ;    ;    ;    ;    ;productPickupAvailabilityValueProvider ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; configurable           ;boolean;            ;    ;    ;    ;    ;    ;productConfigurableProvider            ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; configuratorType       ;string ;            ;    ;    ;    ;    ;    ;productConfiguratorTypeProvider        ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+                                 ;$solrIndexedType_uk; multidimensional       ;boolean;            ;    ;    ;    ;    ;    ;multidimentionalProductFlagValueProvider  ;              ;    ;   ;    ;   ;    ;  ;    ;   ;  ;
+
+
 
 # Category fields
-INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);localized[default=false];multiValue[default=true];categoryField[default=true];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost
+                                 ;$solrIndexedType_us; allCategories   	;string ;false;;;    ;   ;categoryCodeValueProvider					;    ;  ;    ;  ;    ;
+                                 ;$solrIndexedType_us; categoryName     ;text   ;true;;;true;true;myStoreUSCategoryNameValueProvider     ;true;40;true;20;true;10
+                                 ;$solrIndexedType_us; brandName        ;text   ;true;;;    ;    ;myStoreUSBrandCategoryNameValueProvider;    ;  ;    ;  ;    ;
+
+                                 ;$solrIndexedType_uk; allCategories   	;string ;false;;;    ;   ;categoryCodeValueProvider					;    ;  ;    ;  ;    ;
+                                 ;$solrIndexedType_uk; categoryName     ;text   ;true;;;true;true;myStoreUKCategoryNameValueProvider     ;true;40;true;20;true;10
+                                 ;$solrIndexedType_uk; brandName        ;text   ;true;;;    ;    ;myStoreUKBrandCategoryNameValueProvider;    ;  ;    ;  ;    ;
 
 # Category facets
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);multiValue[default=true];facet[default=true];facetType(code);facetSort(code);priority;visible;categoryField[default=true];fieldValueProvider;facetDisplayNameProvider;topValuesProvider
+                                 ;$solrIndexedType_us; categoryPath  	;string;;;Refine		;Alpha;-9999;false;false;categoryPathValueProvider;
+                                 ;$solrIndexedType_us; category      	;string;;;Refine		;Alpha; 6000;true;;myStoreUSCategoryCodeValueProvider;categoryFacetDisplayNameProvider;defaultTopValuesProvider
+                                 ;$solrIndexedType_us; brand         	;string;;;Refine		;Alpha; 5000;true;;myStoreUSBrandCategoryCodeValueProvider;categoryFacetDisplayNameProvider;defaultTopValuesProvider
+
+                                 ;$solrIndexedType_uk; categoryPath  	;string;;;Refine		;Alpha;-9999;false;false;categoryPathValueProvider;
+                                 ;$solrIndexedType_uk; category      	;string;;;Refine		;Alpha; 6000;true;;myStoreUKCategoryCodeValueProvider;categoryFacetDisplayNameProvider;defaultTopValuesProvider
+                                 ;$solrIndexedType_uk; brand         	;string;;;Refine		;Alpha; 5000;true;;myStoreUKBrandCategoryCodeValueProvider;categoryFacetDisplayNameProvider;defaultTopValuesProvider
 
 # Other facet properties
 INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];facet[default=true];facetType(code);facetSort(code);priority;visible;useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;facetDisplayNameProvider;customFacetSortProvider;topValuesProvider;rangeSets(name)
+                                 ;$solrIndexedType_us; price        	;double ;	 ;true       ;    ;;     ;MultiSelectOr ;Alpha ; 4000;true;     ;     ;productPriceValueProvider 	;;;defaultTopValuesProvider;
+                                 ;$solrIndexedType_us; allPromotions	;string ;	 ;     ;     ;true ;     ;MultiSelectOr ;Alpha ; 0   ;false;    ;     ;promotionCodeValueProvider	;promotionFacetDisplayNameProvider;                         ;
+                                 ;$solrIndexedType_us; availableInStores;string	;	 ;     ;     ;true ;     ;MultiSelectOr ;Custom;10000;true;     ;     ;productStoreStockValueProvider;myStoreUSPointOfServiceFacetDisplayNameProvider;distanceAttributeSortProvider
+                                 ;$solrIndexedType_us;onSale            ;string ;    ;     ;     ;false;true      ;Refine        ;Alpha ;1    ;true;     ;     ;productOnSaleValueResolver
+
+                                 ;$solrIndexedType_uk; price        	;double ;	 ;true ;     ;     ;     ;MultiSelectOr ;Alpha ; 4000;true;     ;     ;productPriceValueProvider 	;;;defaultTopValuesProvider;
+                                 ;$solrIndexedType_uk; allPromotions	;string ;	 ;     ;     ;true ;     ;MultiSelectOr ;Alpha ; 0   ;false;     ;     ;promotionCodeValueProvider	;promotionFacetDisplayNameProvider;                         ;
+                                 ;$solrIndexedType_uk; availableInStores;string	;	 ;     ;     ;true ;     ;MultiSelectOr ;Custom;10000;true;     ;     ;productStoreStockValueProvider;myStoreUKPointOfServiceFacetDisplayNameProvider;distanceAttributeSortProvider
 
 # Create the queries that will be used to extract data for Solr
 INSERT_UPDATE SolrIndexerQuery;solrIndexedType(identifier)[unique=true];identifier[unique=true];type(code);injectCurrentDate[default=true];injectCurrentTime[default=true];injectLastIndexTime[default=true];query;user(uid)

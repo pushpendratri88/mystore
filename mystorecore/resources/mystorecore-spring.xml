@@ -46,7 +46,23 @@
 		<property name="rootCategory" value="1"/>
 		<!-- '1' is the root icecat category -->
 	</bean>
+	<bean id="myStoreUSCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="1"/>
+		<!-- '1' is the root icecat category -->
+	</bean>
+	<bean id="myStoreUKCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="1"/>
+		<!-- '1' is the root icecat category -->
+	</bean>
 	<bean id="electronicsBrandCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="brands"/>
+		<!-- 'brands' is the root of the brands hierarchy -->
+	</bean>
+	<bean id="myStoreUSBrandCategorySource" parent="abstractCategorySource">
+		<property name="rootCategory" value="brands"/>
+		<!-- 'brands' is the root of the brands hierarchy -->
+	</bean>
+	<bean id="myStoreUKBrandCategorySource" parent="abstractCategorySource">
 		<property name="rootCategory" value="brands"/>
 		<!-- 'brands' is the root of the brands hierarchy -->
 	</bean>
@@ -79,14 +95,41 @@
 	<bean id="electronicsCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
 		<property name="categorySource" ref="electronicsCategorySource"/>
 	</bean>
+	<bean id="myStoreUSCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="myStoreUSCategorySource"/>
+	</bean>
+	<bean id="myStoreUKCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="myStoreUKCategorySource"/>
+	</bean>
 	<bean id="electronicsBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
 		<property name="categorySource" ref="electronicsBrandCategorySource"/>
 	</bean>
+
+	<bean id="myStoreUSBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="myStoreUSBrandCategorySource"/>
+	</bean>
+	<bean id="myStoreUKBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+		<property name="categorySource" ref="myStoreUKBrandCategorySource"/>
+	</bean>
+
 	<bean id="electronicsCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
 		<property name="categorySource" ref="electronicsCategorySource"/>
 	</bean>
+	<bean id="myStoreUSCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="myStoreUSCategorySource"/>
+	</bean>
+	<bean id="myStoreUKCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="myStoreUKCategorySource"/>
+	</bean>
 	<bean id="electronicsBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
 		<property name="categorySource" ref="electronicsBrandCategorySource"/>
+	</bean>
+
+	<bean id="myStoreUSBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="myStoreUSBrandCategorySource"/>
+	</bean>
+	<bean id="myStoreUKBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+		<property name="categorySource" ref="myStoreUKBrandCategorySource"/>
 	</bean>
 
 	<bean id="apparelCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
@@ -170,6 +213,17 @@
 	<bean id="electronicsPointOfServiceFacetDisplayNameProvider"
 	      class="com.brainstorm.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
 	      >
+		<property name="pointOfServiceService" ref="pointOfServiceService"/>
+	</bean>
+
+	<bean id="myStoreUSPointOfServiceFacetDisplayNameProvider"
+		  class="com.brainstorm.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
+	>
+		<property name="pointOfServiceService" ref="pointOfServiceService"/>
+	</bean>
+	<bean id="myStoreUKPointOfServiceFacetDisplayNameProvider"
+		  class="com.brainstorm.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"
+	>
 		<property name="pointOfServiceService" ref="pointOfServiceService"/>
 	</bean>
 
@@ -541,4 +595,5 @@
 
 	<bean id="myStoreTestJob" class="com.brainstorm.core.job.MyStoreTestJob" parent="abstractJobPerformable"></bean>
 	<bean id="customerAgeCalculationHandler" class="com.brainstorm.core.handler.CustomerAgeCalculationHandler"></bean>
+	<bean id="productOnSaleValueResolver" class="com.brainstorm.core.resolver.ProductOnSaleValueResolver"/>
 </beans>

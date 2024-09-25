@@ -108,6 +108,13 @@
             <itemtype code="MyStoreProduct" extends="Product"
                       jaloclass="com.brainstorm.core.jalo.MyStoreProduct">
                 <description>New Product item created for MyStore Application</description>
+                <attributes>
+                    <attribute qualifier="onSale" type="java.lang.String">
+                        <persistence type="property"/>
+                        <modifiers read="true" write="true" search="true"
+                                  unique="false" />
+                    </attribute>
+                </attributes>
             </itemtype>
 
             <itemtype code="MyStoreColorVariantProduct" extends="VariantProduct"

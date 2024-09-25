@@ -6,7 +6,8 @@
 #
 
 # Index Type
-$solrIndexedType=
+$solrIndexedType_us=myStoreUSSolrIndexedType
+$solrIndexedType_uk=myStoreUKSolrIndexedType
 
 # Language
 $lang=en
