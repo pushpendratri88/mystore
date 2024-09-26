@@ -301,5 +301,6 @@
      <extension name='mystoreinitialdata'/>
      <extension name='mystoretest'/>
      <extension name='mystorestorefront'/>
+	 <extension name='mystoreordercommercewebservice'/>
   </extensions>
 </hybrisconfig>
