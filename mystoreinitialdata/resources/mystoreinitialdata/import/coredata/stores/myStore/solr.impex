@@ -162,7 +162,7 @@ INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[
                                  ;$solrIndexedType_us; price        	;double ;	 ;true       ;    ;;     ;MultiSelectOr ;Alpha ; 4000;true;     ;     ;productPriceValueProvider 	;;;defaultTopValuesProvider;
                                  ;$solrIndexedType_us; allPromotions	;string ;	 ;     ;     ;true ;     ;MultiSelectOr ;Alpha ; 0   ;false;    ;     ;promotionCodeValueProvider	;promotionFacetDisplayNameProvider;                         ;
                                  ;$solrIndexedType_us; availableInStores;string	;	 ;     ;     ;true ;     ;MultiSelectOr ;Custom;10000;true;     ;     ;productStoreStockValueProvider;myStoreUSPointOfServiceFacetDisplayNameProvider;distanceAttributeSortProvider
-                                 ;$solrIndexedType_us;onSale            ;string ;    ;     ;     ;false;true      ;Refine        ;Alpha ;1    ;true;     ;     ;productOnSaleValueResolver
+                                 ;$solrIndexedType_us;onSale            ;string ;    ;     ;     ;false;true      ;Refine        ;Alpha ;1    ;true;     ;     ;myStoreProductOnSaleValueResolver
 
                                  ;$solrIndexedType_uk; price        	;double ;	 ;true ;     ;     ;     ;MultiSelectOr ;Alpha ; 4000;true;     ;     ;productPriceValueProvider 	;;;defaultTopValuesProvider;
                                  ;$solrIndexedType_uk; allPromotions	;string ;	 ;     ;     ;true ;     ;MultiSelectOr ;Alpha ; 0   ;false;     ;     ;promotionCodeValueProvider	;promotionFacetDisplayNameProvider;                         ;

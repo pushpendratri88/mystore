@@ -182,4 +182,15 @@
 	</bean>
 
 	<bean id="genderData" class="com.brainstorm.facades.product.data.GenderData" scope="prototype"/>
+	<bean id="myStoreOrderFacade" class="com.brainstorm.facades.OrderFacade.impl.MyStoreOrderFacadeImpl"/>
+	<bean id ="myStoreOrderPopulator" class="com.brainstorm.facades.populators.MYStoreOrderPopulator"/>
+
+	<bean id="orderConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="de.hybris.platform.commercefacades.order.data.OrderData"/>
+		<property name="populators">
+			<list>
+				<ref bean="myStoreOrderPopulator"/>
+			</list>
+		</property>
+	</bean>
 </beans>

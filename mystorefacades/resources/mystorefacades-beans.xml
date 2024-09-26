@@ -4,7 +4,7 @@
 -->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
 
-	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
+	<bean class="de.hybris.platform.commercefacades.product.data.Prde.hybris.platform.commercefacades.order.dataoductData">
 		<property name="genders" type="java.util.List&lt;com.brainstorm.facades.product.data.GenderData>"/>
 	</bean>
 

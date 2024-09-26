@@ -140,7 +140,7 @@
                 <description>New Product item created for MyStore Application</description>
                 <attributes>
                     <attribute qualifier="customerAge" type="java.lang.String">
-                        <persistence type="dynamic" attributeHandler="customerAgeCalculationHandler"/>
+                        <persistence type="dynamic" attributeHandler="myStoreCustomerAgeCalculationHandler"/>
                     </attribute>
                 </attributes>
             </itemtype>

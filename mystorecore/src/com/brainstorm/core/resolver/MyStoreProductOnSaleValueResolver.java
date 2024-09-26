@@ -22,7 +22,7 @@ import de.hybris.platform.classification.features.Feature;
 import javax.annotation.Resource;
 import java.util.Collection;
 
-public class ProductOnSaleValueResolver implements ValueResolver<MyStoreProductModel> {
+public class MyStoreProductOnSaleValueResolver implements ValueResolver<MyStoreProductModel> {
     @Resource
     private ClassificationService classificationService;
     @Resource

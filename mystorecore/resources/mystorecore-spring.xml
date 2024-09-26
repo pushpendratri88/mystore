@@ -594,6 +594,13 @@
 	</bean>
 
 	<bean id="myStoreTestJob" class="com.brainstorm.core.job.MyStoreTestJob" parent="abstractJobPerformable"></bean>
-	<bean id="customerAgeCalculationHandler" class="com.brainstorm.core.handler.CustomerAgeCalculationHandler"></bean>
-	<bean id="productOnSaleValueResolver" class="com.brainstorm.core.resolver.ProductOnSaleValueResolver"/>
+	<bean id="myStoreCustomerAgeCalculationHandler" class="com.brainstorm.core.handler.MyStoreCustomerAgeCalculationHandler"></bean>
+	<bean id="myStoreProductOnSaleValueResolver" class="com.brainstorm.core.resolver.MyStoreProductOnSaleValueResolver"/>
+	<bean id="myStoreOrderDao" class="com.brainstorm.core.dao.impl.MyStoreOrderDaoImpl"/>
+	<bean id="myStoreOrderService" class="com.brainstorm.core.service.impl.MyStoreOrderServiceImpl"/>
+
+	OrderServiceImpl
+
+
+
 </beans>
