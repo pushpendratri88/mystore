@@ -598,9 +598,4 @@
 	<bean id="myStoreProductOnSaleValueResolver" class="com.brainstorm.core.resolver.MyStoreProductOnSaleValueResolver"/>
 	<bean id="myStoreOrderDao" class="com.brainstorm.core.dao.impl.MyStoreOrderDaoImpl"/>
 	<bean id="myStoreOrderService" class="com.brainstorm.core.service.impl.MyStoreOrderServiceImpl"/>
-
-	OrderServiceImpl
-
-
-
 </beans>
