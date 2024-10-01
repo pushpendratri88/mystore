@@ -183,4 +183,23 @@
 		<property name="pagination" type="de.hybris.platform.commerceservices.search.pagedata.PaginationData"/>
 	</bean>
 
+	<bean class="com.brainstorm.returns.data.MyStoreOrderDataWSDTO">
+		<property name="created" type="java.util.Date"/>
+		<property name="status" type="de.hybris.platform.core.enums.OrderStatus"/>
+		<property name="statusDisplay" type="String"/>
+		<property name="guestCustomer" type="boolean"/>
+		<property name="consignments"
+				  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.ConsignmentData>"/>
+		<property name="deliveryStatus" type="de.hybris.platform.core.enums.DeliveryStatus"/>
+		<property name="deliveryStatusDisplay" type="String"/>
+		<property name="unconsignedEntries"
+				  type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.OrderEntryData>"/>
+		<property name="placedBy" type="String"/>
+		<property name="quoteCode" type="String"/>
+	</bean>
+
+	<bean class="com.brainstorm.returns.data.MyStoreOrderDataListWSDTO">
+		<property name="myStoreOrderDataWSDTOList" type="java.util.List &lt;com.brainstorm.returns.data.MyStoreOrderDataWSDTO>"/>
+	</bean>
+
 </beans>
