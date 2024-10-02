@@ -1610,4 +1610,17 @@
         </property>
     </bean>
 
+    <bean parent="fieldSetLevelMapping" id="orderDataWSDTOFieldSetLevelMapping">
+        <property name="dtoClass"
+                  value="com.brainstorm.returns.data.MyStoreOrderDataWSDTO"/>
+        <property name="levelMapping">
+            <map>
+                <entry key="BASIC" value="created,status,statusDisplay"/>
+                <entry key="DEFAULT" value="created,status,statusDisplay,guestCustomer"/>
+                <entry key="FULL" value="created,status,statusDisplay,guestCustomer,consignments,deliveryStatus,deliveryStatusDisplay,unconsignedEntries,placedBy,quoteCode,"/>
+                <entry key="CUSTOM" value="created,consignments,deliveryStatus,deliveryStatusDisplay,unconsignedEntries,placedBy,"/>
+            </map>
+        </property>
+    </bean>
+
 </beans>
