@@ -1,0 +1,72 @@
+###############################################################
+######### Master Staged  to US Staged Product Catalog #########
+###############################################################
+
+$productCatalog_master=myStoreMasterProductCatalog
+$productCatalog_us=myStoreUSProductCatalog
+
+$sourceProductCV=sourceVersion(catalog(id[default=$productCatalog_master]),version[default='Staged'])[unique=true,default='$productCatalog_master:Staged']
+$targetProductCV=targetVersion(catalog(id[default=$productCatalog_us]),version[default='Staged'])[unique=true,default='$productCatalog_us:Staged']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceProductCV;$targetProductCV;
+                                   ;sync myStoreMasterProductCatalog:Staged -> myStoreUSProductCatalog:Staged;;;;
+
+
+###########################################################
+######### US Staged  to US Online Product Catalog #########
+###########################################################
+$productCatalog_us=myStoreUSProductCatalog
+
+$sourceProductCV=sourceVersion(catalog(id[default=$productCatalog_us]),version[default='Staged'])[unique=true,default='$productCatalog_us:Staged']
+$targetProductCV=targetVersion(catalog(id[default=$productCatalog_us]),version[default='Online'])[unique=true,default='$productCatalog_us:Online']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceProductCV;$targetProductCV;
+                                   ;sync myStoreUSProductCatalog:Staged->Online;;;;
+
+
+#############################################################
+######### Master stage  to UK stage Product Catalog #########
+#############################################################
+$productCatalog_master=myStoreMasterProductCatalog
+$productCatalog_us=myStoreUSProductCatalog
+
+$sourceProductCV=sourceVersion(catalog(id[default=$productCatalog_master]),version[default='Staged'])[unique=true,default='$productCatalog_master:Staged']
+$targetProductCV=targetVersion(catalog(id[default=$productCatalog_us]),version[default='Staged'])[unique=true,default='$productCatalog_us:Staged']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceProductCV;$targetProductCV;
+                                   ;sync myStoreMasterProductCatalog:Staged -> myStoreUSProductCatalog:Staged;;;;
+
+
+#############################################################
+########## UK Staged  to UK Online Product Catalog ##########
+#############################################################
+$productCatalog_uk=myStoreUKProductCatalog
+
+$sourceProductCV=sourceVersion(catalog(id[default=$productCatalog_uk]),version[default='Staged'])[unique=true,default='$productCatalog_uk:Staged']
+$targetProductCV=targetVersion(catalog(id[default=$productCatalog_uk]),version[default='Online'])[unique=true,default='$productCatalog_uk:Online']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceProductCV;$targetProductCV;
+                                   ;sync myStoreUKProductCatalog:Staged->Online;;;;
+
+#############################################################
+########## US Staged  to US Online Content Catalog ##########
+#############################################################
+$contentCatalog_us=myStoreUSContentCatalog
+
+$sourceContentCV=sourceVersion(catalog(id[default=$contentCatalog_us]),version[default='Staged'])[unique=true,default='$contentCatalog_us:Staged']
+$targetContentCV=targetVersion(catalog(id[default=$contentCatalog_us]),version[default='Online'])[unique=true,default='$contentCatalog_us:Online']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceContentCV;$targetContentCV;
+                                   ;sync myStoreUSContentCatalog:Staged->Online;;;;
+
+
+#############################################################
+########## US Staged  to US Online Content Catalog ##########
+#############################################################
+$contentCatalog_uk=myStoreUKContentCatalog
+
+$sourceContentCV=sourceVersion(catalog(id[default=$contentCatalog_uk]),version[default='Staged'])[unique=true,default='$contentCatalog_uk:Staged']
+$targetContentCV=targetVersion(catalog(id[default=$contentCatalog_uk]),version[default='Online'])[unique=true,default='$contentCatalog_uk:Online']
+
+INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceContentCV;$targetContentCV;
+                                   ;sync myStoreUKContentCatalog:Staged->Online;;;;
