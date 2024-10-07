@@ -71,10 +71,27 @@ $targetContentCV=targetVersion(catalog(id[default=$contentCatalog_uk]),version[d
 INSERT_UPDATE CatalogVersionSyncJob;code[unique=true];$sourceContentCV;$targetContentCV;syncAttributeConfigurations;
                                    ;sync myStoreUKContentCatalog:Staged->Online;;;;
 
-
 # Enable syncing of the description, but only if it has been modified
-# SyncAttributeDescriptorConfig is used to exclude the property to sync
-# Do not sync the 'description' attribute
-# need to make it work . its not working yet.
-INSERT_UPDATE SyncAttributeDescriptorConfig; syncJob(code)[unique=true]; attributeDescriptor(enclosingType(code), qualifier); includedInSync; copyByValue
-                                           ; sync myStoreUKContentCatalog:Staged->Online; CMSItem:description; false; false;
+# SyncAttributeDescriptorConfig is used customize the properties behaviour
+# copyByValue : When set to true, the value of the attribute is copied from the source catalog to the target catalog as-is. If it's false, only a reference to the source item is copied (not the actual value).
+# Use Case :
+#          Suppose you have a Product with a media attribute like productImage.
+#          If copyByValue = true, the actual image file (or its content) will be copied from the source to the target catalog.
+#          If copyByValue = false, only a reference to the original image in the source catalog will be created in the target catalog, saving storage but maintaining a link to the original.
+
+# presetValue : When set, this provides a default value for the attribute in the target catalog if it's not present in the source catalog.
+# Use case :
+#          For example, if the source product does not have a description (let's say the description attribute is empty or null), but you want the target catalog to have a default value like "No description available", you would configure presetValue = "No description available" for the description attribute.
+
+
+#translateValue : When set to true, it indicates that the value should be translated if the target catalog is in a different language.
+# Use case:
+#          Consider a product with a name attribute. If you are synchronizing between different country catalogs (e.g., from a UK catalog to a German catalog), you might want the product name to be translated automatically during synchronization. If translateValue = true, Hybris will attempt to translate the product name during synchronization.
+
+#untranslatable: When set to true, this indicates that the attribute should not be translated, even if translateValue is set to true globally.
+# Use case:
+#          If you have a product code attribute like productCode, this should remain the same across all catalogs, regardless of language or region. Setting untranslatable = true ensures that the product code remains identical across all synced catalogs, without translation.
+
+INSERT_UPDATE SyncAttributeDescriptorConfig;syncJob(code)[default=synjobName][unique=true][path-delimiter=!];attributeDescriptor(enclosingType(code),qualifier)[unique=true];includedInSync;copyByValue[default=false];presetValue;translateValue[default=false];untranslatable[default=false]
+                                           ;sync myStoreUKContentCatalog:Staged->Online;AbstractPage:originalPage;true
+
