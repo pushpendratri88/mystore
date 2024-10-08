@@ -12,7 +12,7 @@ import de.hybris.platform.servicelayer.exceptions.UnknownIdentifierException;
 /**
  * Commerce stock facade. Deals with methods related to stock of products in sites and points of service.
  */
-public interface CommerceStockFacade
+public interface MYStoreCommerceStockFacade
 {
 	/**
 	 * Indicates if stock system is enabled for given base store

@@ -53,7 +53,7 @@ public class ApparelProductPopulator implements Populator<ProductModel, ProductD
 				{
 					genders.add(getGenderConverter().convert(gender));
 				}
-				target.setGenders(genders);
+//				target.setGenders(genders);
 			}
 		}
 	}

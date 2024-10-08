@@ -5,10 +5,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xmlns:int="http://www.springframework.org/schema/integration"
+	     xmlns:context="http://www.springframework.org/schema/context"
 		 xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
-           http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/integration
+           http://www.springframework.org/schema/integration/spring-integration.xsd">
 
+	<context:component-scan base-package="com.brainstorm" />
 	<bean id="cwsProductVariantConfiguredPopulator" parent="productVariantConfiguredPopulator"/>
 
 	<bean id="cwsProductFacade" parent="defaultProductFacade">
@@ -143,17 +148,17 @@
 		<property name="pattern" value="/{baseSite-uid}/catalogs/{catalog-id}/{catalogVersion}/categories/{category-code}"/>
 	</bean>
 
-	<alias name="defaultCommerceStockFacade" alias="commerceStockFacade"/>
-	<bean id="defaultCommerceStockFacade" class="com.brainstorm.stock.impl.DefaultCommerceStockFacade">
+<!--	<alias name="defaultMyStoreCommerceStockFacade" alias="commerceStockFacade"/>-->
+	<bean id="defaultMyStoreCommerceStockFacade" class="com.brainstorm.stock.impl.DefaultMyStoreCommerceStockFacade">
 		<property name="baseSiteService" ref="baseSiteService"/>
 		<property name="commerceStockService" ref="commerceStockService"/>
 		<property name="pointOfServiceService" ref="pointOfServiceService"/>
 		<property name="productService" ref="productService"/>
-		<property name="baseStoreForSiteSelectorStrategy" ref="baseStoreForSiteSelectorStrategy"/>
+		<property name="baseStoreForSiteSelectorStrategy" ref="defaultMyStoreBaseStoreForSiteSelectorStrategy"/>
 	</bean>
 
-	<alias name="defaultBaseStoreForSiteSelectorStrategy" alias="baseStoreForSiteSelectorStrategy"/>
-	<bean id="defaultBaseStoreForSiteSelectorStrategy"
+<!--	<alias name="defaultMyStoreBaseStoreForSiteSelectorStrategy" alias="baseStoreForSiteSelectorStrategy"/>-->
+	<bean id="defaultMyStoreBaseStoreForSiteSelectorStrategy"
 			class="com.brainstorm.strategies.impl.DefaultBaseStoreForSiteSelectorStrategy"/>
 
 	<bean id="commerceWebServicesCartFacade2" class="com.brainstorm.cart.impl.CommerceWebServicesCartFacade"
@@ -267,8 +272,8 @@
 		<property name="userService" ref="userService"/>
 	</bean>
 
-    <alias alias="orderCodeIdentificationStrategy" name="defaultOrderCodeIdentificationStrategy"/>
-    <bean id="defaultOrderCodeIdentificationStrategy" class="com.brainstorm.strategies.impl.DefaultOrderCodeIdentificationStrategy">
+<!--    <alias alias="orderCodeIdentificationStrategy" name="defaultOrderCodeIdentificationStrategy"/>-->
+    <bean id="defaultMyStoreOrderCodeIdentificationStrategy" class="com.brainstorm.strategies.impl.DefaultMyStoreOrderCodeIdentificationStrategy">
         <property name="idPattern" value="[0-9a-f]{40}|[0-9a-f-]{36}"/>
     </bean>
 

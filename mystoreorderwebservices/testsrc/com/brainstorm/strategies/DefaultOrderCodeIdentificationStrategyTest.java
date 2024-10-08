@@ -5,7 +5,7 @@ package com.brainstorm.strategies;
 
 
 import de.hybris.bootstrap.annotations.UnitTest;
-import com.brainstorm.strategies.impl.DefaultOrderCodeIdentificationStrategy;
+import com.brainstorm.strategies.impl.DefaultMyStoreOrderCodeIdentificationStrategy;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class DefaultOrderCodeIdentificationStrategyTest
 	@Test(expected = IllegalArgumentException.class)
 	public void isIdNullTest()
 	{
-		DefaultOrderCodeIdentificationStrategy strategy = new DefaultOrderCodeIdentificationStrategy();
+		DefaultMyStoreOrderCodeIdentificationStrategy strategy = new DefaultMyStoreOrderCodeIdentificationStrategy();
 		strategy.setIdPattern("[0-9a-f]{40}");
 		strategy.isID(null);
 	}
@@ -26,7 +26,7 @@ public class DefaultOrderCodeIdentificationStrategyTest
 	@Test
 	public void isIdGuidTest()
 	{
-		DefaultOrderCodeIdentificationStrategy strategy = new DefaultOrderCodeIdentificationStrategy();
+		DefaultMyStoreOrderCodeIdentificationStrategy strategy = new DefaultMyStoreOrderCodeIdentificationStrategy();
 		strategy.setIdPattern("[0-9a-f]{40}");
 		Assert.assertTrue(strategy.isID("8ebefc6b4d8bc429006daf2fbef692002b10d636"));
 	}
@@ -34,7 +34,7 @@ public class DefaultOrderCodeIdentificationStrategyTest
 	@Test
 	public void isIdCodeTest()
 	{
-		DefaultOrderCodeIdentificationStrategy strategy = new DefaultOrderCodeIdentificationStrategy();
+		DefaultMyStoreOrderCodeIdentificationStrategy strategy = new DefaultMyStoreOrderCodeIdentificationStrategy();
 		strategy.setIdPattern("[0-9a-f]{40}");
 		Assert.assertFalse(strategy.isID("00001"));
 	}

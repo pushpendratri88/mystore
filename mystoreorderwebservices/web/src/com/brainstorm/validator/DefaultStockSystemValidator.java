@@ -4,7 +4,7 @@
 package com.brainstorm.validator;
 
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.StockSystemException;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 
 
 /**
@@ -12,14 +12,14 @@ import com.brainstorm.stock.CommerceStockFacade;
  */
 public class DefaultStockSystemValidator implements StockSystemValidator
 {
-	private final CommerceStockFacade commerceStockFacade;
+	private final MYStoreCommerceStockFacade commerceStockFacade;
 
 	/**
 	 * Creates an instance of the validator
 	 *
 	 * @param commerceStockFacade Commerce stock facade to be used in the validation
 	 */
-	public DefaultStockSystemValidator(final CommerceStockFacade commerceStockFacade)
+	public DefaultStockSystemValidator(final MYStoreCommerceStockFacade commerceStockFacade)
 	{
 		this.commerceStockFacade = commerceStockFacade;
 	}
@@ -38,7 +38,7 @@ public class DefaultStockSystemValidator implements StockSystemValidator
 		}
 	}
 
-	protected CommerceStockFacade getCommerceStockFacade()
+	protected MYStoreCommerceStockFacade getCommerceStockFacade()
 	{
 		return commerceStockFacade;
 	}

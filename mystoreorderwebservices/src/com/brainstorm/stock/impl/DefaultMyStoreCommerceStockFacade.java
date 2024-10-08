@@ -16,19 +16,19 @@ import de.hybris.platform.site.BaseSiteService;
 import de.hybris.platform.storelocator.model.PointOfServiceModel;
 import de.hybris.platform.storelocator.pos.PointOfServiceService;
 import de.hybris.platform.webservicescommons.util.YSanitizer;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 import com.brainstorm.strategies.BaseStoreForSiteSelectorStrategy;
 
 import org.springframework.beans.factory.annotation.Required;
 
 
 /**
- * Default implementation of {@link com.brainstorm.stock.CommerceStockFacade}<br/>
+ * Default implementation of {@link MYStoreCommerceStockFacade}<br/>
  * TODO: when moving to commercelayer:<br/>
  * TODO: please add validation to the default implementation of BaseSiteService and throw exceptions from there</br>
  * TODO: ideally get rid of createStockData()
  */
-public class DefaultCommerceStockFacade implements CommerceStockFacade
+public class DefaultMyStoreCommerceStockFacade implements MYStoreCommerceStockFacade
 {
 	private BaseSiteService baseSiteService;
 	private CommerceStockService commerceStockService;

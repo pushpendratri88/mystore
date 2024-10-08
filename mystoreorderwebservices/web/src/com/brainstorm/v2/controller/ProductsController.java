@@ -43,7 +43,7 @@ import com.brainstorm.product.data.SuggestionDataList;
 import com.brainstorm.queues.data.ProductExpressUpdateElementData;
 import com.brainstorm.queues.data.ProductExpressUpdateElementDataList;
 import com.brainstorm.queues.impl.ProductExpressUpdateQueue;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 import com.brainstorm.v2.helper.ProductsHelper;
 import com.brainstorm.validator.PointOfServiceValidator;
 
@@ -122,7 +122,7 @@ public class ProductsController extends BaseController
 	@Resource(name = "reviewDTOValidator")
 	private Validator reviewDTOValidator;
 	@Resource(name = "commerceStockFacade")
-	private CommerceStockFacade commerceStockFacade;
+	private MYStoreCommerceStockFacade commerceStockFacade;
 	@Resource(name = "pointOfServiceValidator")
 	private PointOfServiceValidator pointOfServiceValidator;
 	@Resource(name = "productExpressUpdateQueue")

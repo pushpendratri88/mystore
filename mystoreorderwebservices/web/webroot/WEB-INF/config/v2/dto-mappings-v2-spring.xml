@@ -258,7 +258,7 @@
 		</property>
 	</bean>
 
-	<alias name="myStoreOrderFieldMapper" alias="dataMapper"/>
+<!--	<alias name="myStoreOrderFieldMapper" alias="dataMapper"/>-->
 	<bean id="myStoreOrderFieldMapper" parent="fieldMapper">
 		<property name="sourceClass" value="de.hybris.platform.commercefacades.order.data.OrderData"/>
 		<property name="destClass" value="com.brainstorm.returns.data.MyStoreOrderDataWSDTO"/>

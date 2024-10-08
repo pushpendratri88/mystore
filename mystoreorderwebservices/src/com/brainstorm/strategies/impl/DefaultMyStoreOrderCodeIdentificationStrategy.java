@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Required;
 /**
  * Default implementation of {@link com.brainstorm.strategies.OrderCodeIdentificationStrategy}.
  */
-public class DefaultOrderCodeIdentificationStrategy implements OrderCodeIdentificationStrategy
+public class DefaultMyStoreOrderCodeIdentificationStrategy implements OrderCodeIdentificationStrategy
 {
 	private String idPattern;
 
