@@ -8,104 +8,1409 @@ $productCatalog=myStoreMasterProductCatalog
 $productCatalogName=MyStore Master Product  Catalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-$supercategories=supercategories(code, $catalogVersion)
+#$supercategories=supercategories(code, $catalogVersion)
 $baseProduct=baseProduct(code,$catalogVersion)
 $approved=approvalstatus(code)[default='check']
+$lang=en
+$categories=target(code, $catalogVersion)[unique=true]
+$supercategories=source(code, $catalogVersion)[unique=true]
+
+# Category Creation
+INSERT_UPDATE Category;code[unique=true];name[lang=$lang];description[lang=en];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;111;brands;brands
+;1
+;106
+;206
+;571
+;574
+;575
+;576
+;577
+;578
+;584
+;585
+;586
+;587
+;588
+;597
+;598
+;604
+;814
+;816
+;827
+;829
+;902
+;934
+;1201
+;1288
+;1421
+
+UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
+;1;;Open Catalogue;
+;106;;Components;
+;1201;;Fixatives;
+;1288;;Camera Kits;
+;1421;;Binoculars;
+;206;;Data storage;
+;571;;Cameras;
+;574;;Film cameras;
+;575;;Digital Cameras;
+;576;;Digital Compacts;
+;577;;Webcams;
+;578;;Digital SLR;
+;584;;Hand-held Camcorders;
+;585;;Camera Accessories & Supplies;
+;586;;Camera Flashes;
+;587;;Tripods;
+;588;;Camera Lenses;
+;597;;Colour Films;
+;598;;Black & White Films;
+;604;;Blank Video Tapes;
+;814;;Rechargeable Batteries;
+;816;;Power Supplies;
+;827;;Power Adapters & Inverters;
+;829;;Battery Chargers;
+;902;;Flash Memory;
+;934;;Camera Cables;
+
+
+# Brand Creation
+INSERT_UPDATE Category;code[unique=true];name[lang=$lang];description[lang=en];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;brand_1;HP;HP;
+;brand_10;Canon;Canon;
+;brand_103;NEC;NEC;
+;brand_128;Targus;Targus;
+;brand_18;Kingston;Kingston;
+;brand_2;Toshiba;Toshiba;
+;brand_2171;ICIDU;ICIDU;
+;brand_251;TDK;TDK;
+;brand_26;Samsung;Samsung;
+;brand_5;Sony;Sony;
+;brand_702;Sweex;Sweex;
+;brand_745;Canyon;Canyon;
+;brand_75;Fujifilm;Fujifilm;
+;brand_750;Dane-Elec;Dane-Elec;
+;brand_88;Kodak;Kodak;
+;brand_91;Logitech;Logitech;
+;brands;Brands;Brands;
+
+#Category to Super Category Relation
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;106;1
+;206;1
+;571;1
+;1421;1
+;574;571
+;575;571
+;577;571
+;584;571
+;576;575
+;578;575
+;585;571
+;586;585
+;587;578
+;588;578
+;597;585
+;598;585
+;604;585
+;814;816
+;816;106
+;827;816
+;829;816
+;902;206
+;934;585
+;1201;585
+;1288;578
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;brand_1;111
+;brand_2;111
+;brand_5;111
+;brand_10;111
+;brand_18;111
+;brand_26;111
+;brand_75;111
+;brand_88;111
+;brand_91;111
+;brand_103;111
+;brand_128;111
+;brand_251;111
+;brand_702;111
+;brand_745;111
+;brand_750;111
+;brand_2171;111
+
+
 
 # Insert Products
-INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);ean;variantType(code);$catalogVersion;$approved
-                     ;358639      ;                ;                ;               ;          ;   ;MyStoreColorVariantProduct
+INSERT_UPDATE MyStoreProduct;code[unique=true];supercategories(code, $catalogVersion);manufacturerName;manufacturerAID;unit(code);ean;variantType(code);$catalogVersion;$approved
+;23191;1288, brand_5;Sony;ACC-CSPW;pieces;;MyStoreColorVariantProduct
+;23210;576, brand_5;Sony;DSC-P71;pieces;4901780755943;MyStoreColorVariantProduct
+;23213;576, brand_5;Sony;MVC-CD400;pieces;;MyStoreColorVariantProduct
+;23231;576, brand_5;Sony;DSC-F717;pieces;4901780791897;MyStoreColorVariantProduct
+;23355;587, brand_5;Sony;VCT-1170RM;pieces;0027242680746;MyStoreColorVariantProduct
+;29925;587, brand_5;Sony;VCT-D580RM;pieces;4901780680801;MyStoreColorVariantProduct
+;65652;588, brand_10;Canon;6846A003AA;pieces;;MyStoreColorVariantProduct
+;107701;827, brand_5;Sony;DCC-L50B;pieces;0027242612242;MyStoreColorVariantProduct
+;110561;827, brand_5;Sony;BC-TR1;pieces;4901780840953;MyStoreColorVariantProduct
+;137220;604, brand_5;Sony;2DVM60PR-BT;pieces;4901780530007;MyStoreColorVariantProduct
+;149243;604, brand_5;Sony;2N890P;pieces;4901780629831;MyStoreColorVariantProduct
+;266685;586, brand_5;Sony;HVL-20DMA;pieces;0027242648838;MyStoreColorVariantProduct
+;266899;827, brand_5;Sony;AC-LS5K;pieces;0027242663169;MyStoreColorVariantProduct
+;278688;829, brand_5;Sony;AC-VQP10;pieces;4901780859825;MyStoreColorVariantProduct
+;280916;577, brand_745;Canyon;CN-WCAM21;pieces;8717371842475;MyStoreColorVariantProduct
+;284533;1421, brand_10;Canon;2897A004AA;pieces;0082966301360;MyStoreColorVariantProduct
+;288420;576, brand_5;Sony;DSC-W1M;pieces;;MyStoreColorVariantProduct
+;288846;576, brand_5;Sony;DSC-P73L;pieces;;MyStoreColorVariantProduct
+;289540;586, brand_5;Sony;HVL20DW2;pieces;0027242530584;MyStoreColorVariantProduct
+;300938;576, brand_1;HP;L2051A#200;pieces;0829160974095;MyStoreColorVariantProduct
+;301233;604, brand_5;Sony;3N860P;pieces;4901780625390;MyStoreColorVariantProduct
+;301544;576, brand_88;Kodak;Z740;pieces;;MyStoreColorVariantProduct
+;325065;576, brand_88;Kodak;Z700;pieces;;MyStoreColorVariantProduct
+;325101;576, brand_88;Kodak;C330;pieces;;MyStoreColorVariantProduct
+;325234;829, brand_5;Sony;BC-TRP;pieces;0027242637191;MyStoreColorVariantProduct
+;325414;576, brand_88;Kodak;Z730;pieces;;MyStoreColorVariantProduct
+;325715;576, brand_88;Kodak;V530;pieces;;MyStoreColorVariantProduct
+;328796;902, brand_750;Dane-Elec;DA-SD-1024XS-C;pieces;5390800079340;MyStoreColorVariantProduct
+;335443;902, brand_750;Dane-Elec;DA-SD-0512XS-C;pieces;5390800078299;MyStoreColorVariantProduct
+;335546;902, brand_750;Dane-Elec;DA-SD-0256XS-C;pieces;;MyStoreColorVariantProduct
+;337958;576, brand_88;Kodak;P850;pieces;;MyStoreColorVariantProduct
+;337981;576, brand_88;Kodak;P880;pieces;;MyStoreColorVariantProduct
+;343090;576, brand_5;Sony;DSC-W17;pieces;4901780961108;MyStoreColorVariantProduct
+;346944;827, brand_5;Sony;AC-L200;pieces;0027242654266;MyStoreColorVariantProduct
+;356788;1288, brand_5;Sony;KK-CA;pieces;;MyStoreColorVariantProduct
+;356970;576, brand_5;Sony;DSC-M1;pieces;;MyStoreColorVariantProduct
+;358639;576, brand_5;Sony;DSC-N1;pieces;4905524318111;MyStoreColorVariantProduct
+;360308;814, brand_1;HP;L1815B;pieces;;MyStoreColorVariantProduct
+;429430;1288, brand_5;Sony;NP-BG1;pieces;4905524300413;MyStoreColorVariantProduct
+;442466;1288, brand_5;Sony;LCS-CFR;pieces;4901780986484;MyStoreColorVariantProduct
+;443175;902, brand_18;Kingston;SD/2GB;pieces;2007009230009;MyStoreColorVariantProduct
+;450848;814, brand_5;Sony;NP-BG1;pieces;4901780972531;MyStoreColorVariantProduct
+;454831;587, brand_5;Sony;VCT-PG10RM;pieces;4901780979288;MyStoreColorVariantProduct
+;458542;577, brand_2;Toshiba;PX1247E-1NWC;pieces;4026203399853;MyStoreColorVariantProduct
+;472054;576, brand_88;Kodak;C533;pieces;;MyStoreColorVariantProduct
+;472056;576, brand_88;Kodak;C643;pieces;;MyStoreColorVariantProduct
+;472057;576, brand_88;Kodak;C663;pieces;;MyStoreColorVariantProduct
+;473765;576, brand_88;Kodak;V570;pieces;;MyStoreColorVariantProduct
+;473995;576, brand_88;Kodak;Z612;pieces;;MyStoreColorVariantProduct
+;473996;576, brand_88;Kodak;Z650;pieces;;MyStoreColorVariantProduct
+;478828;578, brand_5;Sony;DSLR-A100KB;pieces;4905524340297;MyStoreColorVariantProduct
+;479742;577, brand_91;Logitech;961398-1914;pieces;5099206993693;MyStoreColorVariantProduct
+;479956;902, brand_5;Sony;MSX-M4GSX;pieces;4905524333688;MyStoreColorVariantProduct
+;482105;814, brand_5;Sony;NP-FM55H;pieces;;MyStoreColorVariantProduct
+;489680;576, brand_88;Kodak;V705;pieces;;MyStoreColorVariantProduct
+;489702;576, brand_88;Kodak;8869596;pieces;;MyStoreColorVariantProduct
+;492274;576, brand_26;Samsung;NV3;pieces;8801089776518;MyStoreColorVariantProduct
+;493683;588, brand_88;Kodak;1033323;pieces;6004177103332;MyStoreColorVariantProduct
+;503392;588, brand_103;NEC;50030881;pieces;5028695604971;MyStoreColorVariantProduct
+;514518;827, brand_10;Canon;2419A002AA;pieces;4960999501505;MyStoreColorVariantProduct
+;553637;576, brand_26;Samsung;NV10;pieces;8801089775528;MyStoreColorVariantProduct
+;562675;578, brand_10;Canon;1237B016AA;pieces;;MyStoreColorVariantProduct
+;572461;587, brand_10;Canon;2368A001AA;pieces;2001339037000;MyStoreColorVariantProduct
+;572473;814, brand_10;Canon;2418A001AA;pieces;;MyStoreColorVariantProduct
+;592506;934, brand_88;Kodak;8118390;pieces;6004177811839;MyStoreColorVariantProduct
+;594471;827, brand_10;Canon;8364A003AA;pieces;4960999398679;MyStoreColorVariantProduct
+;669789;576, brand_88;Kodak;C503;pieces;;MyStoreColorVariantProduct
+;669797;576, brand_88;Kodak;P712;pieces;;MyStoreColorVariantProduct
+;669799;576, brand_88;Kodak;V603;pieces;;MyStoreColorVariantProduct
+;676442;576, brand_5;Sony;DSC-W55B;pieces;4905524411805;MyStoreColorVariantProduct
+;686951;576, brand_5;Sony;DSC-W55P;pieces;4905524411560;MyStoreColorVariantProduct
+;695824;902, brand_18;Kingston;SDC/2GB;pieces;0740617113983;MyStoreColorVariantProduct
+;726510;578, brand_10;Canon;1234B015AA;pieces;8714574967523;MyStoreColorVariantProduct
+;726511;578, brand_10;Canon;1234B022AA;pieces;8714574967608;MyStoreColorVariantProduct
+;768108;934, brand_10;Canon;0976B001AA;pieces;4960999321882;MyStoreColorVariantProduct
+;779841;574, brand_88;Kodak;3920949;pieces;5011373920944;MyStoreColorVariantProduct
+;779842;597, brand_88;Kodak;3919925;pieces;5011373805050;MyStoreColorVariantProduct
+;779848;597, brand_88;Kodak;3919958;pieces;4041777221577;MyStoreColorVariantProduct
+;779864;598, brand_88;Kodak;3923497;pieces;3173185259246;MyStoreColorVariantProduct
+;779866;598, brand_88;Kodak;1629617;pieces;6004177162961;MyStoreColorVariantProduct
+;779868;598, brand_88;Kodak;1516798;pieces;6004177151679;MyStoreColorVariantProduct
+;784171;576, brand_88;Kodak;1031392;pieces;0041771031398;MyStoreColorVariantProduct
+;784172;576, brand_88;Kodak;1262773;pieces;0041771262778;MyStoreColorVariantProduct
+;784173;576, brand_88;Kodak;8407074;pieces;0041778407073;MyStoreColorVariantProduct
+;784343;588, brand_10;Canon;2529A015AA;pieces;;MyStoreColorVariantProduct
+;784380;576, brand_88;Kodak;1845908;pieces;;MyStoreColorVariantProduct
+;784381;576, brand_88;Kodak;8336323;pieces;;MyStoreColorVariantProduct
+;791635;586, brand_10;Canon;2356A005AA;pieces;;MyStoreColorVariantProduct
+;805693;814, brand_5;Sony;NP-FH50;pieces;0027242707603;MyStoreColorVariantProduct
+;812888;576, brand_5;Sony;DSC-W80W;pieces;4905524416930;MyStoreColorVariantProduct
+;816261;576, brand_5;Sony;DSC-W80B;pieces;4905524416763;MyStoreColorVariantProduct
+;816262;576, brand_5;Sony;DSC-W80S;pieces;4905524416671;MyStoreColorVariantProduct
+;816323;576, brand_5;Sony;DSC-W80P;pieces;4905524416985;MyStoreColorVariantProduct
+;816324;576, brand_5;Sony;DSC-T20S;pieces;4905524430851;MyStoreColorVariantProduct
+;816326;576, brand_5;Sony;DSC-T20B;pieces;4905524430974;MyStoreColorVariantProduct
+;816379;588, brand_5;Sony;SAL-1680Z;pieces;4905524340723;MyStoreColorVariantProduct
+;816780;578, brand_5;Sony;DSLR-A100H;pieces;4905524385649;MyStoreColorVariantProduct
+;816802;576, brand_5;Sony;DSC-W55L;pieces;4905524411713;MyStoreColorVariantProduct
+;824259;814, brand_5;Sony;NP-FH70;pieces;0027242706569;MyStoreColorVariantProduct
+;824267;814, brand_5;Sony;NP-FH100;pieces;0027242706552;MyStoreColorVariantProduct
+;832382;588, brand_10;Canon;0284B007AA;pieces;0013803050424;MyStoreColorVariantProduct
+;832386;588, brand_10;Canon;2531A010AA;pieces;;MyStoreColorVariantProduct
+;834954;597, brand_88;Kodak;6110399;pieces;5011373800031;MyStoreColorVariantProduct
+;834955;597, brand_88;Kodak;3923463;pieces;6004177392346;MyStoreColorVariantProduct
+;847942;829, brand_5;Sony;AC-VQH10;pieces;0027242706538;MyStoreColorVariantProduct
+;848855;588, brand_5;Sony;VCL-HG1737C;pieces;0027242707092;MyStoreColorVariantProduct
+;855246;578, brand_5;Sony;DSLR-A100KS;pieces;4905524356663;MyStoreColorVariantProduct
+;861175;1288, brand_5;Sony;NP-FH70;pieces;0490552438251;MyStoreColorVariantProduct
+;872912;902, brand_2171;ICIDU;SI-707104;pieces;8717591971917;MyStoreColorVariantProduct
+;897853;902, brand_18;Kingston;CF/4GB;pieces;0740617118711;MyStoreColorVariantProduct
+;898503;574, brand_10;Canon;2043A016;pieces;;MyStoreColorVariantProduct
+;898520;588, brand_10;Canon;2544A016;pieces;0082966212758;MyStoreColorVariantProduct
+;899387;827, brand_10;Canon;8364A004AA;pieces;;MyStoreColorVariantProduct
+;911227;1288, brand_10;Canon;AC9444A001AA;pieces;;MyStoreColorVariantProduct
+;917699;1288, brand_5;Sony;ACC-FH60;pieces;4905524402926;MyStoreColorVariantProduct
+;918735;934, brand_5;Sony;VMC-MD1;pieces;0027242703254;MyStoreColorVariantProduct
+;932577;587, brand_88;Kodak;8662207;pieces;0417786622058;MyStoreColorVariantProduct
+;932643;576, brand_88;Kodak;Z812;pieces;;MyStoreColorVariantProduct
+;1099285;587, brand_10;Canon;6195A005AA;pieces;0750845820911;MyStoreColorVariantProduct
+;1099413;586, brand_10;Canon;2356A002AA;pieces;0082966150425;MyStoreColorVariantProduct
+;1209761;1421, brand_10;Canon;7562A019AA;pieces;0013803010572;MyStoreColorVariantProduct
+;1225694;578, brand_10;Canon;1901B020AA;pieces;8714574508740;MyStoreColorVariantProduct
+;1231346;814, brand_5;Sony;NP-FD1;pieces;0027242710030;MyStoreColorVariantProduct
+;1232590;814, brand_5;Sony;NP-FM500H;pieces;2601368006154;MyStoreColorVariantProduct
+;1291399;598, brand_88;Kodak;8059370;pieces;6004177805937;MyStoreColorVariantProduct
+;1297878;1288, brand_5;Sony;ACC-CFD;pieces;;MyStoreColorVariantProduct
+;1298094;829, brand_5;Sony;AC-VQ900AM;pieces;;MyStoreColorVariantProduct
+;1312564;829, brand_702;Sweex;PA110;pieces;8717534006287;MyStoreColorVariantProduct
+;1312640;829, brand_702;Sweex;PA100;pieces;8717534006270;MyStoreColorVariantProduct
+;1320808;576, brand_88;Kodak;8447427;pieces;;MyStoreColorVariantProduct
+;1322031;902, brand_18;Kingston;CF/8GB-S2;pieces;0740617123852;MyStoreColorVariantProduct
+;1322041;902, brand_18;Kingston;CF/4GB-S2;pieces;0740617123791;MyStoreColorVariantProduct
+;1325806;576, brand_88;Kodak;8225666;pieces;;MyStoreColorVariantProduct
+;1366001;902, brand_2171;ICIDU;SI-707123;pieces;8717591973652;MyStoreColorVariantProduct
+;1366053;902, brand_2171;ICIDU;SI-707136;pieces;8717591974321;MyStoreColorVariantProduct
+;1377492;577, brand_128;Targus;AVC05EU;pieces;5024442899300;MyStoreColorVariantProduct
+;1382080;578, brand_10;Canon;2758B015AA;pieces;8714574516769;MyStoreColorVariantProduct
+;1391319;578, brand_5;Sony;DSLR-A200;pieces;4905524415100;MyStoreColorVariantProduct
+;1422218;814, brand_10;Canon;3039B001AA;pieces;0013803096446;MyStoreColorVariantProduct
+;1422222;827, brand_10;Canon;3071B003AA;pieces;4960999613079;MyStoreColorVariantProduct
+;1422224;827, brand_10;Canon;3052B001AA;pieces;0013803096491;MyStoreColorVariantProduct
+;1422706;1201, brand_10;Canon;3055B001AA;pieces;0013803096507;MyStoreColorVariantProduct
+;1432722;584, brand_2;Toshiba;GSC-K80HE;pieces;4026203537095;MyStoreColorVariantProduct
+;1438465;578, brand_5;Sony;DSLR-A350K;pieces;4905524459418;MyStoreColorVariantProduct
+;1438466;578, brand_5;Sony;DSLR-A350X;pieces;0027242727342;MyStoreColorVariantProduct
+;1438467;578, brand_5;Sony;DSLR-A350B;pieces;;MyStoreColorVariantProduct
+;1446509;578, brand_5;Sony;DSLR-A350;pieces;0027242727281;MyStoreColorVariantProduct
+;1451546;814, brand_5;Sony;NP-BK1;pieces;0027242723238;MyStoreColorVariantProduct
+;1451563;814, brand_5;Sony;NP-FG1;pieces;0027242723221;MyStoreColorVariantProduct
+;1494590;576, brand_88;Kodak;1009588;pieces;0041771009588;MyStoreColorVariantProduct
+;1532809;578, brand_5;Sony;DSLR-A700H;pieces;;MyStoreColorVariantProduct
+;1550476;576, brand_88;Kodak;1067172;pieces;;MyStoreColorVariantProduct
+;1568824;578, brand_5;Sony;DSLR-A350W;pieces;;MyStoreColorVariantProduct
+;1687508;587, brand_5;Sony;VCT-80AV;pieces;;MyStoreColorVariantProduct
+;1715477;578, brand_5;Sony;DSLR-A900;pieces;4905524520330;MyStoreColorVariantProduct
+;1716323;1201, brand_5;Sony;STPSS3AMT;pieces;4905524533835;MyStoreColorVariantProduct
+;1776947;584, brand_2;Toshiba;PX1478E-1CAM;pieces;4026203604308;MyStoreColorVariantProduct
+;1776948;584, brand_2;Toshiba;PX1505E-1CAM;pieces;4026203604636;MyStoreColorVariantProduct
+;1934398;584, brand_5;Sony;HDRXR105E;pieces;4905524572544;MyStoreColorVariantProduct
+;1934406;584, brand_5;Sony;HDRCX105ER;pieces;4905524596595;MyStoreColorVariantProduct
+;1934793;576, brand_10;Canon;3477B013AA;pieces;8714574533421;MyStoreColorVariantProduct
+;1934794;576, brand_10;Canon;3476B013AA;pieces;8714574533261;MyStoreColorVariantProduct
+;1934795;576, brand_10;Canon;3475B013AA;pieces;8714574533193;MyStoreColorVariantProduct
+;1934796;576, brand_10;Canon;3474B013AA;pieces;8714574533353;MyStoreColorVariantProduct
+;1978431;576, brand_5;Sony;DSC-T90T;pieces;4905524591071;MyStoreColorVariantProduct
+;1978440;576, brand_5;Sony;DSC-H20;pieces;4905524593235;MyStoreColorVariantProduct
+;1981412;576, brand_26;Samsung;EC-PL60ZBBP/GB;pieces;8806386905746;MyStoreColorVariantProduct
+;1981413;576, brand_26;Samsung;EC-PL60ZABP/GB;pieces;8806386912775;MyStoreColorVariantProduct
+;1981414;576, brand_26;Samsung;EC-PL60ZPBP/GB;pieces;8806386912782;MyStoreColorVariantProduct
+;1981415;576, brand_26;Samsung;EC-PL60ZSBP/GB;pieces;8806386906422;MyStoreColorVariantProduct
+;1986316;584, brand_10;Canon;3571B001AA;pieces;8714574531724;MyStoreColorVariantProduct
+;1990255;576, brand_5;Sony;DSC-HX1;pieces;4000000467397;MyStoreColorVariantProduct
+;1992689;576, brand_5;Sony;DSC-T90S;pieces;4905524590968;MyStoreColorVariantProduct
+;1992691;576, brand_5;Sony;DSC-T90B;pieces;4905524590722;MyStoreColorVariantProduct
+;1992692;576, brand_5;Sony;DSC-T90L;pieces;4905524591187;MyStoreColorVariantProduct
+;1992693;576, brand_5;Sony;DSC-T90P;pieces;4905524590845;MyStoreColorVariantProduct
+;1992695;576, brand_5;Sony;DSC-S930P;pieces;4905524589580;MyStoreColorVariantProduct
+;1992696;576, brand_5;Sony;DSC-S930S;pieces;4905524589382;MyStoreColorVariantProduct
+;1992697;576, brand_5;Sony;DSC-S930B;pieces;4905524589504;MyStoreColorVariantProduct
+;1993747;576, brand_5;Sony;DSC-W270R;pieces;4905524587449;MyStoreColorVariantProduct
+;1993748;576, brand_5;Sony;DSC-W270B;pieces;2222200712356;MyStoreColorVariantProduct
+;1997551;576, brand_75;Fujifilm;4002632;pieces;4547410086751;MyStoreColorVariantProduct
+;2006139;576, brand_88;Kodak;1224690;pieces;5052178248628;MyStoreColorVariantProduct
+;2006365;1288, brand_5;Sony;ACC-CBK;pieces;4905524480177;MyStoreColorVariantProduct
+;2053226;578, brand_10;Canon;3820B019AA;pieces;8714574550930;MyStoreColorVariantProduct
+;2053266;578, brand_10;Canon;3820B014AA;pieces;8714574550848;MyStoreColorVariantProduct
+;2053367;578, brand_10;Canon;3820B024AA;pieces;4960999643748;MyStoreColorVariantProduct
+;2054947;578, brand_10;Canon;3820B025AA;pieces;8714574535388;MyStoreColorVariantProduct
+;2054948;578, brand_10;Canon;3820B020AA;pieces;8714574535333;MyStoreColorVariantProduct
+;2063624;934, brand_10;Canon;2563B001AA;pieces;0013803090826;MyStoreColorVariantProduct
+;2114091;814, brand_5;Sony;ACC-CMFG;pieces;4905524548259;MyStoreColorVariantProduct
+;2140197;1288, brand_5;Sony;ACCTCH5;pieces;0027242737877;MyStoreColorVariantProduct
+;2140285;1288, brand_5;Sony;FDAEP1AM;pieces;0027242705326;MyStoreColorVariantProduct
+;2149500;1288, brand_5;Sony;ACC-CFG;pieces;4905524445282;MyStoreColorVariantProduct
+;2231913;604, brand_251;TDK;DVM-60MEEA;pieces;4902030173432;MyStoreColorVariantProduct
+;2278102;604, brand_251;TDK;CLDVM;pieces;4902030176020;MyStoreColorVariantProduct
+;2292454;1288, brand_5;Sony;STPSA;pieces;4901780845446;MyStoreColorVariantProduct
+;2336001;902, brand_18;Kingston;SDV/8GB;pieces;0740617144376;MyStoreColorVariantProduct
+;2336002;902, brand_18;Kingston;SDV/4GB;pieces;0740617144369;MyStoreColorVariantProduct
+;2336004;902, brand_18;Kingston;SDV/16GB;pieces;0740617144383;MyStoreColorVariantProduct
+;2861342;827, brand_5;Sony;02124950;pieces;;MyStoreColorVariantProduct
+;2867992;814, brand_5;Sony;02173450;pieces;;MyStoreColorVariantProduct
+;2913966;814, brand_5;Sony;02167350;pieces;;MyStoreColorVariantProduct
+;2934297;578, brand_5;Sony;DSLR-A380L;pieces;4905524528923;MyStoreColorVariantProduct
+;2934302;578, brand_5;Sony;DSLR-A330L;pieces;7501450750079;MyStoreColorVariantProduct
+;2934303;578, brand_5;Sony;DSLR-A230L;pieces;4905524529753;MyStoreColorVariantProduct
+;2938457;902, brand_5;Sony;MSMT4GN;pieces;4905524559620;MyStoreColorVariantProduct
+;2938458;902, brand_5;Sony;MSMT2GN;pieces;4905524559712;MyStoreColorVariantProduct
+;3325048;576, brand_5;Sony;DSC-W180S;pieces;4905524609028;MyStoreColorVariantProduct
+;3357724;576, brand_5;Sony;DSC-W180B;pieces;3355830034136;MyStoreColorVariantProduct
+;3357888;576, brand_5;Sony;DSC-W180RCEE8;pieces;;MyStoreColorVariantProduct
+;3400506;1288, brand_5;Sony;SHL1AM;pieces;0027242761865;MyStoreColorVariantProduct
+;3429337;587, brand_88;Kodak;8861296;pieces;;MyStoreColorVariantProduct
+;3470545;576, brand_88;Kodak;1104934;pieces;5052178886608;MyStoreColorVariantProduct
+;3505505;576, brand_88;Kodak;1593938;pieces;5051395932372;MyStoreColorVariantProduct
+;3514515;576, brand_5;Sony;DSC-TX1H;pieces;4905524544473;MyStoreColorVariantProduct
+;3514516;576, brand_5;Sony;DSC-TX1L;pieces;4905524623031;MyStoreColorVariantProduct
+;3514517;576, brand_5;Sony;DSC-TX1N;pieces;4905524623130;MyStoreColorVariantProduct
+;3514519;576, brand_5;Sony;DSC-WX1S;pieces;4905524623772;MyStoreColorVariantProduct
+;3514520;576, brand_5;Sony;DSC-WX1N;pieces;4905524632606;MyStoreColorVariantProduct
+;3514521;578, brand_5;Sony;DSC-WX1B;pieces;4905524623918;MyStoreColorVariantProduct
+;3514522;576, brand_5;Sony;DSC-TX1P;pieces;4905524622935;MyStoreColorVariantProduct
+;3514523;576, brand_5;Sony;DSC-TX1S;pieces;4905524622706;MyStoreColorVariantProduct
+;3555166;578, brand_10;Canon;3820B046AA;pieces;8714574542027;MyStoreColorVariantProduct
+;3557133;578, brand_10;Canon;3820B047AA;pieces;8714574551975;MyStoreColorVariantProduct
+;3595723;588, brand_10;Canon;3554B005AA;pieces;0013803108620;MyStoreColorVariantProduct
+;3683639;1288, brand_88;Kodak;8607855;pieces;;MyStoreColorVariantProduct
+;3683640;1288, brand_88;Kodak;8815201;pieces;;MyStoreColorVariantProduct
+;3708646;578, brand_10;Canon;3820B048AA;pieces;8714574542041;MyStoreColorVariantProduct
+;3730957;578, brand_10;Canon;3820B021AA;pieces;8714574535340;MyStoreColorVariantProduct
+;3789394;578, brand_10;Canon;3820B002AA;pieces;;MyStoreColorVariantProduct
+;3958110;578, brand_10;Canon;3820B050AA;pieces;;MyStoreColorVariantProduct
+;3965240;814, brand_5;Sony;NP-FV70;pieces;5052179669217;MyStoreColorVariantProduct
+;4135570;1288, brand_5;Sony;ACC-BBV5;pieces;4905524636888;MyStoreColorVariantProduct
+;4200373;578, brand_10;Canon;3820B090AA;pieces;9120020772402;MyStoreColorVariantProduct
+;4205246;578, brand_10;Canon;3820B049AA;pieces;;MyStoreColorVariantProduct
+;4205431;902, brand_18;Kingston;SD10/16GB;pieces;0740617165951;MyStoreColorVariantProduct
+;4205436;902, brand_18;Kingston;SD10/32GB;pieces;0740617165999;MyStoreColorVariantProduct
+;4528140;576, brand_26;Samsung;EC-PL60ZABP/E2;pieces;;MyStoreColorVariantProduct
+;4608858;814, brand_5;Sony;FA-EB1AM;pieces;;MyStoreColorVariantProduct
+;4731172;578, brand_10;Canon;3820B071AA;pieces;8714574550695;MyStoreColorVariantProduct
+;4769104;829, brand_5;Sony;BC-TRV;pieces;4905524623307;MyStoreColorVariantProduct
+;4769626;829, brand_5;Sony;BC-TRN;pieces;4905524623390;MyStoreColorVariantProduct
+;4785190;578, brand_10;Canon;3820B089AA;pieces;;MyStoreColorVariantProduct
+;4786113;902, brand_5;Sony;MSHX16A;pieces;4905524667394;MyStoreColorVariantProduct
+;4787985;902, brand_5;Sony;MSHX8A;pieces;4905524667387;MyStoreColorVariantProduct
+;4787986;902, brand_5;Sony;MSHX32A;pieces;4905524646849;MyStoreColorVariantProduct
+;4808175;578, brand_10;Canon;3820B083AA;pieces;8714574550831;MyStoreColorVariantProduct
+;4812254;578, brand_10;Canon;3820B105AA;pieces;;MyStoreColorVariantProduct
+;4841579;902, brand_10;Canon;SD4/4GB;pieces;;MyStoreColorVariantProduct
+;4852405;902, brand_18;Kingston;SD10/8GB;pieces;0740617172751;MyStoreColorVariantProduct
+;4868199;902, brand_18;Kingston;SD4/16GB;pieces;7406171268226;MyStoreColorVariantProduct
+;4869234;902, brand_18;Kingston;SD10A/64GB;pieces;5052461136021;MyStoreColorVariantProduct
+;4872010;902, brand_18;Kingston;SD4/4GB;pieces;7406171112864;MyStoreColorVariantProduct
+;4873607;902, brand_18;Kingston;SD4/8GB;pieces;7406171145770;MyStoreColorVariantProduct
+;5103712;814, brand_5;Sony;AC-VQV10;pieces;;MyStoreColorVariantProduct
+;5103775;829, brand_5;Sony;AC-PW10AM;pieces;4905524542059;MyStoreColorVariantProduct
+;5473115;578, brand_10;Canon;3830B020AA;pieces;;MyStoreColorVariantProduct
+;5864567;576, brand_88;Kodak;1199793;pieces;0041771199791;MyStoreColorVariantProduct
+;5864583;576, brand_88;Kodak;1763259;pieces;0041771763251;MyStoreColorVariantProduct
+;5897548;578, brand_10;Canon;3820B104AA;pieces;;MyStoreColorVariantProduct
 
-INSERT_UPDATE MyStoreColorVariantProduct;code[unique=true];$baseProduct;ean          ;unit(code);color;$supercategories;approvalstatus(code)[default='approved'];$catalogVersion
-                                            ;300938_red  ;300938      ;0829160974095;pieces    ;Red;
-                                            ;300938_green;300938      ;0829160974095;pieces    ;Green;
-                                            ;300938_blue ;300938      ;0829160974095;pieces    ;Blue;
+
+# Insert MyStoreColorVariantProducts
+INSERT_UPDATE MyStoreColorVariantProduct;code[unique=true];$baseProduct;ean;unit(code);color;supercategories(code, $catalogVersion);approvalstatus(code)[default='approved'];$catalogVersion
+;300938_red     ;300938      ;0829160974095;pieces    ;Red;                ;
+;300938_green   ;300938      ;0829160974095;pieces    ;Green;              ;
+;300938_blue    ;300938      ;0829160974095;pieces    ;Blue;               ;
+;23191_red      ;23191       ;1234567890123;pieces    ;Red;                ;
+;23191_green    ;23191       ;1234567890123;pieces    ;Green;              ;
+;23191_blue     ;23191       ;1234567890123;pieces    ;Blue;               ;
+;23210_red      ;23210       ;1234567890123;pieces    ;Red;                ;
+;23210_green    ;23210       ;1234567890123;pieces    ;Green;              ;
+;23210_blue     ;23210       ;1234567890123;pieces    ;Blue;               ;
+;23213_red      ;23213       ;1234567890123;pieces    ;Red;                ;
+;23213_green    ;23213       ;1234567890123;pieces    ;Green;              ;
+;23213_blue     ;23213       ;1234567890123;pieces    ;Blue;               ;
+;23231_red      ;23231       ;1234567890123;pieces    ;Red;                ;
+;23231_green    ;23231       ;1234567890123;pieces    ;Green;              ;
+;23231_blue     ;23231       ;1234567890123;pieces    ;Blue;               ;
+;23355_red      ;23355       ;1234567890123;pieces    ;Red;                ;
+;23355_green    ;23355       ;1234567890123;pieces    ;Green;              ;
+;23355_blue     ;23355       ;1234567890123;pieces    ;Blue;               ;
+;29925_red      ;29925       ;1234567890123;pieces    ;Red;                ;
+;29925_green    ;29925       ;1234567890123;pieces    ;Green;              ;
+;29925_blue     ;29925       ;1234567890123;pieces    ;Blue;               ;
+;65652_red      ;65652       ;1234567890123;pieces    ;Red;                ;
+;65652_green    ;65652       ;1234567890123;pieces    ;Green;              ;
+;65652_blue     ;65652       ;1234567890123;pieces    ;Blue;               ;
+;107701_red     ;107701      ;1234567890123;pieces    ;Red;                ;
+;107701_green   ;107701      ;1234567890123;pieces    ;Green;              ;
+;107701_blue    ;107701      ;1234567890123;pieces    ;Blue;               ;
+;110561_red     ;110561      ;1234567890123;pieces    ;Red;                ;
+;110561_green   ;110561      ;1234567890123;pieces    ;Green;              ;
+;110561_blue    ;110561      ;1234567890123;pieces    ;Blue;               ;
+;137220_red     ;137220      ;1234567890123;pieces    ;Red;                ;
+;137220_green   ;137220      ;1234567890123;pieces    ;Green;              ;
+;137220_blue    ;137220      ;1234567890123;pieces    ;Blue;               ;
+;149243_red     ;149243      ;1234567890123;pieces    ;Red;                ;
+;149243_green   ;149243      ;1234567890123;pieces    ;Green;              ;
+;149243_blue    ;149243      ;1234567890123;pieces    ;Blue;               ;
+;266685_red     ;266685      ;1234567890123;pieces    ;Red;                ;
+;266685_green   ;266685      ;1234567890123;pieces    ;Green;              ;
+;266685_blue    ;266685      ;1234567890123;pieces    ;Blue;               ;
+;266899_red     ;266899      ;1234567890123;pieces    ;Red;                ;
+;266899_green   ;266899      ;1234567890123;pieces    ;Green;              ;
+;266899_blue    ;266899      ;1234567890123;pieces    ;Blue;               ;
+;278688_red     ;278688      ;1234567890123;pieces    ;Red;                ;
+;278688_green   ;278688      ;1234567890123;pieces    ;Green;              ;
+;278688_blue    ;278688      ;1234567890123;pieces    ;Blue;               ;
+;280916_red     ;280916      ;1234567890123;pieces    ;Red;                ;
+;280916_green   ;280916      ;1234567890123;pieces    ;Green;              ;
+;280916_blue    ;280916      ;1234567890123;pieces    ;Blue;               ;
+;284533_red     ;284533      ;1234567890123;pieces    ;Red;                ;
+;284533_green   ;284533      ;1234567890123;pieces    ;Green;              ;
+;284533_blue    ;284533      ;1234567890123;pieces    ;Blue;               ;
+;288420_red     ;288420      ;1234567890123;pieces    ;Red;                ;
+;288420_green   ;288420      ;1234567890123;pieces    ;Green;              ;
+;288420_blue    ;288420      ;1234567890123;pieces    ;Blue;               ;
+;288846_red     ;288846      ;1234567890123;pieces    ;Red;                ;
+;288846_green   ;288846      ;1234567890123;pieces    ;Green;              ;
+;288846_blue    ;288846      ;1234567890123;pieces    ;Blue;               ;
+;289540_red     ;289540      ;1234567890123;pieces    ;Red;                ;
+;289540_green   ;289540      ;1234567890123;pieces    ;Green;              ;
+;289540_blue    ;289540      ;1234567890123;pieces    ;Blue;               ;
+;301233_red     ;301233      ;1234567890123;pieces    ;Red;                ;
+;301233_green   ;301233      ;1234567890123;pieces    ;Green;              ;
+;301233_blue    ;301233      ;1234567890123;pieces    ;Blue;               ;
+;301544_red     ;301544      ;1234567890123;pieces    ;Red;                ;
+;301544_green   ;301544      ;1234567890123;pieces    ;Green;              ;
+;301544_blue    ;301544      ;1234567890123;pieces    ;Blue;               ;
+;325065_red     ;325065      ;1234567890123;pieces    ;Red;                ;
+;325065_green   ;325065      ;1234567890123;pieces    ;Green;              ;
+;325065_blue    ;325065      ;1234567890123;pieces    ;Blue;               ;
+;325101_red     ;325101      ;1234567890123;pieces    ;Red;                ;
+;325101_green   ;325101      ;1234567890123;pieces    ;Green;              ;
+;325101_blue    ;325101      ;1234567890123;pieces    ;Blue;               ;
+;325234_red     ;325234      ;1234567890123;pieces    ;Red;                ;
+;325234_green   ;325234      ;1234567890123;pieces    ;Green;              ;
+;325234_blue    ;325234      ;1234567890123;pieces    ;Blue;
+;325414_red     ;325414      ;1234567890123;pieces    ;Red;                ;
+;325414_green   ;325414      ;1234567890123;pieces    ;Green;              ;
+;325414_blue    ;325414      ;1234567890123;pieces    ;Blue;               ;
+;325715_red     ;325715      ;1234567890123;pieces    ;Red;                ;
+;325715_green   ;325715      ;1234567890123;pieces    ;Green;              ;
+;325715_blue    ;325715      ;1234567890123;pieces    ;Blue;               ;
+;328796_red     ;328796      ;1234567890123;pieces    ;Red;                ;
+;328796_green   ;328796      ;1234567890123;pieces    ;Green;              ;
+;328796_blue    ;328796      ;1234567890123;pieces    ;Blue;               ;
+;335443_red     ;335443      ;1234567890123;pieces    ;Red;                ;
+;335443_green   ;335443      ;1234567890123;pieces    ;Green;              ;
+;335443_blue    ;335443      ;1234567890123;pieces    ;Blue;               ;
+;335546_red     ;335546      ;1234567890123;pieces    ;Red;                ;
+;335546_green   ;335546      ;1234567890123;pieces    ;Green;              ;
+;335546_blue     ;335546      ;1234567890123;pieces    ;Blue;
+;337958_red     ;337958      ;1234567890123;pieces    ;Red;                ;
+;337958_green   ;337958      ;1234567890123;pieces    ;Green;              ;
+;337958_blue     ;337958      ;1234567890123;pieces    ;Blue;
+;337981_red     ;337981      ;1234567890123;pieces    ;Red;                ;
+;337981_green   ;337981      ;1234567890123;pieces    ;Green;              ;
+;337981_blue     ;337981      ;1234567890123;pieces    ;Blue;
+;343090_red     ;343090      ;1234567890123;pieces    ;Red;                ;
+;343090_green   ;343090      ;1234567890123;pieces    ;Green;              ;
+;343090_blue     ;343090      ;1234567890123;pieces    ;Blue;
+;346944_red     ;346944      ;1234567890123;pieces    ;Red;                ;
+;346944_green   ;346944      ;1234567890123;pieces    ;Green;              ;
+;346944_blue     ;346944      ;1234567890123;pieces    ;Blue;
+;356788_red     ;356788      ;1234567890123;pieces    ;Red;                ;
+;356788_green   ;356788      ;1234567890123;pieces    ;Green;              ;
+;356788_blue     ;356788      ;1234567890123;pieces    ;Blue;
+;356970_red     ;356970      ;1234567890123;pieces    ;Red;                ;
+;356970_green   ;356970      ;1234567890123;pieces    ;Green;              ;
+;356970_blue     ;356970      ;1234567890123;pieces    ;Blue;
+;358639_red     ;358639      ;1234567890123;pieces    ;Red;                ;
+;358639_green   ;358639      ;1234567890123;pieces    ;Green;              ;
+;358639_blue     ;358639      ;1234567890123;pieces    ;Blue;
+;360308_red     ;360308      ;1234567890123;pieces    ;Red;                ;
+;360308_green   ;360308      ;1234567890123;pieces    ;Green;              ;
+;360308_blue     ;360308      ;1234567890123;pieces    ;Blue;
+;429430_red     ;429430      ;1234567890123;pieces    ;Red;                ;
+;429430_green   ;429430      ;1234567890123;pieces    ;Green;              ;
+;429430_blue     ;429430      ;1234567890123;pieces    ;Blue;
+;442466_red     ;442466      ;1234567890123;pieces    ;Red;                ;
+;442466_green   ;442466      ;1234567890123;pieces    ;Green;              ;
+;442466_blue     ;442466      ;1234567890123;pieces    ;Blue;
+;443175_red     ;443175      ;1234567890123;pieces    ;Red;                ;
+;443175_green   ;443175      ;1234567890123;pieces    ;Green;              ;
+;443175_blue     ;443175      ;1234567890123;pieces    ;Blue;
+;450848_red     ;450848      ;1234567890123;pieces    ;Red;                ;
+;450848_green   ;450848      ;1234567890123;pieces    ;Green;              ;
+;450848_blue     ;450848      ;1234567890123;pieces    ;Blue;
+;454831_red     ;454831      ;1234567890123;pieces    ;Red;                ;
+;454831_green   ;454831      ;1234567890123;pieces    ;Green;              ;
+;454831_blue     ;454831      ;1234567890123;pieces    ;Blue;
+;458542_red     ;458542      ;1234567890123;pieces    ;Red;                ;
+;458542_green   ;458542      ;1234567890123;pieces    ;Green;              ;
+;458542_blue     ;458542      ;1234567890123;pieces    ;Blue;
+;472054_red     ;472054      ;1234567890123;pieces    ;Red;                ;
+;472054_green   ;472054      ;1234567890123;pieces    ;Green;              ;
+;472054_blue     ;472054      ;1234567890123;pieces    ;Blue;
+;472056_red     ;472056      ;1234567890123;pieces    ;Red;                ;
+;472056_green   ;472056      ;1234567890123;pieces    ;Green;              ;
+;472056_blue     ;472056      ;1234567890123;pieces    ;Blue;
+;472057_red     ;472057      ;1234567890123;pieces    ;Red;                ;
+;472057_green   ;472057      ;1234567890123;pieces    ;Green;              ;
+;472057_blue     ;472057      ;1234567890123;pieces    ;Blue;
+;473765_red     ;473765      ;1234567890123;pieces    ;Red;                ;
+;473765_green   ;473765      ;123765      ;pieces    ;Green;              ;$
+;473765_blue     ;473765      ;1234567890123;pieces    ;Blue;
+;473995_red     ;473995      ;1234567890123;pieces    ;Red;                ;
+;473995_green   ;473995      ;1234567890123;pieces    ;Green;              ;
+;473995_blue     ;473995      ;1234567890123;pieces    ;Blue;
+;473996_red     ;473996      ;1234567890123;pieces    ;Red;                ;
+;473996_green   ;473996      ;1234567890123;pieces    ;Green;              ;
+;473996_blue     ;473996      ;1234567890123;pieces    ;Blue;
+;478828_red     ;478828      ;1234567890123;pieces    ;Red;                ;
+;478828_green   ;478828      ;1234567890123;pieces    ;Green;              ;
+;478828_blue     ;478828      ;1234567890123;pieces    ;Blue;
+;479742_red     ;479742      ;1234567890123;pieces    ;Red;                ;
+;479742_green   ;479742      ;1234567890123;pieces    ;Green;              ;
+;479742_blue     ;479742      ;1234567890123;pieces    ;Blue;
+;479956_red     ;479956      ;1234567890123;pieces    ;Red;                ;
+;479956_green   ;479956      ;1234567890123;pieces    ;Green;              ;
+;479956_blue     ;479956      ;1234567890123;pieces    ;Blue;
+;482105_red     ;482105      ;1234567890123;pieces    ;Red;                ;
+;482105_green   ;482105      ;1234567890123;pieces    ;Green;              ;
+;482105_blue     ;482105      ;1234567890123;pieces    ;Blue;
+;489680_red     ;489680      ;1234567890123;pieces    ;Red;                ;
+;489680_green   ;489680      ;1234567890123;pieces    ;Green;              ;
+;489680_blue     ;489680      ;1234567890123;pieces    ;Blue;
+;489702_red     ;489702      ;1234567890123;pieces    ;Red;                ;
+;489702_green   ;489702      ;1234567890123;pieces    ;Green;              ;
+;489702_blue     ;489702      ;1234567890123;pieces    ;Blue;
+;492274_red     ;492274      ;1234567890123;pieces    ;Red;                ;
+;492274_green   ;492274      ;1234567890123;pieces    ;Green;              ;
+;492274_blue     ;492274      ;1234567890123;pieces    ;Blue;
+;493683_red     ;493683      ;1234567890123;pieces    ;Red;                ;
+;493683_green   ;493683      ;1234567890123;pieces    ;Green;              ;
+;493683_blue     ;493683      ;1234567890123;pieces    ;Blue;
+;503392_red     ;503392      ;1234567890123;pieces    ;Red;                ;
+;503392_green   ;503392      ;1234567890123;pieces    ;Green;              ;
+;503392_blue     ;503392      ;1234567890123;pieces    ;Blue;
+;514518_red     ;514518      ;1234567890123;pieces    ;Red;                ;
+;514518_green   ;514518      ;1234567890123;pieces    ;Green;              ;
+;514518_blue   ;514518      ;1234567890123;pieces    ;Blue;               ;$
+;553637_red     ;553637      ;1234567890123;pieces    ;Red;                ;
+;553637_green   ;553637      ;1234567890123;pieces    ;Green;              ;
+;553637_blue     ;553637      ;1234567890123;pieces    ;Blue;
+;560583_red     ;560583      ;1234567890123;pieces    ;Red;                ;
+;560583_green   ;560583      ;1234567890123;pieces    ;Green;              ;
+;560583_blue     ;560583      ;1234567890123;pieces    ;Blue;
+;562675_red     ;562675      ;1234567890123;pieces    ;Red;                ;
+;562675_green   ;562675      ;1234567890123;pieces    ;Green;              ;
+;562675_blue     ;562675      ;1234567890123;pieces    ;Blue;
+;572461_red     ;572461      ;1234567890123;pieces    ;Red;                ;
+;572461_green   ;572461      ;1234567890123;pieces    ;Green;              ;
+;572461_blue     ;572461      ;1234567890123;pieces    ;Blue;
+;572473_red     ;572473      ;1234567890123;pieces    ;Red;                ;
+;572473_green   ;572473      ;1234567890123;pieces    ;Green;              ;
+;572473_blue     ;572473      ;1234567890123;pieces    ;Blue;
+;592506_red     ;592506      ;1234567890123;pieces    ;Red;                ;
+;592506_green   ;592506      ;1234567890123;pieces    ;Green;              ;
+;592506_blue     ;592506      ;1234567890123;pieces    ;Blue;
+;599096_red     ;599096      ;1234567890123;pieces    ;Red;                ;
+;599096_green   ;599096      ;1234567890123;pieces    ;Green;              ;
+;599096_blue     ;599096      ;1234567890123;pieces    ;Blue;
+;608772_red     ;608772      ;1234567890123;pieces    ;Red;                ;
+;608772_green   ;608772      ;1234567890123;pieces    ;Green;              ;
+;608772_blue     ;608772      ;1234567890123;pieces    ;Blue;
+;610135_red     ;610135      ;1234567890123;pieces    ;Red;                ;
+;610135_green   ;610135      ;1234567890123;pieces    ;Green;              ;
+;610135_blue     ;610135      ;1234567890123;pieces    ;Blue;
+;614552_red     ;614552      ;1234567890123;pieces    ;Red;                ;
+;614552_green   ;614552      ;1234567890123;pieces    ;Green;              ;
+;614552_blue     ;614552      ;1234567890123;pieces    ;Blue;
+;623073_red     ;623073      ;1234567890123;pieces    ;Red;                ;
+;623073_green   ;623073      ;1234567890123;pieces    ;Green;              ;
+;623073_blue     ;623073      ;1234567890123;pieces    ;Blue;
+;623165_red     ;623165      ;1234567890123;pieces    ;Red;                ;
+;623165_green   ;623165      ;1234567890123;pieces    ;Green;              ;
+;623165_blue     ;623165      ;1234567890123;pieces    ;Blue;
+;629202_red     ;629202      ;1234567890123;pieces    ;Red;                ;
+;629202_green   ;629202      ;1234567890123;pieces    ;Green;              ;
+;629202_blue     ;629202      ;1234567890123;pieces    ;Blue;
+;629204_red     ;629204      ;1234567890123;pieces    ;Red;                ;
+;629204_green   ;629204      ;1234567890123;pieces    ;Green;              ;
+;629204_blue     ;629204      ;1234567890123;pieces    ;Blue;
+;629688_red     ;629688      ;1234567890123;pieces    ;Red;                ;
+;629688_green   ;629688      ;1234567890123;pieces    ;Green;              ;
+;629688_blue     ;629688      ;1234567890123;pieces    ;Blue;
+;635421_red     ;635421      ;1234567890123;pieces    ;Red;                ;
+;635421_green   ;635421      ;1234567890123;pieces    ;Green;              ;
+;635421_blue     ;635421      ;1234567890123;pieces    ;Blue;
+;639444_red     ;639444      ;1234567890123;pieces    ;Red;                ;
+;639444_green   ;639444      ;1234567890123;pieces    ;Green;              ;
+;639444_blue     ;639444      ;1234567890123;pieces    ;Blue;
+;643143_red     ;643143      ;1234567890123;pieces    ;Red;                ;
+;643143_green   ;643143      ;1234567890123;pieces    ;Green;              ;
+;643143_blue     ;643143      ;1234567890123;pieces    ;Blue;
+;661155_red     ;661155      ;1234567890123;pieces    ;Red;                ;
+;661155_green   ;661155      ;1234567890123;pieces    ;Green;              ;
+;661155_blue     ;661155      ;1234567890123;pieces    ;Blue;
+;673059_red     ;673059      ;1234567890123;pieces    ;Red;                ;
+;673059_green   ;673059      ;1234567890123;pieces    ;Green;              ;
+;673059_blue     ;673059      ;1234567890123;pieces    ;Blue;
+;673130_red     ;673130      ;1234567890123;pieces    ;Red;                ;
+;673130_green   ;673130      ;1234567890123;pieces    ;Green;              ;
+;673130_blue     ;673130      ;1234567890123;pieces    ;Blue;
+;673137_red     ;673137      ;1234567890123;pieces    ;Red;                ;
+;673137_green   ;673137      ;1234567890123;pieces    ;Green;              ;
+;673137_blue     ;673137      ;1234567890123;pieces    ;Blue;
+;684804_red     ;684804      ;1234567890123;pieces    ;Red;                ;
+;684804_green   ;684804      ;1234567890123;pieces    ;Green;              ;
+;684804_blue     ;684804      ;1234567890123;pieces    ;Blue;
+;690122_red     ;690122      ;1234567890123;pieces    ;Red;                ;
+;690122_green   ;690122      ;1234567890123;pieces    ;Green;              ;
+;690122_blue     ;690122      ;1234567890123;pieces    ;Blue;
+;695539_red     ;695539      ;1234567890123;pieces    ;Red;                ;
+;695539_green     ;695539      ;1234567890123;pieces    ;Green;
+;695539_blue     ;695539      ;1234567890123;pieces    ;Blue;
+;695541_red     ;695541      ;1234567890123;pieces    ;Red;                ;
+;695541_green   ;695541      ;1234567890123;pieces    ;Green;              ;
+;695541_blue     ;695541      ;1234567890123;pieces    ;Blue;
+;697757_red     ;697757      ;1234567890123;pieces    ;Red;                ;
+;697757_green     ;697757      ;1234567890123;pieces    ;Green;
+;697757_blue     ;697757      ;123757      ;pieces    ;Blue;               ;
+;706400_red     ;706400      ;1234567890123;pieces    ;Red;                ;
+;706400_green   ;706400      ;1234567890123;pieces    ;Green;              ;
+;706400_blue     ;706400      ;1234567890123;pieces    ;Blue;
+;716948_red     ;716948      ;1234567890123;pieces    ;Red;                ;
+;716948_green   ;716948      ;1234567890123;pieces    ;Green;              ;
+;716948_blue     ;716948      ;1234567890123;pieces    ;Blue;
+;726115_red     ;726115      ;1234567890123;pieces    ;Red;                ;
+;726115_green   ;726115      ;1234567890123;pieces    ;Green;              ;
+;726115_blue     ;726115      ;1234567890123;pieces    ;Blue;
+;730320_red     ;730320      ;1234567890123;pieces    ;Red;                ;
+;730320_green   ;730320      ;1234567890123;pieces    ;Green;              ;
+;730320_blue     ;730320      ;1234567890123;pieces    ;Blue;
+;730323_red     ;730323      ;1234567890123;pieces    ;Red;                ;
+;730323_green   ;730323      ;1234567890123;pieces    ;Green;              ;
+;730323_blue     ;730323      ;1234567890123;pieces    ;Blue;
+;730325_red     ;730325      ;1234567890123;pieces    ;Red;                ;
+;730325_green   ;730325      ;1234567890123;pieces    ;Green;              ;
+;730325_blue     ;730325      ;1234567890123;pieces    ;Blue;
+;730831_red     ;730831      ;1234567890123;pieces    ;Red;                ;
+;730831_green   ;730831      ;1234567890123;pieces    ;Green;              ;
+;730831_blue     ;730831      ;1234567890123;pieces    ;Blue;
+;730837_red     ;730837      ;1234567890123;pieces    ;Red;                ;
+;730837_green   ;730837      ;1234567890123;pieces    ;Green;              ;
+;730837_blue     ;730837      ;1234567890123;pieces    ;Blue;
+;734131_red     ;734131      ;1234567890123;pieces    ;Red;                ;
+;734131_green   ;734131      ;1234567890123;pieces    ;Green;              ;
+;734131_blue     ;734131      ;1234567890123;pieces    ;Blue;
+;748313_red     ;748313      ;1234567890123;pieces    ;Red;                ;
+;748313_green   ;748313      ;1234567890123;pieces    ;Green;              ;
+;748313_blue     ;748313      ;1234567890123;pieces    ;Blue;
+;749993_red     ;749993      ;1234567890123;pieces    ;Red;                ;
+;749993_green   ;749993      ;1234567890123;pieces    ;Green;              ;
+;749993_blue     ;749993      ;1234567890123;pieces    ;Blue;
+;753353_red     ;753353      ;1234567890123;pieces    ;Red;                ;
+;753353_green   ;753353      ;1234567890123;pieces    ;Green;              ;
+;753353_blue     ;753353      ;1234567890123;pieces    ;Blue;
+;769571_red     ;769571      ;1234567890123;pieces    ;Red;                ;
+;769571_green   ;769571      ;1234567890123;pieces    ;Green;              ;
+;769571_blue     ;769571      ;1234567890123;pieces    ;Blue;
+;774008_red     ;774008      ;1234567890123;pieces    ;Red;                ;
+;774008_green   ;774008      ;1234567890123;pieces    ;Green;              ;
+;774008_blue     ;774008      ;1234567890123;pieces    ;Blue;
+;774124_red     ;774124      ;1234567890123;pieces    ;Red;                ;
+;774124_green   ;774124      ;1234567890123;pieces    ;Green;              ;
+;774124_blue     ;774124      ;1234567890123;pieces    ;Blue;
+;774131_red     ;774131      ;1234567890123;pieces    ;Red;                ;
+;774131_green   ;774131      ;1234567890123;pieces    ;Green;              ;
+;774131_blue     ;774131      ;1234567890123;pieces    ;Blue;
+;784275_red     ;784275      ;1234567890123;pieces    ;Red;                ;
+;784275_green   ;784275      ;1234567890123;pieces    ;Green;              ;
+;784275_blue     ;784275      ;1234567890123;pieces    ;Blue;
+;797189_red     ;797189      ;1234567890123;pieces    ;Red;                ;
+;797189_green   ;797189      ;1234567890123;pieces    ;Green;              ;
+;797189_blue     ;797189      ;1234567890123;pieces    ;Blue;
+;801166_red     ;801166      ;1234567890123;pieces    ;Red;                ;
+;801166_green   ;801166      ;1234567890123;pieces    ;Green;              ;
+;801166_blue     ;801166      ;1234567890123;pieces    ;Blue;
+;801171_red     ;801171      ;1234567890123;pieces    ;Red;                ;
+;801171_green   ;801171      ;1234567890123;pieces    ;Green;              ;
+;801171_blue     ;801171      ;1234567890123;pieces    ;Blue;
+;803745_red     ;803745      ;1234567890123;pieces    ;Red;                ;
+;803745_green   ;803745      ;1234567890123;pieces    ;Green;              ;
+;803745_blue     ;803745      ;1234567890123;pieces    ;Blue;
+;813683_red     ;813683      ;1234567890123;pieces    ;Red;                ;
+;813683_green   ;813683      ;1234567890123;pieces    ;Green;              ;
+;813683_blue     ;813683      ;1234567890123;pieces    ;Blue;
+;813691_red     ;813691      ;1234567890123;pieces    ;Red;                ;
+;813691_green   ;813691      ;123691      ;pieces    ;Green;              ;$
+;813691_blue     ;813691      ;1234567890123;pieces    ;Blue;
+;817779_red     ;817779      ;1234567890123;pieces    ;Red;                ;
+;817779_green   ;817779      ;1234567890123;pieces    ;Green;              ;
+;817779_blue     ;817779      ;1234567890123;pieces    ;Blue;
+;817799_red     ;817799      ;1234567890123;pieces    ;Red;                ;
+;817799_green   ;817799      ;1234567890123;pieces    ;Green;              ;
+;817799_blue     ;817799      ;1234567890123;pieces    ;Blue;
+;818885_red     ;818885      ;1234567890123;pieces    ;Red;                ;
+;818885_green   ;818885      ;1234567890123;pieces    ;Green;              ;
+;818885_blue     ;818885      ;1234567890123;pieces    ;Blue;
+;821099_red     ;821099      ;1234567890123;pieces    ;Red;                ;
+;821099_green   ;821099      ;1234567890123;pieces    ;Green;              ;
+;821099_blue     ;821099      ;1234567890123;pieces    ;Blue;
+;821194_red     ;821194      ;1234567890123;pieces    ;Red;                ;
+;821194_green   ;821194      ;1234567890123;pieces    ;Green;              ;
+;821194_blue     ;821194      ;1234567890123;pieces    ;Blue;
+;826019_red     ;826019      ;1234567890123;pieces    ;Red;                ;
+;826019_green   ;826019      ;1234567890123;pieces    ;Green;              ;
+;826019_blue     ;826019      ;1234567890123;pieces    ;Blue;
+;832269_red     ;832269      ;1234567890123;pieces    ;Red;                ;
+;832269_green   ;832269      ;1234567890123;pieces    ;Green;              ;
+;832269_blue     ;832269      ;1234567890123;pieces    ;Blue;
+;832277_red     ;832277      ;1234567890123;pieces    ;Red;                ;
+;832277_green   ;832277      ;1234567890123;pieces    ;Green;              ;
+;832277_blue     ;832277      ;1234567890123;pieces    ;Blue;
+;836246_red     ;836246      ;1234567890123;pieces    ;Red;                ;
+;836246_green   ;836246      ;1234567890123;pieces    ;Green;              ;
+;836246_blue     ;836246      ;1234567890123;pieces    ;Blue;
+;840253_red     ;840253      ;1234567890123;pieces    ;Red;                ;
+;840253_green   ;840253      ;1234567890123;pieces    ;Green;              ;
+;840253_blue     ;840253      ;1234567890123;pieces    ;Blue;
+;841024_red     ;841024      ;1234567890123;pieces    ;Red;                ;
+;841024_green   ;841024      ;1234567890123;pieces    ;Green;              ;
+;841024_blue     ;841024      ;1234567890123;pieces    ;Blue;
+;844413_red     ;844413      ;1234567890123;pieces    ;Red;                ;
+;844413_green   ;844413      ;1234567890123;pieces    ;Green;              ;
+;844413_blue     ;844413      ;1234567890123;pieces    ;Blue;
+;849050_red     ;849050      ;1234567890123;pieces    ;Red;                ;
+;849050_green   ;849050      ;1234567890123;pieces    ;Green;              ;
+;849050_blue     ;849050      ;1234567890123;pieces    ;Blue;
+;849068_red     ;849068      ;1234567890123;pieces    ;Red;                ;
+;849068_green   ;849068      ;1234567890123;pieces    ;Green;              ;
+;849068_blue     ;849068      ;1234567890123;pieces    ;Blue;
+;852167_red     ;852167      ;1234567890123;pieces    ;Red;                ;
+
+INSERT_UPDATE PriceRow;$catalogVersion;$product;price;$startTime;$endTime;$currency;$unit;
+
+                      ;;Device345;1299.00;
+
+INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net;
+;107701;pieces;USD;179,93;1;1;false
+;107701;pieces;GBP;15330;1;1;false
+;266899;pieces;USD;86,86;1;1;false
+;266899;pieces;GBP;7400;1;1;false
+;325234;pieces;USD;134,95;1;1;false
+;325234;pieces;GBP;11490;1;1;false
+;479956;pieces;USD;102,37;1;1;false
+;479956;pieces;GBP;8720;1;1;false
+;592506;pieces;USD;35,68;1;1;false
+;592506;pieces;GBP;3030;1;1;false
+;805693;pieces;USD;136,5;1;1;false
+;805693;pieces;GBP;11620;1;1;false
+;816379;pieces;USD;1695,36;1;1;false
+;816379;pieces;GBP;144440;1;1;false
+;824259;pieces;USD;184,58;1;1;false
+;824259;pieces;GBP;15720;1;1;false
+;861175;pieces;USD;184,58;1;1;false
+;861175;pieces;GBP;15720;1;1;false
+;824267;pieces;USD;283,85;1;1;false
+;824267;pieces;GBP;24180;1;1;false
+;847942;pieces;USD;240,42;1;1;false
+;847942;pieces;GBP;20480;1;1;false
+;848855;pieces;USD;369,16;1;1;false
+;848855;pieces;GBP;31450;1;1;false
+;917699;pieces;USD;145,8;1;1;false
+;917699;pieces;GBP;12420;1;1;false
+;1232590;pieces;USD;156,66;1;1;false
+;1232590;pieces;GBP;13340;1;1;false
+;1377492;pieces;USD;79,11;1;1;false
+;1377492;pieces;GBP;6740;1;1;false
+;1422218;pieces;USD;89,96;1;1;false
+;1422218;pieces;GBP;7660;1;1;false
+;1422222;pieces;USD;152,01;1;1;false
+;1422222;pieces;GBP;12950;1;1;false
+;1422224;pieces;USD;293,16;1;1;false
+;1422224;pieces;GBP;24970;1;1;false
+;1438466;pieces;USD;1865,98;1;1;false
+;1438466;pieces;GBP;158980;1;1;false
+;1446509;pieces;USD;1321,54;1;1;false
+;1446509;pieces;GBP;112590;1;1;false
+;1451546;pieces;USD;89,96;1;1;false
+;1451546;pieces;GBP;7660;1;1;false
+;1715477;pieces;USD;6030,71;1;1;false
+;1715477;pieces;GBP;513810;1;1;false
+;1978440;pieces;USD;558,4;1;1;false
+;1978440;pieces;GBP;47570;1;1;false
+;1978440_red;pieces;USD;558,4;1;1;false
+;1978440_red;pieces;GBP;47570;1;1;false
+;1978440_green;pieces;USD;558,4;1;1;false
+;1978440_green;pieces;GBP;47570;1;1;false
+;1978440_blue;pieces;USD;558,4;1;1;false
+;1978440_blue;pieces;GBP;47570;1;1;false
+;1986316;pieces;USD;1934,23;1;1;false
+;1986316;pieces;GBP;164790;1;1;false
+;1990255;pieces;USD;924,46;1;1;false
+;1990255;pieces;GBP;78760;1;1;false
+;1992693;pieces;USD;541,34;1;1;false
+;1992693;pieces;GBP;46120;1;1;false
+;1992696;pieces;USD;223,36;1;1;false
+;1992696;pieces;GBP;19030;1;1;false
+;1993748;pieces;USD;406,39;1;1;false
+;1993748;pieces;GBP;34620;1;1;false
+;2006139;pieces;USD;231,12;1;1;false
+;2006139;pieces;GBP;19690;1;1;false
+;2053226;pieces;USD;1538,7;1;1;false
+;2053226;pieces;GBP;131090;1;1;false
+;2053266;pieces;USD;1391,34;1;1;false
+;2053266;pieces;GBP;118540;1;1;false
+;2053367;pieces;USD;2410,42;1;1;false
+;2053367;pieces;GBP;205360;1;1;false
+;3470545;pieces;USD;370,72;1;1;false
+;3470545;pieces;GBP;31580;1;1;false
+;3505505;pieces;USD;426,55;1;1;false
+;3505505;pieces;GBP;36340;1;1;false
+;3514521;pieces;USD;626,65;1;1;false
+;3514521;pieces;GBP;53390;1;1;false
+;3595723;pieces;USD;2002,48;1;1;false
+;3595723;pieces;GBP;170610;1;1;false
+;346944;pieces;USD;105,48;1;1;false
+;346944;pieces;GBP;8980;1;1;false
+;1451563;pieces;USD;120,99;1;1;false
+;1451563;pieces;GBP;10300;1;1;false
+;1641905;pieces;USD;142,7;1;1;false
+;1641905;pieces;GBP;12150;1;1;false
+;2938457;pieces;USD;31,02;1;1;false
+;2938457;pieces;GBP;2640;1;1;false
+;3965240;pieces;USD;204,75;1;1;false
+;3965240;pieces;GBP;17440;1;1;false
+;4135570;pieces;USD;165,97;1;1;false
+;4135570;pieces;GBP;14140;1;1;false
+;4205431;pieces;USD;134,95;1;1;false
+;4205431;pieces;GBP;11490;1;1;false
+;4205436;pieces;USD;333,49;1;1;false
+;4205436;pieces;GBP;28410;1;1;false
+;4769104;pieces;USD;165,97;1;1;false
+;4769104;pieces;GBP;14140;1;1;false
+;4769626;pieces;USD;148,91;1;1;false
+;4769626;pieces;GBP;12680;1;1;false
+;65652;pieces;USD;358,88;1;1;false
+;65652;pieces;GBP;30570;1;1;false
+;503392;pieces;USD;1696,88;1;1;false
+;503392;pieces;GBP;144570;1;1;false
+;791635;pieces;USD;569,88;1;1;false
+;791635;pieces;GBP;48550;1;1;false
+;832382;pieces;USD;466,88;1;1;false
+;832382;pieces;GBP;39770;1;1;false
+;1382080;pieces;USD;574,88;1;1;false
+;1382080;pieces;GBP;48970;1;1;false
+;1432722;pieces;USD;396,88;1;1;false
+;1432722;pieces;GBP;33810;1;1;false
+;1438465;pieces;USD;645,88;1;1;false
+;1438465;pieces;GBP;55020;1;1;false
+;1776947;pieces;USD;243,88;1;1;false
+;1776947;pieces;GBP;20770;1;1;false
+;1776948;pieces;USD;146,88;1;1;false
+;1776948;pieces;GBP;12510;1;1;false
+;1934398;pieces;USD;610,88;1;1;false
+;1934398;pieces;GBP;52040;1;1;false
+;1934406;pieces;USD;452,88;1;1;false
+;1934406;pieces;GBP;38580;1;1;false
+;1993747;pieces;USD;206,88;1;1;false
+;1993747;pieces;GBP;17620;1;1;false
+;2934297;pieces;USD;589,88;1;1;false
+;2934297;pieces;GBP;50250;1;1;false
+;2934302;pieces;USD;508,88;1;1;false
+;2934302;pieces;GBP;43350;1;1;false
+;2934303;pieces;USD;429,88;1;1;false
+;2934303;pieces;GBP;36620;1;1;false
+;3325048;pieces;USD;121,88;1;1;false
+;3325048;pieces;GBP;10380;1;1;false
+;3357724;pieces;USD;121,88;1;1;false
+;3357724;pieces;GBP;10380;1;1;false
+;3557133;pieces;USD;929,88;1;1;false
+;3557133;pieces;GBP;79220;1;1;false
+;1934796;pieces;USD;110,88;1;1;false
+;1934796;pieces;GBP;9440;1;1;false
+;1997551;pieces;USD;177,88;1;1;false
+;1997551;pieces;GBP;15150;1;1;false
+;1934793;pieces;USD;99,85;1;1;false
+;1934793;pieces;GBP;8500;1;1;false
+;1934794;pieces;USD;99,85;1;1;false
+;1934794;pieces;GBP;8500;1;1;false
+;443175;pieces;USD;6,04;1;1;false
+;443175;pieces;GBP;510;1;1;false
+;2938458;pieces;USD;14,5;1;1;false
+;2938458;pieces;GBP;1230;1;1;false
+;3514519;pieces;USD;159,34;1;1;false
+;3514519;pieces;GBP;13570;1;1;false
+;4786113;pieces;USD;55,56;1;1;false
+;4786113;pieces;GBP;4730;1;1;false
+;4852405;pieces;USD;37,11;1;1;false
+;4852405;pieces;GBP;3160;1;1;false
+;23355;pieces;USD;580,38;1;1;false
+;23355;pieces;GBP;49440;1;1;false
+;266685;pieces;USD;154,5;1;1;false
+;266685;pieces;GBP;13160;1;1;false
+;284533;pieces;USD;419,43;1;1;false
+;284533;pieces;GBP;35730;1;1;false
+;289540;pieces;USD;154,65;1;1;false
+;289540;pieces;GBP;13170;1;1;false
+;301233;pieces;USD;21,56;1;1;false
+;301233;pieces;GBP;1830;1;1;false
+;572461;pieces;USD;48,65;1;1;false
+;572461;pieces;GBP;4140;1;1;false
+;918735;pieces;USD;69,05;1;1;false
+;918735;pieces;GBP;5880;1;1;false
+;1312640;pieces;USD;13,88;1;1;false
+;1312640;pieces;GBP;1180;1;1;false
+;1422706;pieces;USD;15,1;1;1;false
+;1422706;pieces;GBP;1280;1;1;false
+;2063624;pieces;USD;26,21;1;1;false
+;2063624;pieces;GBP;2230;1;1;false
+;2140197;pieces;USD;102,63;1;1;false
+;2140197;pieces;GBP;8740;1;1;false
+;1934795;pieces;USD;111,84;1;1;false
+;1934795;pieces;GBP;9520;1;1;false
+;3514520;pieces;USD;309,17;1;1;false
+;3514520;pieces;GBP;26340;1;1;false
+;137220;pieces;USD;8;1;1;false
+;137220;pieces;GBP;680;1;1;false
+;816780;pieces;USD;1086;1;1;false
+;816780;pieces;GBP;92520;1;1;false
+;872912;pieces;USD;10;1;1;false
+;872912;pieces;GBP;850;1;1;false
+;898503;pieces;USD;2117;1;1;false
+;898503;pieces;GBP;180360;1;1;false
+;1366001;pieces;USD;12;1;1;false
+;1366001;pieces;GBP;1020;1;1;false
+;1366053;pieces;USD;20;1;1;false
+;1366053;pieces;GBP;1700;1;1;false
+;1312564;pieces;USD;7,61;1;1;false
+;1312564;pieces;GBP;640;1;1;false
+;1325806;pieces;USD;136;1;1;false
+;1325806;pieces;GBP;11580;1;1;false
+;1209761;pieces;USD;347,46;1;1;false
+;1209761;pieces;GBP;29600;1;1;false
+;149243;pieces;USD;19,69;1;1;false
+;149243;pieces;GBP;1670;1;1;false
+;479742;pieces;USD;86,37;1;1;false
+;479742;pieces;GBP;7350;1;1;false
+;493683;pieces;USD;118,45;1;1;false
+;493683;pieces;GBP;10090;1;1;false
+;594471;pieces;USD;64,92;1;1;false
+;594471;pieces;GBP;5530;1;1;false
+;1322031;pieces;USD;9,99;1;1;false
+;1322031;pieces;GBP;90;1;1;false
+;1322041;pieces;USD;9,99;1;1;false
+;1322041;pieces;GBP;90;1;1;false
+;768108;pieces;USD;53,22;1;1;false
+;768108;pieces;GBP;4530;1;1;false
+;779841;pieces;USD;3,45;1;1;false
+;779841;pieces;GBP;290;1;1;false
+;784343;pieces;USD;818,33;1;1;false
+;784343;pieces;GBP;69720;1;1;false
+;832386;pieces;USD;4836,85;1;1;false
+;832386;pieces;GBP;412090;1;1;false
+;932577;pieces;USD;24,47;1;1;false
+;932577;pieces;GBP;2080;1;1;false
+;1391319;pieces;USD;394,5;1;1;false
+;1391319;pieces;GBP;33610;1;1;false
+;1687508;pieces;USD;149,71;1;1;false
+;1687508;pieces;GBP;12750;1;1;false
+;2140285;pieces;USD;9,05;1;1;false
+;2140285;pieces;GBP;770;1;1;false
+;3555166;pieces;USD;934,41;1;1;false
+;3555166;pieces;GBP;79610;1;1;false
+;4787985;pieces;USD;29,25;1;1;false
+;4787985;pieces;GBP;2490;1;1;false
+;4787986;pieces;USD;122,46;1;1;false
+;4787986;pieces;GBP;10430;1;1;false
+;779864;pieces;USD;7,95;1;1;false
+;779864;pieces;GBP;670;1;1;false
+;1992695;pieces;USD;91,51;1;1;false
+;1992695;pieces;GBP;7790;1;1;false
+;1992697;pieces;USD;91,51;1;1;false
+;1992697;pieces;GBP;7790;1;1;false
+;4812254;pieces;USD;927,89;1;1;false
+;4812254;pieces;GBP;79050;1;1;false
+;898520;pieces;USD;1650;1;1;false
+;898520;pieces;GBP;140580;1;1;false
+;2278102;pieces;USD;11;1;1;false
+;2278102;pieces;GBP;930;1;1;false
+;278688;pieces;USD;137,96;1;1;false
+;278688;pieces;GBP;11750;1;1;false
+;358639;pieces;USD;485,57;1;1;false
+;358639;pieces;GBP;41370;1;1;false
+;726510;pieces;USD;1035,25;1;1;false
+;726510;pieces;GBP;88200;1;1;false
+;726511;pieces;USD;1088,28;1;1;false
+;726511;pieces;GBP;92720;1;1;false
+;325414;pieces;USD;147,04;1;1;false
+;325414;pieces;GBP;12520;1;1;false
+;492274;pieces;USD;249,99;1;1;false
+;492274;pieces;GBP;21290;1;1;false
+;553637;pieces;USD;264,69;1;1;false
+;553637;pieces;GBP;22550;1;1;false
+;280916;pieces;USD;8,2;1;1;false
+;280916;pieces;GBP;690;1;1;false
+;1298094;pieces;USD;168,52;1;1;false
+;1298094;pieces;GBP;14350;1;1;false
+;2006365;pieces;USD;48,02;1;1;false
+;2006365;pieces;GBP;4090;1;1;false
+;429430;pieces;USD;65,51;1;1;false
+;429430;pieces;GBP;5580;1;1;false
+;450848;pieces;USD;65,51;1;1;false
+;450848;pieces;GBP;5580;1;1;false
+;1981415;pieces;USD;212,26;1;1;false
+;1981415;pieces;GBP;18080;1;1;false
+;3429337;pieces;USD;11,12;1;1;false
+;3429337;pieces;GBP;940;1;1;false
+;454831;pieces;USD;925,82;1;1;false
+;454831;pieces;GBP;78870;1;1;false
+;1981412;pieces;USD;164,53;1;1;false
+;1981412;pieces;GBP;14010;1;1;false
+;1981413;pieces;USD;184,69;1;1;false
+;1981413;pieces;GBP;15730;1;1;false
+;1981414;pieces;USD;193,03;1;1;false
+;1981414;pieces;GBP;16440;1;1;false
+;1320808;pieces;USD;171,36;1;1;false
+;1320808;pieces;GBP;14590;1;1;false
+;2231913;pieces;USD;1,58;1;1;false
+;2231913;pieces;GBP;130;1;1;false
+;572473;pieces;USD;146,6;1;1;false
+;572473;pieces;GBP;12490;1;1;false
+;779842;pieces;USD;7,5;1;1;false
+;779842;pieces;GBP;630;1;1;false
+;779848;pieces;USD;8,5;1;1;false
+;779848;pieces;GBP;720;1;1;false
+;779866;pieces;USD;7,5;1;1;false
+;779866;pieces;GBP;630;1;1;false
+;779868;pieces;USD;7,5;1;1;false
+;779868;pieces;GBP;630;1;1;false
+;834954;pieces;USD;4,5;1;1;false
+;834954;pieces;GBP;380;1;1;false
+;834955;pieces;USD;7,5;1;1;false
+;834955;pieces;GBP;630;1;1;false
+;1291399;pieces;USD;12,5;1;1;false
+;1291399;pieces;GBP;1060;1;1;false
+;489702;pieces;USD;227,24;1;1;false
+;489702;pieces;GBP;19360;1;1;false
+;669789;pieces;USD;94,69;1;1;false
+;669789;pieces;GBP;8060;1;1;false
+;686951;pieces;USD;260,87;1;1;false
+;686951;pieces;GBP;22220;1;1;false
+;812888;pieces;USD;322,94;1;1;false
+;812888;pieces;GBP;27510;1;1;false
+;816262;pieces;USD;322,94;1;1;false
+;816262;pieces;GBP;27510;1;1;false
+;816323;pieces;USD;322,94;1;1;false
+;816323;pieces;GBP;27510;1;1;false
+;816802;pieces;USD;260,87;1;1;false
+;816802;pieces;GBP;22220;1;1;false
+;855246;pieces;USD;1022,51;1;1;false
+;855246;pieces;GBP;87110;1;1;false
+;478828;pieces;USD;498,75;1;1;false
+;478828;pieces;GBP;42490;1;1;false
+;1225694;pieces;USD;847,74;1;1;false
+;1225694;pieces;GBP;72220;1;1;false
+;5103712;pieces;USD;131,54;1;1;false
+;5103712;pieces;GBP;11200;1;1;false
+;514518;pieces;USD;315,52;1;1;false
+;514518;pieces;GBP;26880;1;1;false
+;2054947;pieces;USD;1066,18;1;1;false
+;2054947;pieces;GBP;90830;1;1;false
+;3708646;pieces;USD;968,89;1;1;false
+;3708646;pieces;GBP;82540;1;1;false
+;1494590;pieces;USD;146;1;1;false
+;1494590;pieces;GBP;12430;1;1;false
+;29925;pieces;USD;115;1;1;false
+;29925;pieces;GBP;9790;1;1;false
+;676442;pieces;USD;202;1;1;false
+;676442;pieces;GBP;17210;1;1;false
+;816261;pieces;USD;216;1;1;false
+;816261;pieces;GBP;18400;1;1;false
+;2292454;pieces;USD;49;1;1;false
+;2292454;pieces;GBP;4170;1;1;false
+;3357888;pieces;USD;130,65;1;1;false
+;3357888;pieces;GBP;11130;1;1;false
+;899387;pieces;USD;94,71;1;1;false
+;899387;pieces;GBP;8060;1;1;false
+;4608858;pieces;USD;505,66;1;1;false
+;4608858;pieces;GBP;43080;1;1;false
+;5103775;pieces;USD;169,07;1;1;false
+;5103775;pieces;GBP;14400;1;1;false
+;482105;pieces;USD;149,69;1;1;false
+;482105;pieces;GBP;12750;1;1;false
+;816324;pieces;USD;347,55;1;1;false
+;816324;pieces;GBP;29610;1;1;false
+;784173;pieces;USD;90;1;1;false
+;784173;pieces;GBP;7660;1;1;false
+;300938;pieces;USD;114,12;1;1;false
+;300938;pieces;GBP;9720;1;1;false
+;458542;pieces;USD;34,53;1;1;false
+;458542;pieces;GBP;2940;1;1;false
+;1099285;pieces;USD;23,91;1;1;false
+;1099285;pieces;GBP;2030;1;1;false
+;1099413;pieces;USD;360,86;1;1;false
+;1099413;pieces;GBP;30740;1;1;false
 
 
-#product creation Reference
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved;
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	23191
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	23210
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	23213
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	23231
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	23355
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	29925
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	65652
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	107701
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	110561
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	137220
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	149243
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	266685
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	266899
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	278688
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	280916
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	284533
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	288420
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	288846
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	289540
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	300938
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	301233
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	301544
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	325065
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	325101
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	325234
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	325414
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	325715
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	328796
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	335443
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	335546
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	337958
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	337981
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	343090
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	346944
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	356788
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	356970
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	358639
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	360308
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	429430
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	442466
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	443175
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	450848
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	454831
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	458542
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	472054
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	472056
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	472057
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	473765
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	473995
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	473996
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	478828
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	479742
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	479956
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	482105
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	489680
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	489702
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	492274
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	493683
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	503392
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	514518
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	553637
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	560583
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	562675
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	572461
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	572473
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	592506
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	594471
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	669789
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	669797
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	669799
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	676442
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	686951
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	695824
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	726510
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	726511
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	768108
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	779841
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	779842
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	779848
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	779864
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	779866
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	779868
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	784171
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	784172
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	784173
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	784343
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	784380
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	784381
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	791635
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	805693
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	812888
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816261
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816262
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816323
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816324
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816326
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816379
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816780
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	816802
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	824259
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	824267
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	832382
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	832386
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	834954
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	834955
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	847942
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	848855
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	855246
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	861175
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	872912
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	897853
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	898503
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	898520
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	899387
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	911227
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	917699
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	918735
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	932577
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	932643
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1099285
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1099413
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1209761
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1225694
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1231346
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1232590
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1291399
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1297878
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1298094
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1312564
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1312640
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1320808
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1322031
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1322041
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1325806
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1366001
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1366053
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1377492
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1382080
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1391319
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1422218
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1422222
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1422224
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1422706
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1432722
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1438465
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1438466
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1438467
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1446509
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1451546
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1451563
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1494590
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1532809
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1550476
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1568824
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1641905
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1687508
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1715477
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1716323
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1776947
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1776948
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1934398
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1934406
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1934793
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1934794
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1934795
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1934796
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1978431
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1978440
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1981412
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1981413
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1981414
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1981415
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1986316
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1990255
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992689
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992691
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992692
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992693
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992695
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992696
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1992697
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1993747
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1993748
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	1997551
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2006139
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2006365
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2053226
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2053266
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2053367
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2054947
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2054948
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2063624
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2114091
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2140197
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2140285
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2149500
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2231913
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2278102
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2292454
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2336001
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2336002
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2336004
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2861342
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2867992
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2894920
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2913966
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2934297
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2934302
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2934303
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2938457
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	2938458
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3325048
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3357724
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3357888
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3400506
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3429337
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3470545
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3505505
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514515
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514516
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514517
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514519
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514520
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514521
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514522
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3514523
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3555166
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3557133
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3595723
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3683639
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3683640
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3708646
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3730957
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3789394
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3958110
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	3965240
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4135570
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4200373
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4205246
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4205431
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4205436
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4528140
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4608858
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4731172
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4769104
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4769626
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4785190
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4786113
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4787985
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4787986
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4808175
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4812254
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4841579
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4852405
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4868199
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4869234
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4872010
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	4873607
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	5103712
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	5103775
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	5473115
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	5864567
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	5864583
+;10;	warehouse_s;	forceInStock;	5;	-1;	0;	2;	5897548
 
-#
-#
-#
-## -----------------------------------------------------------------------
-## Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
-## -----------------------------------------------------------------------
-## Sample data for configurable product with product variants option 1:
-##
-## Variant's category inherits configuration and overrides some settings. The parent category is also assigned to the
-## base product, so by default product variants have the base product's configuration set.
-##
-## product "Photosmart E317 Digital Camera"
-#
-#$productCatalog=electronicsProductCatalog
-#$productCatalogName=Electronics Product Catalog
-#$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-#$supercategories=supercategories(code, $catalogVersion)
-#$baseProduct=baseProduct(code,$catalogVersion)
-#$approved=approvalstatus(code)[default='approved']
-#$taxGroup=Europe1PriceFactory_PTG(code)[default=jp-vat-full]
-#$lang=en
-#
-#INSERT_UPDATE Product;code[unique=true];variantType(code);$catalogVersion
-#                     ;300938;ElectronicsColorVariantProduct
-#
-#INSERT_UPDATE ElectronicsColorVariantProduct;code[unique=true];$baseProduct;ean;unit(code);color;$supercategories;approvalstatus(code)[default='approved'];$catalogVersion
-#                                            ;300938_red;300938;0829160974095;pieces;Red;
-#                                            ;300938_green;300938;0829160974095;pieces;Green;
-#                                            ;300938_blue;300938;0829160974095;pieces;Blue;
-#
-#INSERT_UPDATE ConfigurationCategory;code[unique=true];$supercategories;allowedPrincipals(uid)[default='customergroup'];$catalogVersion
-#                                   ;300938_engraving;configurations
-#                                   ;300938_engraving_largeFont;300938_engraving
-#                                   ;300938_engraving_extraLargeFont;300938_engraving
-#                                   ;300938_engraving_smallFont;300938_engraving
-#
-#INSERT_UPDATE TextFieldConfiguratorSetting;id[unique=true];$catalogVersion;configuratorType(code)[default='TEXTFIELD'];configurationCategory(code, $catalogVersion);qualifier
-#                                          ;300938_Engraved_Text;;;300938_engraving;300938_engravedText
-#                                          ;300938_Font_Type;;;300938_engraving;300938_fontType
-#                                          ;300938_Font_Size;;;300938_engraving;300938_fontSize
-#                                          ;300938_LargeFont;;;300938_engraving_largeFont;300938_fontSize
-#                                          ;300938_ExtraLargeFont;;;300938_engraving_extraLargeFont;300938_fontSize
-#                                          ;300938_SmallFont;;;300938_engraving_smallFont;300938_fontSize
-#
-#INSERT_UPDATE TextFieldConfiguratorSetting;id[unique=true];$catalogVersion;textFieldLabel[lang=$lang];textFieldDefaultValue[lang=$lang]
-#                                          ;300938_Engraved_Text;;Engraved Text;
-#                                          ;300938_Font_Type;;Font Type;Webdings
-#                                          ;300938_Font_Size;;Font Size;14
-#                                          ;300938_LargeFont;;Font Size;24
-#                                          ;300938_ExtraLargeFont;;Font Size;48
-#                                          ;300938_SmallFont;;Font Size;10
-#
-#INSERT_UPDATE Product;code[unique=true];$catalogVersion;$supercategories[mode='append']
-#                     ;300938;;300938_engraving
-#                     ;300938_red;;300938_engraving_largeFont
-#                     ;300938_blue;;300938_engraving_smallFont
-#                     ;300938_green;;300938_engraving_extraLargeFont
-#
-#UPDATE Product;code[unique=true];$approved;$catalogVersion;$taxGroup
-#              ;300938_red
-#              ;300938_green
-#              ;300938_blue
-#
-#INSERT_UPDATE PriceRow;productId[unique=true];unit(code[unique=true,default=pieces]);currency(isocode)[unique=true];price;minqtd;unitFactor;net
-#                      ;300938_red;pieces;USD;114;1;1;false
-#                      ;300938_red;pieces;JPY;9720;1;1;false
-#                      ;300938_green;pieces;USD;114;1;1;false
-#                      ;300938_green;pieces;JPY;9720;1;1;false
-#                      ;300938_blue;pieces;USD;114;1;1;false
-#                      ;300938_blue;pieces;JPY;9720;1;1;false
-#
-#INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
-#                        ;31;warehouse_e;notSpecified;1;0;0;0;300938_red;0
-#                        ;31;warehouse_e;notSpecified;1;0;0;0;300938_green;0
-#                        ;31;warehouse_e;notSpecified;1;0;0;0;300938_blue;0
-#
-#INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
-#                            ;300938_red;P0000000;US
-#                            ;300938_green;P0000000;US
-#                            ;300938_blue;P0000000;US
-#
-#UPDATE Product;code[unique=true];$catalogVersion;name[lang=$lang];summary[lang=$lang];description[lang=$lang]
-#              ;300938_red;;Photosmart E317 Digital Camera Red;Point and shoot simplicity in a 5 MP camera.;Get point and shoot simplicity plus crisp, true-to-life photos with this stylish and easy-to-use camera.<br/><br/>Get close in with 4x digital zoom, review via the clear 3.8 cm LCD then print great 10 × 15 cm photos and enlargements up to poster size.
-#              ;300938_green;;Photosmart E317 Digital Camera Green;Point and shoot simplicity in a 5 MP camera.;Get point and shoot simplicity plus crisp, true-to-life photos with this stylish and easy-to-use camera.<br/><br/>Get close in with 4x digital zoom, review via the clear 3.8 cm LCD then print great 10 × 15 cm photos and enlargements up to poster size.
-#              ;300938_blue;;Photosmart E317 Digital Camera Blue;Point and shoot simplicity in a 5 MP camera.;Get point and shoot simplicity plus crisp, true-to-life photos with this stylish and easy-to-use camera.<br/><br/>Get close in with 4x digital zoom, review via the clear 3.8 cm LCD then print great 10 × 15 cm photos and enlargements up to poster size.

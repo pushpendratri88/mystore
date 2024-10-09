@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 20-Sep-2024, 10:55:48 am                    ---
+ * --- Generated at Oct 8, 2024, 4:01:17 PM                     ---
  * ----------------------------------------------------------------
  */
 package com.brainstorm.core.jalo;
@@ -13,6 +13,7 @@ import com.brainstorm.core.jalo.ApparelStyleVariantProduct;
 import com.brainstorm.core.jalo.ElectronicsColorVariantProduct;
 import com.brainstorm.core.jalo.MyStoreColorVariantProduct;
 import com.brainstorm.core.jalo.MyStoreCronjob;
+import com.brainstorm.core.jalo.MyStoreCustomer;
 import com.brainstorm.core.jalo.MyStoreProduct;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
@@ -203,6 +204,32 @@ public abstract class GeneratedMystoreCoreManager extends Extension
 	public MyStoreCronjob createMyStoreCronjob(final Map attributeValues)
 	{
 		return createMyStoreCronjob( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public MyStoreCustomer createMyStoreCustomer(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( MystoreCoreConstants.TC.MYSTORECUSTOMER );
+			return (MyStoreCustomer)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating MyStoreCustomer : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public MyStoreCustomer createMyStoreCustomer(final Map attributeValues)
+	{
+		return createMyStoreCustomer( getSession().getSessionContext(), attributeValues );
 	}
 	
 	public MyStoreProduct createMyStoreProduct(final SessionContext ctx, final Map attributeValues)
