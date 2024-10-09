@@ -5,7 +5,7 @@ package com.brainstorm.validator;
 
 import de.hybris.bootstrap.annotations.UnitTest;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.StockSystemException;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class DefaultStockSystemValidatorTest
 	private static final String BASE_SITE_ID = "testSite";
 
 	@Mock
-	private CommerceStockFacade commerceStockFacade;
+	private MYStoreCommerceStockFacade commerceStockFacade;
 	private DefaultStockSystemValidator validator;
 
 	@Before

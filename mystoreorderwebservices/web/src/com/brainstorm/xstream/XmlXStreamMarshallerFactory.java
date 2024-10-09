@@ -3,6 +3,7 @@
  */
 package com.brainstorm.xstream;
 
+import com.sun.xml.txw2.output.IndentingXMLStreamWriter;
 import de.hybris.platform.commercefacades.xstream.alias.AttributeAliasMapping;
 import de.hybris.platform.commercefacades.xstream.alias.AttributeOmitMapping;
 import de.hybris.platform.commercefacades.xstream.alias.FieldAliasMapping;
@@ -35,7 +36,7 @@ import com.thoughtworks.xstream.converters.SingleValueConverter;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 import com.thoughtworks.xstream.io.xml.StaxWriter;
 
-import javanet.staxutils.IndentingXMLStreamWriter;
+
 
 
 /**

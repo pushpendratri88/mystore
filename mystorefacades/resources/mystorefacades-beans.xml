@@ -8,8 +8,8 @@
 <!--		<property name="genders" type="java.util.List&lt;com.brainstorm.facades.product.data.GenderData>"/>-->
 <!--	</bean>-->
 
-<!--	<bean class="com.brainstorm.facades.product.data.GenderData">-->
-<!--		<property name="code" type="String"/>-->
-<!--		<property name="name" type="String"/>-->
-<!--	</bean>-->
+	<bean class="com.brainstorm.facades.product.data.GenderData">
+		<property name="code" type="String"/>
+		<property name="name" type="String"/>
+	</bean>
 </beans>

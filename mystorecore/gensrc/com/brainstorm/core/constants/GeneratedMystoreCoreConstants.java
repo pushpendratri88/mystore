@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at 20-Sep-2024, 10:55:48 am                    ---
+ * --- Generated at Oct 8, 2024, 4:01:17 PM                     ---
  * ----------------------------------------------------------------
  */
 package com.brainstorm.core.constants;
@@ -22,6 +22,7 @@ public class GeneratedMystoreCoreConstants
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
 		public static final String MYSTORECOLORVARIANTPRODUCT = "MyStoreColorVariantProduct".intern();
 		public static final String MYSTORECRONJOB = "MyStoreCronjob".intern();
+		public static final String MYSTORECUSTOMER = "MyStoreCustomer".intern();
 		public static final String MYSTOREPRODUCT = "MyStoreProduct".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 	}

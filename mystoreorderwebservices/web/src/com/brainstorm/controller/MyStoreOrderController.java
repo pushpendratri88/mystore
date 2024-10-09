@@ -25,7 +25,7 @@ public class MyStoreOrderController {
     private static final Logger LOGGER = Logger.getLogger(MyStoreOrderController.class);
     protected static final String DEFAULT_FIELD_SET = FieldSetLevelHelper.DEFAULT_LEVEL;
 
-    @Resource(name = "dataMapper")
+    @Resource(name = "myStoreOrderFieldMapper")
     private DataMapper dataMapper;
 
     @Resource(name = "myStoreOrderFacade")

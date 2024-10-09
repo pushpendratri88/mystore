@@ -45,7 +45,7 @@ import com.brainstorm.exceptions.UnsupportedDeliveryModeException;
 import de.hybris.platform.commercefacades.order.data.CartModificationDataList;
 import com.brainstorm.populator.HttpRequestPaymentInfoPopulator;
 import com.brainstorm.populator.options.PaymentInfoOption;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 import com.brainstorm.validator.CCPaymentInfoValidator;
 import com.brainstorm.validator.PlaceOrderCartValidator;
 import com.brainstorm.validator.PointOfServiceValidator;
@@ -98,7 +98,7 @@ public class CartController extends BaseController
 	@Resource(name = "voucherFacade")
 	private VoucherFacade voucherFacade;
 	@Resource(name = "commerceStockFacade")
-	private CommerceStockFacade commerceStockFacade;
+	private MYStoreCommerceStockFacade commerceStockFacade;
 	@Resource(name = "ccPaymentInfoValidator")
 	private Validator ccPaymentInfoValidator;
 	@Resource(name = "deliveryAddressValidator")

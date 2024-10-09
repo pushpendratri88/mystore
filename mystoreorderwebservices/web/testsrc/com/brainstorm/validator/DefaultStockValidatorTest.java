@@ -8,7 +8,7 @@ import de.hybris.platform.basecommerce.enums.StockLevelStatus;
 import de.hybris.platform.commercefacades.product.data.StockData;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.LowStockException;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.ProductLowStockException;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +35,7 @@ public class DefaultStockValidatorTest
 	private static final String PRODUCT_CODE = "12345";
 
 	@Mock
-	private CommerceStockFacade commerceStockFacade;
+	private MYStoreCommerceStockFacade commerceStockFacade;
 	@Mock
 	private StockData stock;
 	private DefaultStockValidator validator;

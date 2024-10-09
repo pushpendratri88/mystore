@@ -7,7 +7,7 @@ import de.hybris.platform.commercefacades.product.data.StockData;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.LowStockException;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.ProductLowStockException;
 import de.hybris.platform.commercewebservicescommons.errors.exceptions.StockSystemException;
-import com.brainstorm.stock.CommerceStockFacade;
+import com.brainstorm.stock.MYStoreCommerceStockFacade;
 
 import static de.hybris.platform.basecommerce.enums.StockLevelStatus.LOWSTOCK;
 import static de.hybris.platform.basecommerce.enums.StockLevelStatus.OUTOFSTOCK;
@@ -26,7 +26,7 @@ public class DefaultStockPOSValidator extends DefaultStockSystemValidator implem
 	 *
 	 * @param commerceStockFacade Commerce stock facade to be used in the validation
 	 */
-	public DefaultStockPOSValidator(final CommerceStockFacade commerceStockFacade)
+	public DefaultStockPOSValidator(final MYStoreCommerceStockFacade commerceStockFacade)
 	{
 		super(commerceStockFacade);
 	}
